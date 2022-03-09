@@ -7,6 +7,7 @@ In this project I use Python, Bootstrap and Flask to create a web application an
 - Flask
 - HTML
 - CSS
+- Bootstrap
 - Google App Engine
 - Folium
 - Itsdangerous

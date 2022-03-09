@@ -9,6 +9,6 @@ In this project I use Python, Bootstrap and Flask to create a web application an
 - CSS
 - Google App Engine
 - Folium
-- itsdangerous
-- numpy
-- pandas
+- Itsdangerous
+- Numpy
+- Pandas

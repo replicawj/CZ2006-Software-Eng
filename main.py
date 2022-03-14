@@ -2,7 +2,7 @@ import pandas as pd
 import requests
 import folium
 from datetime import datetime
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 re = requests.get("https://corona.lmao.ninja/v2/countries?yesterday&sort")
 re = re.json()
@@ -64,8 +64,13 @@ app = Flask(__name__)
 def home():
     return render_template("home.html", top_country=top_country,update=last_update, map=html_map)
 
-@app.route('/login')
+@app.route('/login', methods = ['GET', 'POST'])
 def login():
+    if request.method == 'POST':
+        email = request.form.get("floatingInput")
+        print(email)
+        
+        
     return render_template("login.html")
 
 @app.route('/signup')

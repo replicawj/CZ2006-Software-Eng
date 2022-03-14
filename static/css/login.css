@@ -1,3 +1,5 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
 body {
   height: 100%;
 }
@@ -7,12 +9,14 @@ body {
   align-items: center;
   padding-top: 40px;
   padding-bottom: 40px;
-  background-color: #F2F3F9;
+  background-color: #f2f3f9;
 }
 
 h1 {
   color: #43468A;
-
+  font-family: 'Montserrat', sans-serif;
+  font-size: 45px;
+  font-weight: 600;
 }
 
 .form-signin {
@@ -20,24 +24,32 @@ h1 {
   max-width: 330px;
   padding: 15px;
   margin: auto;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .form-signin .checkbox {
-  font-weight: 400;
+  font-weight: 300;
+  font-size: 17px;
+  
 }
 
 .form-signin .form-floating:focus-within {
   z-index: 2;
+  
 }
 
 .form-signin input[type="email"] {
   margin-bottom: -1px;
-  border-bottom-right-radius: 0;
+  border-bottom-right-radius: 50;
   border-bottom-left-radius: 0;
+  
+  font-size: 17px;
+
 }
 
 .form-signin input[type="password"] {
   margin-bottom: 10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
+  font-size: 17px;
 }

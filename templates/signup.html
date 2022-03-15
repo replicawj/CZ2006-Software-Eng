@@ -31,6 +31,7 @@
     <link href="{{ url_for('static',filename='css/login.css')}}" rel="stylesheet">
   </head>
   <body class="text-center">
+<<<<<<< Updated upstream
 
 
 <main class="form-signin">
@@ -71,5 +72,68 @@
 
 
 
+=======
+    <main class="form-signin">
+      <form>
+        <img
+          class="mb-4"
+          src="http://pm1.narvii.com/7419/43f409d48ab717b3b3c20e08a85c0a23468da1adr1-382-283v2_uhq.jpg"
+          alt=""
+          width="72"
+          height="57"
+        />
+        <h1 class="h3 mb-3 fw-normal">Sign up</h1>
+
+        <div class="form-floating">
+          <label for="floatingInput mb-1">Email address</label>
+          <input
+            type="email"
+            class="form-control"
+            id="floatingInput"
+            name = "floatingInput"
+            placeholder="name@example.com"
+          />
+        </div>
+        <div class="form-floating">
+          <label for="floatingPassword">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="floatingPassword"
+            name="floatingPassword"
+            placeholder="Password"
+          />
+        </div>
+        <div class="form-floating">
+          <input
+            type="password"
+            class="form-control"
+            id="floatingVerifyPassword"
+            name = "floatingVerifyPassword"
+            placeholder="Verify Password"
+          />
+        </div>
+
+        <div class="checkbox mb-1">
+          <label>
+            <input type="checkbox" value="remember-me" /> Remember me
+          </label>
+        </div>
+        <button class="w-100 btn btn-lg btn-primary mb-2" type="submit">
+          Sign up
+        </button>
+          
+        <a href="/login"> Back to Log in </a>
+
+        <p class="mt-5 mb-3 text-muted">&copy; 2022–2022</p>
+      </form>
+    </main>
+
+    <img
+      src="{{ url_for('static',filename='assets/img/loginicon.jpg')}}"
+      width="60%"
+      height="109%"
+    />
+>>>>>>> Stashed changes
   </body>
 </html>

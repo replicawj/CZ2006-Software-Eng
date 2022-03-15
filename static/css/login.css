@@ -34,6 +34,10 @@ h1 {
   margin-bottom: -1px;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
+<<<<<<< Updated upstream
+=======
+  font-size: 17px;
+>>>>>>> Stashed changes
 }
 
 .form-signin input[type="password"] {

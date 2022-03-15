@@ -12,7 +12,18 @@
 <body>
     <div class="topHeader"> 
        <a class = "logo p-2 ml-5" href="{{ url_for('home') }}">Travello</a>
+       <div class = 'ml-3'>
+        <input
+
+        type="email"
+        class="form-control form-rounded"
+        id="floatingInput"
+        name = "floatingInput"
+        placeholder="Search"
+      />
+       </div>
        <a class = "signup ml-auto" href="{{ url_for('signup') }}">Signup</a>
+
        <button class = "mr-5" >
            <a class = "text-white" href="{{ url_for('login') }}">
                 Log in

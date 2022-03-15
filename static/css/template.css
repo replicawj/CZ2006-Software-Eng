@@ -64,3 +64,8 @@ button {
     font-size: 17px;
     color: black;
 }
+.form-rounded {
+    border-radius: 1rem;
+    width: 200px;
+    height: 30px;
+}

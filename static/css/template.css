@@ -8,11 +8,31 @@ body {
 h5{
     color: #43468A;
     font-family: 'Roboto';
+    font-size:25px;
+    font-weight: 600;
+    
 
 }
-#topHeader{
-    background-color: #f2f3f9;
-    font-size: 15px;
+.topHeader{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    height: 100px;
+    background: #f2f3f9;
+    color: #43468A;
+}
+
+.topHeader .logo{
+    font-family:'Roboto';
+    color:#43468A;
+    font-size: 25px;
+    font-weight: 600;
+}
+.topHeader .signup{
+
+    margin-right: 30px;
+    font-size: 17px;
+    color:#797baa;
 }
 button {
     /* background-color: #797baa;
@@ -33,3 +53,14 @@ button {
     color: white;
     border-radius: 100px;
   }
+
+.navbar{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    background-color: white;
+}
+.navbar .navItem{
+    font-size: 17px;
+    color: black;
+}

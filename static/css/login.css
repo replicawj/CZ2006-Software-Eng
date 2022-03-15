@@ -38,12 +38,26 @@ button {
   border-radius: 100px;
 }
 
+a {
+  color: black;
+}
+
 .form-signin {
   width: 100%;
   max-width: 330px;
   padding: 15px;
   margin: auto;
   font-family: "Montserrat", sans-serif;
+}
+
+#1 {
+  width: 334px;
+  height: 49px;
+  left: 241px;
+  top: 501px;
+
+  background: #ffffff;
+  border-radius: 25px;
 }
 
 .form-signin .checkbox {

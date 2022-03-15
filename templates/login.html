@@ -15,6 +15,11 @@
       crossorigin="anonymous"
     />
 
+    <!-- <link
+    rel="stylesheet"
+    href="{{ url_for('static',filename='css/login.css')}}"
+    /> -->
+
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
 
 
@@ -53,16 +58,17 @@
         /> -->
         <h1>Log in</h1>
 
-  
-        <div class="form-floating">
-
-          <input
-            type="email"
-            class="form-control"
-            id="floatingInput"
-            name = "floatingInput"
-            placeholder="name@example.com"
-          />
+        <div id = "1">
+          <div class="form-floating">
+            <input
+              type="email"
+              class="form-control"
+              id="floatingInput"
+              name = "floatingInput"
+              placeholder="name@example.com"
+              border-radius = 25px
+            />
+          </div>
         </div>
         <div class="form-floating">
           <input

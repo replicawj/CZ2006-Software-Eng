@@ -3,13 +3,19 @@
 <head>
   <meta charset="utf-8">
   <title>Hotels</title>
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/hotels.css')}}">
 </head>
 
 <body>
     {% extends "template.html" %}
     {% block content %}
-    <br>
-    <h1>This is the hotel page. </h1>
+
+    <div class = "hotelImageWrapper">
+      <img src="{{ url_for('static',filename='assets/img/hotels.png')}}" width = 100%/>
+      <div class = "hotelTitle">Hotels</div>
+    </div>
+
+    
 
 
     {% endblock %}

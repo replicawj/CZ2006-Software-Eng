@@ -1,4 +1,71 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 body {
     background-color: #457b9d;
     color: white;
+    font-family : 'Montserrat';
+}
+h5{
+    color: #43468A;
+    font-family: 'Roboto';
+    font-size:25px;
+    font-weight: 600;
+    
+
+}
+.topHeader{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    height: 100px;
+    background: #f2f3f9;
+    color: #43468A;
+}
+
+.topHeader .logo{
+    font-family:'Roboto';
+    color:#43468A;
+    font-size: 25px;
+    font-weight: 600;
+}
+.topHeader .signup{
+
+    margin-right: 30px;
+    font-size: 17px;
+    color:#797baa;
+}
+button {
+    /* background-color: #797baa;
+    color: white;
+    font-size: 15;
+    border-radius: 100;
+    border: none;
+    width: 10;
+    height: 49;
+    padding: 50px; */
+    /* position: absolute; */
+    width: 100px;
+    height: 40px;
+    left: 348px;
+    top: 704px;
+    border: none;
+    background: #797baa;
+    color: white;
+    border-radius: 100px;
+  }
+
+.navbar{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    background-color: white;
+}
+.navbar .navItem{
+    font-size: 17px;
+    color: black;
+}
+.form-rounded {
+    border-radius: 1rem;
+    width: 200px;
+    height: 30px;
 }

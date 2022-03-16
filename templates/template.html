@@ -10,18 +10,36 @@
     <link rel="stylesheet" href="{{ url_for('static',filename='css/template.css')}}">
 </head>
 <body>
-<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
-    <h5 class="my-0 mr-md-auto font-weight-normal text-dark">Coronavirus Analysis</h5>
-    <nav class="my-2 my-md-0 mr-md-3">
-        <a class="p-2 text-dark" href="{{ url_for('home') }}">Home</a>
-        <a class="p-2 text-dark" href="{{ url_for('about') }}">About</a>
-        <a class="p-2 text-dark" href="{{ url_for('login') }}">Login</a>
+    <div class="topHeader"> 
+       <a class = "logo p-2 ml-5" href="{{ url_for('home') }}">Travello</a>
+       <div class = 'ml-3'>
+        <input
 
-        <!--Testing purposes-->
-        <a class="p-2 text-dark" href="{{ url_for('flights') }}">Flights</a>
-        <!--Testing purposes-->
-    </nav>
-</div>
+        type="email"
+        class="form-control form-rounded"
+        id="floatingInput"
+        name = "floatingInput"
+        placeholder="Search"
+      />
+       </div>
+       <a class = "signup ml-auto" href="{{ url_for('signup') }}">Signup</a>
+
+       <button class = "mr-5" >
+           <a class = "text-white" href="{{ url_for('login') }}">
+                Log in
+           </a>
+      </button>
+    </div>
+
+    <div>
+        <nav class="navbar">
+            <a class="navItem" href="{{ url_for('flights') }}">Flights</a>
+            <a class="navItem" href="{{ url_for('attractions') }}">Attractions</a>
+            <a class="navItem" href="{{ url_for('hotels') }}">Hotels</a>
+            <a class="navItem" href="{{ url_for('transport') }}">Transport</a>
+        </nav>
+    </div>
+
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>

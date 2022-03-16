@@ -3,13 +3,32 @@
 <head>
   <meta charset="utf-8">
   <title>Attractions</title>
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/attractions.css')}}">
 </head>
 
 <body>
     {% extends "template.html" %}
     {% block content %}
-    <br>
-    <h1> This is the attractions page. </h1>
+    
+      
+    <div class="attractionsImageWrapper">
+      <img src ="{{ url_for('static',filename='assets/img/attractionsHeaderImage.png')}}" width = 100%/>
+      <div class = "attractionsTitle">Attractions</div>
+    </div>
+
+    <div>
+      <div class = "attractionsList ">
+        <div class = "flex-item">
+        </div>
+        <div class = "flex-item">
+        </div>
+        <div class = "flex-item">
+        </div>
+      </div>
+    <div>
+
+
+    
 
 
     {% endblock %}

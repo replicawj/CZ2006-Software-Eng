@@ -11,3 +11,30 @@
   font-size: 60px;
   font-weight: 700;
 }
+
+.searchWrapper {
+  margin-top: 35px;
+
+  position: absolute;
+  width: 1336px;
+  height: 172px;
+  left: 53px;
+  /* top: 452px; */
+
+  background: #ffffff;
+  border: 2px solid #e0e0e0;
+  box-sizing: border-box;
+  border-radius: 50px;
+}
+
+#searchHotel.form-rounded {
+  position: absolute;
+  width: 239px;
+  height: 51px;
+  margin-top: 60px;
+  margin-left: 39px;
+  background: #ffffff;
+  border: 2px solid #8e8e8e;
+  box-sizing: border-box;
+  border-radius: 25px;
+}

@@ -10,9 +10,19 @@
     {% extends "template.html" %}
     {% block content %}
 
-    <div class = "hotelImageWrapper">
-      <img src="{{ url_for('static',filename='assets/img/hotels.png')}}" width = 100%/>
+    <div class="hotelImageWrapper">
+      <img src ="{{ url_for('static',filename='assets/img/hotels.png')}}" width = 100%/>
       <div class = "hotelTitle">Hotels</div>
+    </div>
+
+    <div class="searchWrapper">
+      <input
+        type="search"
+        class="form-control form-rounded"
+        id="searchHotel"
+        name = "floatingInput"
+        placeholder="Enter Destination"
+      />
     </div>
 
     

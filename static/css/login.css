@@ -50,7 +50,7 @@ a {
   font-family: "Montserrat", sans-serif;
 }
 
-#1 {
+/* #1 {
   width: 334px;
   height: 49px;
   left: 241px;
@@ -58,6 +58,31 @@ a {
 
   background: #ffffff;
   border-radius: 25px;
+} */
+
+/* #1.form-floating {
+  padding-top: 92px;
+} */
+
+#floatingInput.form-rounded {
+  border-radius: 3rem;
+  width: 334px;
+  height: 49px;
+  margin: auto;
+}
+
+#floatingPassword.form-rounded {
+  border-radius: 3rem;
+  width: 334px;
+  height: 49px;
+  margin: auto;
+}
+
+#floatingVerifyPassword.form-rounded {
+  border-radius: 3rem;
+  width: 334px;
+  height: 49px;
+  margin: auto;
 }
 
 .form-signin .checkbox {
@@ -82,4 +107,8 @@ a {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
   font-size: 17px;
+}
+
+.checkbox {
+  padding-top: 37px;
 }

@@ -58,22 +58,20 @@
         /> -->
         <h1>Log in</h1>
 
-        <div id = "1">
-          <div class="form-floating">
-            <input
-              type="email"
-              class="form-control"
-              id="floatingInput"
-              name = "floatingInput"
-              placeholder="name@example.com"
-              border-radius = 25px
-            />
-          </div>
+        <div class="form-floating" id = '1'>
+          <input
+            type="email"
+            class="form-control form-rounded mb-2"
+            id="floatingInput"
+            name = "floatingInput"
+            placeholder="name@example.com"
+          />
         </div>
-        <div class="form-floating">
+
+        <div class="form-floating" id = '2'>
           <input
             type="password"
-            class="form-control"
+            class="form-control form-rounded mt-2"
             id="floatingPassword"
             name = "floatingPassword"
             placeholder="Password"
@@ -82,7 +80,7 @@
 
         <div class="checkbox mb-3">
           <label>
-            <input type="checkbox" value="remember-me" /> Remember me
+            <input type="checkbox" value="remember-me" id = '3'/> Remember me
           </label>
         </div>
         <button type="submit">

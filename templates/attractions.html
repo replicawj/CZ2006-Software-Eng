@@ -3,6 +3,8 @@
 <head>
   <meta charset="utf-8">
   <title>Attractions</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="{{ url_for('static',filename='css/attractions.css')}}">
 </head>
 
@@ -15,20 +17,87 @@
       <img src ="{{ url_for('static',filename='assets/img/attractionsHeaderImage.png')}}" width = 100%/>
       <div class = "attractionsTitle">Attractions</div>
     </div>
+    <div class= "searchWrapper">
+      <div class = "searchBorder mx-auto row">
+        <div class = "col d-flex flex-wrap align-content-center justify-content-center">
+            <input
+              type="search"
+              class="form-control form-rounded"
+              id="searchAttraction"
+              name = "searchAttraction"
+              placeholder="Search Attraction"
+            />
+  
+        </div>
 
-    <div>
-      <div class = "attractionsList ">
-        <div class = "flex-item">
+        <div class = "col d-flex flex-wrap align-content-center justify-content-center">
+          <input
+            type="search"
+            class="form-control form-rounded"
+            id="dateSelection"
+            name = "dateSelection"
+            placeholder="Select Date"
+          />
+
         </div>
-        <div class = "flex-item">
+
+        <div class = "col d-flex flex-wrap align-content-center justify-content-center">
+    
+            
+            <input
+              type="search"
+              class="form-control form-rounded m-0"
+              id="dateSelection"
+              name = "dateSelection"
+              placeholder="Total Pax:"
+            />
+         
+          <div class = "row d-flex flex-wrap px-4">
+           
+              <input
+                type="search "
+                class="col form-control form-rounded mt-3 mr-2"
+                id="paxSelection"
+                name = "adults"
+                placeholder="Adults:"
+              />
+        
+              <input
+                type="search"
+                class="col form-control form-rounded mt-3 ml-2"
+                id="paxSelection"
+                name = "children"
+                placeholder="Children:"
+              />
+            
+          </div>
+
         </div>
-        <div class = "flex-item">
+        
+        <div class = "col-1 d-flex flex-wrap align-content-center mr-3">
+          <button class = "searchButton" type="submit">
+            Search
+          </button>
         </div>
       </div>
-    <div>
+    </div>
+
+    <ul class = "attractionsList">
+      <li class = "flex-item"></li>
+      <li class = "flex-item"></li>
+      <li class = "flex-item"></li>
+      <li class = "flex-item"></li>
+      <li class = "flex-item"></li>
+    </ul>
+
+
+
 
 
     
+
+
+
 
 
     {% endblock %}

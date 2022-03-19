@@ -89,6 +89,10 @@ def flights():
 def hotels():
     return render_template("hotels.html")
 
+@app.route('/hotelsResult')
+def hotelsResult():
+    return render_template("hotelsResult.html")
+
 @app.route('/transport')
 def transport():
     return render_template("transport.html")

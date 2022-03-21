@@ -122,7 +122,7 @@
 /* .checkInWrapper {
   position: absolute;
 } */
-/* #checkInDate {
+#checkInDate {
   width: 162px;
   font-size: 12px;
 }
@@ -130,4 +130,18 @@
 #checkOutDate {
   width: 162px;
   font-size: 12px;
-} */
+}
+
+#searchButton {
+  width: 192%;
+  height: 50%;
+  border: none;
+  background: #43468a;
+  color: white;
+  border-radius: 25px;
+
+  /* position: absolute; */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

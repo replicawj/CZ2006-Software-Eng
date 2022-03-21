@@ -78,18 +78,33 @@
          
           <div class = "row d-flex flex-wrap px-4">
 
-
-              <input
-                type="number"
-                min="1"
-                max="10"
+              <select 
+                name="number"
                 class="col form-control form-rounded mt-3 mr-2"
                 id="paxSelection"
                 name = "adults"
                 placeholder="Adults:"
-              />
+              >
+                {% for number in numbers %}
+                    <option value="{{number}}">{{number}}</option>"
+                {% endfor %}
+              </select>
+
+              <!-- <select name="number" method="GET" action="/">
+                <option value="{{numbers[0]}}" selected>{{numbers[0]}}</option>
+                {% for colour in numbers[1:] %}
+                  <option value="{number}}">{{number}}</option>
+                {% endfor %}
+              </select> -->
+
+              <!-- <input
+                class="col form-control form-rounded mt-3 mr-2"
+                id="paxSelection"
+                name = "adults"
+                placeholder="Adults:"
+              /> -->
         
-              <input
+              <!-- <input
                 type="number"
                 min="1"
                 max="10"
@@ -97,7 +112,19 @@
                 id="paxSelection"
                 name = "children"
                 placeholder="Children:"
-              />
+              /> -->
+
+              <select 
+                name="number"
+                class="col form-control form-rounded mt-3 mr-2"
+                id="paxSelection"
+                name = "children"
+                placeholder="Children:"
+              >
+                {% for number in numbers %}
+                    <option value="{{number}}">{{number}}</option>"
+                {% endfor %}
+              </select>
             
           </div>
 

@@ -83,7 +83,9 @@ def attractions():
 
 @app.route('/flights')
 def flights():
-    return render_template("flights.html")
+    flight_class = ["Economy", "Business", "First Class"]
+    no_travellers = ["Travellers:",1,2,3,4,5,6,7,8,9,10]
+    return render_template("flights.html", flight_class = flight_class, no_travellers = no_travellers)
 
 @app.route('/hotels')
 def hotels():
@@ -110,6 +112,8 @@ def settings():
 @app.route('/about')
 def about():
     return render_template("about.html")
+
+
 
 if __name__ == "__main__":
     app.run(host='127.0.0.1', port=8080, debug=True)

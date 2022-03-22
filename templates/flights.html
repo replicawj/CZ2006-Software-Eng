@@ -21,39 +21,27 @@
       <div class = "searchBorder mx-auto row">
 
         <div class = "col d-flex flex-wrap align-content-center justify-content-center">
-    
-        <div class = "row d-flex flex-wrap px-4">
-         
-            <input
-              type="search"
-              class="col form-control form-rounded mr-2 mb-3"
-              id="paxSelection"
-              name = "pax"
-              placeholder="Travellers:"
-            />
-      
-            <div class="dropdown mt-1 ml--1">
-              <button class="btn economyClassbtn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Economy
-              </button>
-              <div class="dropdown-menu dropmenu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#">Economy</a>
-                <a class="dropdown-item" href="#">Business</a>
-                <a class="dropdown-item" href="#">First</a>
-              </div>
-            </div>
-          
-        </div>
-
-        <input
+          <input
             type="search"
-            class="form-control form-rounded m-0"
-            id="dateSelection"
-            name = "dateSelection"
-            placeholder="Total Pax:"
+            class="col form-control form-rounded"
+            id="paxSelection"
+            name = "pax"
+            placeholder="Travellers:"
           />
-
-      </div>
+        </div>
+        
+        <div class = "col-2 d-flex flex-wrap align-content-center justify-content-center">
+          <select 
+            name="flight_class"
+            class="col form-control form-rounded"
+            id="flight_class"
+            name = "flight_class"
+          >
+            {% for choice in flight_class %}
+                <option value="{{choice}}">{{choice}}</option>"
+            {% endfor %}
+            </select>
+          </div>
 
 
 
@@ -79,7 +67,7 @@
               placeholder="Total Pax:"
             />
          
-          <div class = "row d-flex flex-wrap px-4">
+          <div class = "row d-flex flex-wrap box ">
            
               <input
                 type="search "

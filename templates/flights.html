@@ -19,73 +19,70 @@
     </div>
     <div class= "searchWrapper">
       <div class = "searchBorder mx-auto row">
-
+        
         <div class = "col d-flex flex-wrap align-content-center justify-content-center">
+
           <input
             type="search"
-            class="col form-control form-rounded"
-            id="paxSelection"
-            name = "pax"
-            placeholder="Travellers:"
+            class="form-control form-rounded"
+            id="start_location"
+            name = "start_location"
+            placeholder="From:"
           />
+            
         </div>
         
-        <div class = "col-2 d-flex flex-wrap align-content-center justify-content-center">
-          <select 
-            name="flight_class"
-            class="col form-control form-rounded"
-            id="flight_class"
-            name = "flight_class"
-          >
-            {% for choice in flight_class %}
-                <option value="{{choice}}">{{choice}}</option>"
-            {% endfor %}
-            </select>
-          </div>
 
+        <div class = "col d-flex flex-wrap align-content-center justify-content-center">
+
+          <input
+            type="search"
+            class="form-control form-rounded"
+            id="end_location"
+            name = "end_location"
+            placeholder="To:"
+          />
+            
+        </div>
 
 
         <div class = "col d-flex flex-wrap align-content-center justify-content-center">
+
           <input
             type="search"
             class="form-control form-rounded"
             id="dateSelection"
             name = "dateSelection"
-            placeholder="Select Date"
+            placeholder="Date: "
           />
-
+            
         </div>
+
+
+
 
         <div class = "col d-flex flex-wrap align-content-center justify-content-center">
     
-            
-            <input
-              type="search"
-              class="form-control form-rounded m-0"
-              id="dateSelection"
-              name = "dateSelection"
-              placeholder="Total Pax:"
-            />
+          <select
+            name="flight_class"
+            class="form-control form-rounded "
+            id="flight_class"
+            name = "flight_class"
+          >
+          {% for choice in flight_class %}
+              <option value="{{choice}}">{{choice}}</option>"
+          {% endfor %}
+          </select>
          
-          <div class = "row d-flex flex-wrap box ">
+          
            
-              <input
-                type="search "
-                class="col form-control form-rounded mt-3 mr-2"
-                id="paxSelection"
-                name = "adults"
-                placeholder="Adults:"
-              />
-        
-              <input
-                type="search"
-                class="col form-control form-rounded mt-3 ml-2"
-                id="paxSelection"
-                name = "children"
-                placeholder="Children:"
-              />
-            
-          </div>
+          <input
+            type="search "
+            class="form-control form-rounded mt-3"
+            id="paxSelection"
+            name = "no_of_travellers"
+            placeholder="Travellers: "
+          />          
 
         </div>
         

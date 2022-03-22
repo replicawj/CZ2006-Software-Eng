@@ -1,3 +1,17 @@
-h1 {
+/* h1 {
   background-color: black;
+} */
+
+.transportImageWrapper {
+  position: relative;
+  text-align: center;
+}
+
+.transportTitle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 60px;
+  font-weight: 700;
 }

@@ -137,11 +137,12 @@
   height: 50%;
   border: none;
   background: #43468a;
-  color: white;
   border-radius: 25px;
 
   /* position: absolute; */
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+}
+
+.searchText {
+  color: white;
+  padding-top: 45%;
 }

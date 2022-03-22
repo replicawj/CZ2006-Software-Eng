@@ -62,7 +62,7 @@ app = Flask(__name__)
 
 @app.route('/') ##landing page
 def home():
-    return render_template("home.html", top_country=top_country,update=last_update, map=html_map)
+    return render_template("attractions.html")
 
 @app.route('/login', methods = ['GET', 'POST'])
 def login():
@@ -96,7 +96,8 @@ def hotelsResult():
 
 @app.route('/transport')
 def transport():
-    return render_template("transport.html")
+    transportMode = ['Mode of Transport:', 'Car', 'Bus', "Walk", "Taxi"]
+    return render_template("transport.html", transportMode=transportMode)
 
 @app.route('/account')
 def account():

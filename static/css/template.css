@@ -55,7 +55,7 @@ button {
   display: flex;
   justify-content: space-around;
   flex-direction: row;
-  background-color: white;
+  background-color: #fbfbff;
 }
 .navbar .navItem {
   font-size: 17px;

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>Flights</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/account.css')}}">
+</head>
+
+<body>
+    {% extends "template.html" %}
+    {% block content %}
+
+    <div class="sideBarWrapper"></div>
+        <div class="imageWrapper">
+            <img
+                src="{{ url_for('static',filename='assets/img/userIcon.png')}}"
+            />
+            <a href = "/account" class="AccountTitle">
+                My Account
+            </a>
+        </div>
+    </div>
+
+    {% endblock %}
+</body>

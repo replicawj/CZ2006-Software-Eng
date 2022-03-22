@@ -49,11 +49,11 @@
         <div class = "col d-flex flex-wrap align-content-center justify-content-center">
 
           <input
-            type="search"
-            class="form-control form-rounded"
-            id="dateSelection"
-            name = "dateSelection"
-            placeholder="Date: "
+            type="date"
+            class="col form-control form-rounded "
+            id="checkOutDate"
+            name = "checkoutDate"
+            placeholder="Check out Date:"
           />
             
         </div>
@@ -74,15 +74,16 @@
           {% endfor %}
           </select>
          
-          
-           
-          <input
-            type="search "
+          <select
+            name="no_travellers"
             class="form-control form-rounded mt-3"
-            id="paxSelection"
-            name = "no_of_travellers"
-            placeholder="Travellers: "
-          />          
+            id="no_travellers"
+            name = "no_travellers"
+          >
+          {% for n_travellers in no_travellers %}
+              <option value="{{n_travellers}}">{{n_travellers}}</option>"
+          {% endfor %}
+          </select>    
 
         </div>
         

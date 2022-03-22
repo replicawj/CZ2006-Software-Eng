@@ -84,7 +84,8 @@ def attractions():
 @app.route('/flights')
 def flights():
     flight_class = ["Economy", "Business", "First Class"]
-    return render_template("flights.html", flight_class = flight_class)
+    no_travellers = ["Travellers:",1,2,3,4,5,6,7,8,9,10]
+    return render_template("flights.html", flight_class = flight_class, no_travellers = no_travellers)
 
 @app.route('/hotels')
 def hotels():

@@ -38,7 +38,7 @@
   </head>
   <body class="text-center">
     <main class="form-signin" id = "1">
-      <form>
+      <form id="addAccount">
         <!-- <img
           class="mb-4"
           src="http://pm1.narvii.com/7419/43f409d48ab717b3b3c20e08a85c0a23468da1adr1-382-283v2_uhq.jpg"
@@ -98,5 +98,25 @@
       width="60%"
       height="109%"
     />
+
+    <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-firestore.js"></script>
+    <script>
+	    // Initialize Firebase
+	    var config = {
+		    apiKey: "AIzaSyDFOHLm7znnFt-n_HeemWcIhhh_9wlk4qo",
+			authDomain: "travello-fd292.firebaseapp.com",
+			databaseURL: "https://travello-fd292-default-rtdb.asia-southeast1.firebasedatabase.app",
+			projectId: "travello-fd292",
+			storageBucket: "travello-fd292.appspot.com",
+			messagingSenderId: "771482085344",
+			appId: "1:771482085344:web:f596fe26914b66601f6d85",
+			measurementId: "G-RN0N391VX2"
+	    };
+	    firebase.initializeApp(config);
+	    const db = firebase.firestore(); //reference to database and store to const db
+	    db.settings({ timestampsInSnapshots: true }); 
+    </script>
+
   </body>
 </html>

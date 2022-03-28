@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>homepage</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/mainPage.css')}}">
+
+</head>
+
+<body>
+{% extends "template.html" %}
+{% block content %}
+
+<div class="ImageWrapper">
+  <img src ="{{ url_for('static',filename='assets/img/homeHeaderImage.jpg')}}" width = 100%/>
+  <div class = "Title">Travello</div>
+</div>
+
+<div class = "covidWrapper mt-5">
+  <div class = "covidTitle">
+    Covid 19 Restrictions Update
+  </div>
+  <div class = "covidBox">
+
+  </div>
+</div>
+
+
+
+{% endblock %}
+</body>

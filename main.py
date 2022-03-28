@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 @app.route('/') ##landing page
 def home():
-    return render_template("attractions.html")
+    return render_template("mainPage.html")
 
 @app.route('/login', methods = ['GET', 'POST'])
 def login():
@@ -27,6 +27,12 @@ def signup():
 def attractions():
     return render_template("attractions.html")
 
+@app.route('/attractionsResult')
+def attractionsResult():
+    return render_template("attractionsResult.html")
+
+
+
 @app.route('/flights')
 def flights():
     flight_class = ["Economy", "Business", "First Class"]
@@ -37,7 +43,7 @@ def flights():
 def flightsResult():
     flight_class = ["Economy", "Business", "First Class"]
     no_travellers = ["Travellers:",1,2,3,4,5,6,7,8,9,10]
-    return render_template("flights.html", flight_class = flight_class, no_travellers = no_travellers)
+    return render_template("flightsResult.html", flight_class = flight_class, no_travellers = no_travellers)
     
 
 @app.route('/hotels')

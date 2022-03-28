@@ -129,11 +129,11 @@
   border: none;
   background: #43468a;
   border-radius: 25px;
+  display: flex;
 
   /* position: absolute; */
 }
 
 .searchText {
   color: white;
-  padding-top: 45%;
 }

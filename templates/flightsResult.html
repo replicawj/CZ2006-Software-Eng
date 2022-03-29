@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>Flights</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- change to flights css once done-->
+  <!-- along with div classes-->
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/attractionsResult.css')}}">
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/attractions.css')}}">
+  <!-- change to flights css once done-->
+  <!-- along with div classes-->
+
+</head>
+
+<body>
+    {% extends "template.html" %}
+    {% block content %}
+
+
+    <div class="attractionsImageWrapper">
+      <img src ="{{ url_for('static',filename='assets/img/flightsHeaderImage.png')}}" width = 100%/>
+      <div class = "attractionsTitle">Flights</div>
+    </div>
+
+    <div class= "searchWrapper">
+      <div class = "searchBorder mx-auto row">
+        <div class = "col d-flex flex-wrap align-content-center justify-content-center">
+            <input
+              type="search"
+              class="form-control form-rounded"
+              id="searchAttraction"
+              name = "searchAttraction"
+              placeholder="Search Attraction"
+            />
+
+        </div>
+
+        <div class = "col d-flex flex-wrap align-content-center justify-content-center">
+          <input
+            type="search"
+            class="form-control form-rounded"
+            id="dateSelection"
+            name = "dateSelection"
+            placeholder="Select Date"
+          />
+
+        </div>
+
+        <div class = "col d-flex flex-wrap align-content-center justify-content-center">
+
+
+            <input
+              type="search"
+              class="form-control form-rounded m-0"
+              id="dateSelection"
+              name = "dateSelection"
+              placeholder="Total Pax:"
+            />
+
+          <div class = "row d-flex flex-wrap px-4">
+
+              <input
+                type="search "
+                class="col form-control form-rounded mt-3 mr-2"
+                id="paxSelection"
+                name = "adults"
+                placeholder="Adults:"
+              />
+
+              <input
+                type="search"
+                class="col form-control form-rounded mt-3 ml-2"
+                id="paxSelection"
+                name = "children"
+                placeholder="Children:"
+              />
+
+          </div>
+
+        </div>
+
+        <div class = "col-1 d-flex flex-wrap align-content-center mr-3">
+          <button class = "searchButton" type="submit">
+            Search
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- end of search bar-->
+
+    <ul class = "attractionsList">
+      {% for result in result %}
+      <li class = "flex-item">
+        <p> Icon of company on the left </p>
+
+        <!--Substring-->
+        {% set d = result.depart_date %}
+
+        <p>Depart at <strong>{{d[11:16]}}</strong> </p>
+        <p>{{result.origin}} - {{result.destination}}</p>
+        <p>Transfers: {{result.transfers}}</p>
+        <p>{{result.main_airline}} </p>
+        <p>Book from {{result.gate}}</p>
+
+        <h1><strong>$SGD{{result.price}}</strong></h1>
+        <p> button add to plan </p>
+      </li>
+      {% endfor %}
+
+      <li class = "flex-item"></li>
+      <li class = "flex-item"></li>
+      <li class = "flex-item"></li>
+      <li class = "flex-item"></li>
+    </ul>
+
+
+
+
+
+
+
+
+
+
+
+    {% endblock %}
+</body>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>Hotels</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/hotels.css')}}">
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/hotelsResult.css')}}">
+</head>
+
+<body>
+    {% extends "template.html" %}
+    {% block content %}
+
+    
+      
+    <div class="hotelsImageWrapper">
+      <img src ="{{ url_for('static',filename='assets/img/hotelHeaderImage.png')}}" width = 100%/>
+      <div class = "hotelsTitle">Hotels</div>
+    </div>
+    <div class= "searchWrapper">
+      <div class = "searchBorder mx-auto row">
+        <div class = "col d-flex flex-wrap align-content-center justify-content-center">
+            <input
+              type="search"
+              class="form-control form-rounded"
+              id="searchHotels"
+              name = "searchHotels"
+              placeholder="Enter a destination or property"
+            />
+  
+        </div>
+
+        <div class = "col d-flex flex-wrap align-content-center justify-content-center">
+    
+            
+            <input
+              type="search"
+              class="form-control form-rounded m-0"
+              id="noOfNights"
+              name = "noOfNights"
+              placeholder="Number of Nights:"
+            />
+         
+          <div class = "row d-flex flex-wrap px-4">
+           
+              <input
+                type="search "
+                class="col form-control form-rounded mt-3 mr-2"
+                id="checkInDate"
+                name = "checkInDate"
+                placeholder="Check in date:"
+              />
+        
+              <input
+                type="search"
+                class="col form-control form-rounded mt-3 ml-2"
+                id="checkOutDate"
+                name = "checkoutDate"
+                placeholder="Check out Date:"
+              />
+            
+          </div>
+
+        </div>
+
+        <div class = "col d-flex flex-wrap align-content-center justify-content-center">
+    
+            
+            <input
+              type="search"
+              class="form-control form-rounded m-0"
+              id="dateSelection"
+              name = "dateSelection"
+              placeholder="Total Pax:"
+            />
+         
+          <div class = "row d-flex flex-wrap px-4">
+           
+              <input
+                type="search "
+                class="col form-control form-rounded mt-3 mr-2"
+                id="paxSelection"
+                name = "adults"
+                placeholder="Adults:"
+              />
+        
+              <input
+                type="search"
+                class="col form-control form-rounded mt-3 ml-2"
+                id="paxSelection"
+                name = "children"
+                placeholder="Children:"
+              />
+            
+          </div>
+
+        </div>
+        
+        <div class = "col-1 d-flex flex-wrap align-content-center mr-3">
+          <button class = "searchButton" type="submit">
+            Search
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <ul class = "hotelsList">
+      <li class = "flex-item"></li>
+      <li class = "flex-item"></li>
+      <li class = "flex-item"></li>
+      <li class = "flex-item"></li>
+      <li class = "flex-item"></li>
+    </ul>
+
+
+
+
+    
+
+
+
+
+
+    {% endblock %}
+</body>

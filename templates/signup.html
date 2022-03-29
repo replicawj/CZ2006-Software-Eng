@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="Heng Wei Jie" />
+    <title>Signup</title>
+
+    <!-- Bootstrap core CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+      crossorigin="anonymous"
+    />
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+    <link
+      href="{{ url_for('static',filename='css/login.css')}}"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="text-center">
+    <main class="form-signin" id = "1">
+      <form id="addAccount">
+        <!-- <img
+          class="mb-4"
+          src="http://pm1.narvii.com/7419/43f409d48ab717b3b3c20e08a85c0a23468da1adr1-382-283v2_uhq.jpg"
+          alt=""
+          width="72"
+          height="57"
+        /> -->
+        <h1>Sign up</h1>
+
+        <div class="form-floating">
+          <!-- <label for="floatingInput">Email address</label> -->
+          <input
+            type="email"
+            class="form-control form-rounded mt-2"
+            id="floatingInput"
+            name = "floatingInput"
+            placeholder="name@example.com"
+          />
+        </div>
+        <div class="form-floating">
+          <!-- <label for="floatingPassword">Password</label> -->
+          <input
+            type="password"
+            class="form-control form-rounded mt-2"
+            id="floatingPassword"
+            name="floatingPassword"
+            placeholder="Password"
+          />
+        </div>
+        <div class="form-floating">
+          <input
+            type="password"
+            class="form-control form-rounded mt-2"
+            id="floatingVerifyPassword"
+            name = "floatingVerifyPassword"
+            placeholder="Verify Password"
+          />
+        </div>
+
+        <div class="checkbox mb-1">
+          <label>
+            <input type="checkbox" value="remember-me" /> Remember me
+          </label>
+        </div>
+        <button type="submit">
+          Sign up
+        </button>
+          
+        <a href="/login"> Back to Log in </a>
+
+        <p class="mt-5 mb-3 text-muted">&copy; 2022–2022</p>
+      </form>
+    </main>
+
+    <img
+      src="{{ url_for('static',filename='assets/img/loginicon.jpg')}}"
+      width="60%"
+      height="109%"
+    />
+
+    <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-firestore.js"></script>
+    <script>
+	    // Initialize Firebase
+	    var config = {
+		    apiKey: "AIzaSyDFOHLm7znnFt-n_HeemWcIhhh_9wlk4qo",
+			authDomain: "travello-fd292.firebaseapp.com",
+			databaseURL: "https://travello-fd292-default-rtdb.asia-southeast1.firebasedatabase.app",
+			projectId: "travello-fd292",
+			storageBucket: "travello-fd292.appspot.com",
+			messagingSenderId: "771482085344",
+			appId: "1:771482085344:web:f596fe26914b66601f6d85",
+			measurementId: "G-RN0N391VX2"
+	    };
+	    firebase.initializeApp(config);
+	    const db = firebase.firestore(); //reference to database and store to const db
+	    db.settings({ timestampsInSnapshots: true }); 
+    </script>
+
+  </body>
+</html>

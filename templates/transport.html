@@ -12,7 +12,15 @@
     {% block content %}
     <!-- <br> -->
     <!-- <h1> This is the transport page. </h1> -->
-
+    <div>
+      <nav class="navbar">
+          <a class="navItem" href="{{ url_for('flights') }}">Flights</a>
+          <a class="navItem" href="{{ url_for('attractions') }}">Attractions</a>
+          <a class="navItem" href="{{ url_for('hotels') }}">Hotels</a>
+          <a class="navItem" href="{{ url_for('transport') }}">Transport</a>
+      </nav>
+    </div>
+    
     <div class = "transportImageWrapper">
       <img src ="{{ url_for('static',filename='assets/img/transport.png')}}" width = 100%/>
       <div class = "transportTitle">Transport</div>

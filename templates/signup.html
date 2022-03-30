@@ -38,59 +38,66 @@
   </head>
   <body class="text-center">
     <main class="form-signin" id = "1">
-      <form id="addAccount">
-        <!-- <img
+      <!-- <img
           class="mb-4"
           src="http://pm1.narvii.com/7419/43f409d48ab717b3b3c20e08a85c0a23468da1adr1-382-283v2_uhq.jpg"
           alt=""
           width="72"
           height="57"
         /> -->
-        <h1>Sign up</h1>
-
-        <div class="form-floating">
+      
+      <form id="addAccount" onsubmit="validateForm()">
+      	<h1>Sign up</h1>
+      	
+      	<div class="form-floating">
           <!-- <label for="floatingInput">Email address</label> -->
           <input
             type="email"
             class="form-control form-rounded mt-2"
             id="floatingInput"
-            name = "floatingInput"
+            name="email"
             placeholder="name@example.com"
           />
         </div>
+        
         <div class="form-floating">
           <!-- <label for="floatingPassword">Password</label> -->
           <input
             type="password"
             class="form-control form-rounded mt-2"
             id="floatingPassword"
-            name="floatingPassword"
+            name="password"
             placeholder="Password"
           />
         </div>
+        
         <div class="form-floating">
           <input
             type="password"
             class="form-control form-rounded mt-2"
             id="floatingVerifyPassword"
-            name = "floatingVerifyPassword"
+            name = "verifyPassword"
             placeholder="Verify Password"
           />
         </div>
-
+                
         <div class="checkbox mb-1">
           <label>
             <input type="checkbox" value="remember-me" /> Remember me
           </label>
         </div>
-        <button type="submit">
-          Sign up
-        </button>
-          
-        <a href="/login"> Back to Log in </a>
+                
+                <button type="submit">
+                Sign up
+                </button>
+                
+                <a href="/login"> Back to Log in </a>
 
         <p class="mt-5 mb-3 text-muted">&copy; 2022–2022</p>
-      </form>
+                
+                
+        </form>
+      
     </main>
 
     <img
@@ -98,6 +105,9 @@
       width="60%"
       height="109%"
     />
+    
+    
+    
 
     <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-firestore.js"></script>
@@ -118,5 +128,6 @@
 	    db.settings({ timestampsInSnapshots: true }); 
     </script>
 	<script src="/static/assets/build/firebaseDatabase.js"></script>
+	<script src="/static/assets/build/formValidator.js"></script>
   </body>
 </html>

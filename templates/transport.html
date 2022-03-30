@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
+
+	<script src="static/assets/build/map.js" > </script>
+  
   <meta charset="utf-8">
   <title>Transport</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,16 +11,17 @@
 </head>
 
 <body>
+	
     {% extends "template.html" %}
     {% block content %}
     <!-- <br> -->
-    <!-- <h1> This is the transport page. </h1> -->
+    <!-- <h1> This is the transport page. </h1> -->z
 
     <div class = "transportImageWrapper">
       <img src ="{{ url_for('static',filename='assets/img/transport.png')}}" width = 100%/>
       <div class = "transportTitle">Transport</div>
     </div>
-
+	
     <div class= "searchWrapper">
       <div class = "searchBorder mx-auto row">
         <div class = "col d-flex flex-wrap align-content-center justify-content-center">
@@ -76,7 +80,19 @@
         </div>
       </div>
     </div>
-
+	
+	<div class =  "bt-5" >
+	<p align="center">
+	<iframe 
+	width="900"
+	height="550"
+	style="border:0" 
+	src="https://www.google.com/maps/embed/v1/search?key=AIzaSyAyIxVTSvRTgAXXBOgUbkwasimuxWlqMaQ">>
+	</iframe>
+	</p>
+	</div>
 
     {% endblock %}
+    
+    
 </body>

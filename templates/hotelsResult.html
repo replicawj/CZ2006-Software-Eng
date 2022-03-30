@@ -6,7 +6,6 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="{{ url_for('static',filename='css/hotels.css')}}">
-  <link rel="stylesheet" href="{{ url_for('static',filename='css/hotelsResult.css')}}">
 </head>
 
 <body>
@@ -44,17 +43,18 @@
             />
          
           <div class = "row d-flex flex-wrap px-4">
-           
+              <!-- <label>Calendar: </label> -->
               <input
-                type="search "
+                type="date"
                 class="col form-control form-rounded mt-3 mr-2"
                 id="checkInDate"
                 name = "checkInDate"
                 placeholder="Check in date:"
               />
-        
+
+              <!-- <label>Calendar: </label> -->
               <input
-                type="search"
+                type="date"
                 class="col form-control form-rounded mt-3 ml-2"
                 id="checkOutDate"
                 name = "checkoutDate"
@@ -77,31 +77,65 @@
             />
          
           <div class = "row d-flex flex-wrap px-4">
-           
-              <input
-                type="search "
+
+              <select 
+                name="number"
                 class="col form-control form-rounded mt-3 mr-2"
                 id="paxSelection"
                 name = "adults"
                 placeholder="Adults:"
-              />
+              >
+                {% for number in numbers %}
+                    <option value="{{number}}">{{number}}</option>"
+                {% endfor %}
+              </select>
+
+              <!-- <select name="number" method="GET" action="/">
+                <option value="{{numbers[0]}}" selected>{{numbers[0]}}</option>
+                {% for colour in numbers[1:] %}
+                  <option value="{number}}">{{number}}</option>
+                {% endfor %}
+              </select> -->
+
+              <!-- <input
+                class="col form-control form-rounded mt-3 mr-2"
+                id="paxSelection"
+                name = "adults"
+                placeholder="Adults:"
+              /> -->
         
-              <input
-                type="search"
+              <!-- <input
+                type="number"
+                min="1"
+                max="10"
                 class="col form-control form-rounded mt-3 ml-2"
                 id="paxSelection"
                 name = "children"
                 placeholder="Children:"
-              />
+              /> -->
+
+              <select 
+                name="number"
+                class="col form-control form-rounded mt-3 mr-2"
+                id="paxSelection"
+                name = "children"
+                placeholder="Children:"
+              >
+                {% for number in numbers %}
+                    <option value="{{number}}">{{number}}</option>"
+                {% endfor %}
+              </select>
             
           </div>
 
         </div>
         
         <div class = "col-1 d-flex flex-wrap align-content-center mr-3">
-          <button class = "searchButton" type="submit">
-            Search
-          </button>
+          <a href="/hotelsResult" class = "searchButton" id = "searchButton" type="submit">
+            <div class = "searchText mx-auto my-auto">
+              Search
+            </div>
+          </a>
         </div>
       </div>
     </div>
@@ -113,15 +147,8 @@
       <li class = "flex-item"></li>
       <li class = "flex-item"></li>
     </ul>
-
-
-
-
     
-
-
-
-
+    
 
     {% endblock %}
 </body>

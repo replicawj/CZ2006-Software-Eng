@@ -12,8 +12,8 @@
     {% extends "template.html" %}
     {% block content %}
 
-    
-      
+
+
     <div class="hotelsImageWrapper">
       <img src ="{{ url_for('static',filename='assets/img/hotelHeaderImage.png')}}" width = 100%/>
       <div class = "hotelsTitle">Hotels</div>
@@ -28,12 +28,12 @@
               name = "searchHotels"
               placeholder="Enter a destination or property"
             />
-  
+
         </div>
 
         <div class = "col d-flex flex-wrap align-content-center justify-content-center">
-    
-            
+
+
             <input
               type="search"
               class="form-control form-rounded m-0"
@@ -41,7 +41,7 @@
               name = "noOfNights"
               placeholder="Number of Nights:"
             />
-         
+
           <div class = "row d-flex flex-wrap px-4">
               <!-- <label>Calendar: </label> -->
               <input
@@ -60,14 +60,14 @@
                 name = "checkoutDate"
                 placeholder="Check out Date:"
               />
-            
+
           </div>
 
         </div>
 
         <div class = "col d-flex flex-wrap align-content-center justify-content-center">
-    
-            
+
+
             <input
               type="search"
               class="form-control form-rounded m-0"
@@ -75,10 +75,10 @@
               name = "dateSelection"
               placeholder="Total Pax:"
             />
-         
+
           <div class = "row d-flex flex-wrap px-4">
 
-              <select 
+              <select
                 name="number"
                 class="col form-control form-rounded mt-3 mr-2"
                 id="paxSelection"
@@ -103,7 +103,7 @@
                 name = "adults"
                 placeholder="Adults:"
               /> -->
-        
+
               <!-- <input
                 type="number"
                 min="1"
@@ -114,7 +114,7 @@
                 placeholder="Children:"
               /> -->
 
-              <select 
+              <select
                 name="number"
                 class="col form-control form-rounded mt-3 mr-2"
                 id="paxSelection"
@@ -125,11 +125,11 @@
                     <option value="{{number}}">{{number}}</option>"
                 {% endfor %}
               </select>
-            
+
           </div>
 
         </div>
-        
+
         <div class = "col-1 d-flex flex-wrap align-content-center mr-3">
           <a href="/hotelsResult" class = "btn btn-primary" id = "searchButton" type="submit">
             <div class = "searchText">
@@ -153,15 +153,17 @@
 
     <div>
       <div class="scrolling-wrapper">
-        <div class="card"><h2>Card</h2></div>
-        <div class="card"><h2>Card</h2></div>
-        <div class="card"><h2>Card</h2></div>
-        <div class="card"><h2>Card</h2></div>
-        <div class="card"><h2>Card</h2></div>
-        <div class="card"><h2>Card</h2></div>
-        <div class="card"><h2>Card</h2></div>
-        <div class="card"><h2>Card</h2></div>
-        <div class="card"><h2>Card</h2></div>
+        {% for result in result if result.price > 410 %}
+        <div class="card">
+          <p>{{result.name}}</p>
+
+          <img src ="{{ url_for('static',filename='assets/img/pin.png')}}" width = 5%/>
+          <p>{{result.address.street}}</p>
+          
+          <p>${{result.price}}/night</p>
+        </div>
+        {% endfor %}
+
       </div>
     </div>
 

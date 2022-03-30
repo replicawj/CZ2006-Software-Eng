@@ -1,10 +1,11 @@
 import pandas as pd
 import requests
 import folium
+import json
 from datetime import datetime
 from flask import Flask, render_template, request
 
-### MINE ###
+### Flights API -wj ###
 def flightsPage():
     url = "https://travelpayouts-travelpayouts-flight-data-v1.p.rapidapi.com/v2/prices/nearest-places-matrix"
 
@@ -25,11 +26,21 @@ def flightsPage():
     print(data['prices'])
     data = data['prices']
 
-
-
     return(data)
 
 flightsData = flightsPage()
+
+### Hotel API -wj ###
+def hotelRecco():
+    f = open('hotelInfo.json')
+
+    data = json.load(f)
+
+    return (data)
+
+hotelReccoCard = hotelRecco()
+
+
 
 
 app = Flask(__name__)
@@ -68,11 +79,11 @@ def flightsResult():
 @app.route('/hotels')
 def hotels():
     numbers = [0,1,2,3,4,5,6,7,8,9,10]
-    return render_template("hotels.html", numbers=numbers)
+    return render_template("hotels.html", numbers=numbers,result = hotelReccoCard)
 
 @app.route('/hotelsResult')
 def hotelsResult():
-    return render_template("hotelsResult.html")
+    return render_template("hotelsResult.html",result = hotelReccoCard)
 
 @app.route('/transport')
 def transport():

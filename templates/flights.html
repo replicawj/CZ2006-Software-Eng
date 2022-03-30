@@ -11,15 +11,6 @@
 <body>
     {% extends "template.html" %}
     {% block content %}
-    
-    <div>
-      <nav class="navbar">
-          <a class="navItem" href="{{ url_for('flights') }}">Flights</a>
-          <a class="navItem" href="{{ url_for('attractions') }}">Attractions</a>
-          <a class="navItem" href="{{ url_for('hotels') }}">Hotels</a>
-          <a class="navItem" href="{{ url_for('transport') }}">Transport</a>
-      </nav>
-    </div>
       
     <div class="ImageWrapper">
       <img src ="{{ url_for('static',filename='assets/img/flightsHeaderImage.png')}}" width = 100%/>

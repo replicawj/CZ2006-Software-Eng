@@ -13,8 +13,8 @@
     {% extends "template.html" %}
     {% block content %}
 
-    
-      
+
+
     <div class="hotelsImageWrapper">
       <img src ="{{ url_for('static',filename='assets/img/hotelHeaderImage.png')}}" width = 100%/>
       <div class = "hotelsTitle">Hotels</div>
@@ -29,12 +29,12 @@
               name = "searchHotels"
               placeholder="Enter a destination or property"
             />
-  
+
         </div>
 
         <div class = "col d-flex flex-wrap align-content-center justify-content-center">
-    
-            
+
+
             <input
               type="search"
               class="form-control form-rounded m-0"
@@ -42,9 +42,9 @@
               name = "noOfNights"
               placeholder="Number of Nights:"
             />
-         
+
           <div class = "row d-flex flex-wrap px-4">
-           
+
               <input
                 type="search "
                 class="col form-control form-rounded mt-3 mr-2"
@@ -52,7 +52,7 @@
                 name = "checkInDate"
                 placeholder="Check in date:"
               />
-        
+
               <input
                 type="search"
                 class="col form-control form-rounded mt-3 ml-2"
@@ -60,14 +60,14 @@
                 name = "checkoutDate"
                 placeholder="Check out Date:"
               />
-            
+
           </div>
 
         </div>
 
         <div class = "col d-flex flex-wrap align-content-center justify-content-center">
-    
-            
+
+
             <input
               type="search"
               class="form-control form-rounded m-0"
@@ -75,9 +75,9 @@
               name = "dateSelection"
               placeholder="Total Pax:"
             />
-         
+
           <div class = "row d-flex flex-wrap px-4">
-           
+
               <input
                 type="search "
                 class="col form-control form-rounded mt-3 mr-2"
@@ -85,7 +85,7 @@
                 name = "adults"
                 placeholder="Adults:"
               />
-        
+
               <input
                 type="search"
                 class="col form-control form-rounded mt-3 ml-2"
@@ -93,11 +93,11 @@
                 name = "children"
                 placeholder="Children:"
               />
-            
+
           </div>
 
         </div>
-        
+
         <div class = "col-1 d-flex flex-wrap align-content-center mr-3">
           <button class = "searchButton" type="submit">
             Search
@@ -107,17 +107,28 @@
     </div>
 
     <ul class = "hotelsList">
-      <li class = "flex-item"></li>
-      <li class = "flex-item"></li>
-      <li class = "flex-item"></li>
-      <li class = "flex-item"></li>
-      <li class = "flex-item"></li>
+      {% for result in result %}
+      <li class = "flex-item">
+        <!--Fake it so whatever user input as check-in and check-out date is displayed here, aka all hotel availble-->
+        <!-- only 'real' stuff user can do is filter via hotel name and price-->
+
+        <!--checkin-checkout date-->
+        <p style="color:black;">{{result.name}}</p>
+        <p style="color:black;">{{result.address.street}} {{result.address.postalcode}}</p>
+        <p style="color:black;">{{result.phone}}</p>
+
+        <p style="color:black;">$SGD{{result.price}}</p>
+        <!--button to save to plan-->
+
+      </li>
+      {% endfor %}
+
     </ul>
 
 
 
 
-    
+
 
 
 

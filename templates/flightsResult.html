@@ -8,8 +8,7 @@
 
   <!-- change to flights css once done-->
   <!-- along with div classes-->
-  <link rel="stylesheet" href="{{ url_for('static',filename='css/attractionsResult.css')}}">
-  <link rel="stylesheet" href="{{ url_for('static',filename='css/attractions.css')}}">
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/flights.css')}}">
   <!-- change to flights css once done-->
   <!-- along with div classes-->
 
@@ -20,9 +19,9 @@
     {% block content %}
 
 
-    <div class="attractionsImageWrapper">
+    <div class="ImageWrapper">
       <img src ="{{ url_for('static',filename='assets/img/flightsHeaderImage.png')}}" width = 100%/>
-      <div class = "attractionsTitle">Flights</div>
+      <div class = "Title">Flights</div>
     </div>
 
     <div class= "searchWrapper">
@@ -83,9 +82,15 @@
         </div>
 
         <div class = "col-1 d-flex flex-wrap align-content-center mr-3">
-          <button class = "searchButton" type="submit">
+          <!-- <button class = "searchButton" type="submit">
             Search
-          </button>
+          </button> -->
+
+          <a href="/flightsResult" class = "searchButton" id = "searchButton" type="submit">
+            <div class = "searchText mx-auto my-auto">
+              Search
+            </div>
+          </a>
         </div>
       </div>
     </div>

@@ -1,0 +1,39 @@
+.ImageWrapper {
+  position: relative;
+  text-align: center;
+}
+
+.Title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 60px;
+  font-weight: 700;
+}
+
+.covidTitle {
+  position: absolute;
+  left: 83px;
+
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 25px;
+  line-height: 127.7%;
+  /* or 32px */
+
+  color: #43468a;
+}
+
+.covidBox {
+  width: 90%;
+  height: 564px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 33px;
+
+  background: #f2f3f9;
+  box-shadow: 0px 30px 80px rgba(88, 92, 229, 0.12);
+  border-radius: 25px;
+}

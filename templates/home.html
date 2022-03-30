@@ -3,39 +3,34 @@
 <head>
   <meta charset="utf-8">
   <title>homepage</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/home.css')}}">
 </head>
 
 <body>
 {% extends "template.html" %}
 {% block content %}
-<div class="container-fluid" >
-  <div class="justify-content-center mb-3 border-bottom">
-    <h2 class="text-center">World map of corona cases - Last Updated: {{update}}</h2>
-  </div>
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-2 px-md-6">
-        <table class="table table-borderless">
-          <caption></caption>
-          <thead>
-          <th id="header" class="text-center" colspan="2">Top 10 Countries by cases</th>
-          </thead>
-          <tbody>
-          {% for key,value in top_country.iterrows() %}
-          <tr>
-            <td>{{key}}</td>
-            <td>{{value.values[0]}}</td>
-          </tr>
-          {% endfor %}
-          </tbody>
-        </table>
-      </div>
-      <div class="col-md-8">
-        {{map|safe}}
-      </div>
+<div class = "topWrapper row">
+  <div class = "col wordsWrapper ml-5 d-flex flex-wrap align-content-center">
+    <div class = "title1 ml-5">
+      Travello
     </div>
+    <div class = "paragraph1 ml-5">
+      Your one stop Singapore travel partner. A convenient website for you to plan your travel to Singapore.
+
+
+    </div>
+    
+    
   </div>
+  <div class = "col ">
+    <img src ="{{ url_for('static',filename='assets/img/homeImage.png')}}"
+          class = "ml-2">
+  </div>
+
 </div>
+
 {% endblock %}
 </body>
 </html>

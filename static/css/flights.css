@@ -76,8 +76,9 @@
 .scrolling-wrapper {
   display: flex;
   overflow-x: auto;
-  max-height: 500px;
+  max-height: 550px;
   padding-left: 5%;
+  padding-bottom:3%;
 }
 
 .scrolling-wrapper::-webkit-scrollbar {
@@ -97,7 +98,7 @@
 
   min-width: 447px;
   height: 263px;
-  text-align: center;
+  text-align: left;
   color: black;
   font-size: 20;
   background-color: #f2f3f9;
@@ -185,9 +186,11 @@
 
 }
 .card .info{
-  width:423px;
   height: 100%;
+  width:85%;
+
 }
+
 
 
 

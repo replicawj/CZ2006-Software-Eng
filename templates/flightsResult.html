@@ -26,67 +26,76 @@
 
     <div class= "searchWrapper">
       <div class = "searchBorder mx-auto row">
-        <div class = "col d-flex flex-wrap align-content-center justify-content-center">
-            <input
-              type="search"
-              class="form-control form-rounded"
-              id="searchAttraction"
-              name = "searchAttraction"
-              placeholder="Search Attraction"
-            />
-
-        </div>
 
         <div class = "col d-flex flex-wrap align-content-center justify-content-center">
+
           <input
             type="search"
             class="form-control form-rounded"
-            id="dateSelection"
-            name = "dateSelection"
-            placeholder="Select Date"
+            id="start_location"
+            name = "start_location"
+            placeholder="From:"
           />
 
         </div>
 
+
         <div class = "col d-flex flex-wrap align-content-center justify-content-center">
 
+          <input
+            type="search"
+            class="form-control form-rounded"
+            id="end_location"
+            name = "end_location"
+            placeholder="To:"
+          />
 
-            <input
-              type="search"
-              class="form-control form-rounded m-0"
-              id="dateSelection"
-              name = "dateSelection"
-              placeholder="Total Pax:"
-            />
+        </div>
 
-          <div class = "row d-flex flex-wrap px-4">
 
-              <input
-                type="search "
-                class="col form-control form-rounded mt-3 mr-2"
-                id="paxSelection"
-                name = "adults"
-                placeholder="Adults:"
-              />
+        <div class = "col d-flex flex-wrap align-content-center justify-content-center">
 
-              <input
-                type="search"
-                class="col form-control form-rounded mt-3 ml-2"
-                id="paxSelection"
-                name = "children"
-                placeholder="Children:"
-              />
+          <input
+            type="date"
+            class="col form-control form-rounded "
+            id="checkOutDate"
+            name = "checkoutDate"
+            placeholder="Check out Date:"
+          />
 
-          </div>
+        </div>
+
+
+
+
+        <div class = "col d-flex flex-wrap align-content-center justify-content-center">
+
+          <select
+            name="flight_class"
+            class="form-control form-rounded "
+            id="flight_class"
+            name = "flight_class"
+          >
+          {% for choice in flight_class %}
+              <option value="{{choice}}">{{choice}}</option>"
+          {% endfor %}
+          </select>
+
+          <select
+            name="no_travellers"
+            class="form-control form-rounded mt-3"
+            id="no_travellers"
+            name = "no_travellers"
+          >
+          {% for n_travellers in no_travellers %}
+              <option value="{{n_travellers}}">{{n_travellers}}</option>"
+          {% endfor %}
+          </select>
 
         </div>
 
         <div class = "col-1 d-flex flex-wrap align-content-center mr-3">
-          <!-- <button class = "searchButton" type="submit">
-            Search
-          </button> -->
-
-          <a href="/flightsResult" class = "searchButton" id = "searchButton" type="submit">
+          <a class = "btn btn-primary" id = "searchButton" type="submit" href="{{ url_for('flightsResult') }}">
             <div class = "searchText mx-auto my-auto">
               Search
             </div>
@@ -97,22 +106,48 @@
 
     <!-- end of search bar-->
 
-    <ul class = "attractionsList">
+    <ul class = "attractionsList ">
       {% for result in result %}
-      <li class = "flex-item">
-        <p> Icon of company on the left </p>
+      <li class = "flex-item mx-auto row ">
+
+        <div class= "col font1 d-flex justify-content-center align-items-center"> 
+        
+         <img src= "https://www.marketing91.com/wp-content/uploads/2018/04/SWOT-analysis-of-Singapore-Airlines-3.jpg" class="logo" />
+
+
+        </div>
 
         <!--Substring-->
         {% set d = result.depart_date %}
+      
+        <div class = "col-6 d-flex align-items-center">
+          <div>
+            <div class = "font2">Depart at <strong>{{d[11:16]}}</strong> </div>
+            
+            <div class = "font2">{{result.origin}} - {{result.destination}}</div>
+            <div class = "font2">Transfers: {{result.transfers}}</div>
+            <div class = "font2"> {{result.main_airline}} </div>
+            <div class = "font2">Book from: 
+              <a class = "font2" href={{result.gate}}> {{result.gate}}</a>
+            </div>
+          </div>
+        </div>
 
-        <p>Depart at <strong>{{d[11:16]}}</strong> </p>
-        <p>{{result.origin}} - {{result.destination}}</p>
-        <p>Transfers: {{result.transfers}}</p>
-        <p>{{result.main_airline}} </p>
-        <p>Book from {{result.gate}}</p>
+        <div class = "col my-auto">
+          <div class = "d-flex flex-wrap justify-content-center">
+            <div class = "font3">
+              $SGD{{result.price}}
+            </div>
+            
+            <a class = "addButton mt-2" id = "addButton" type="submit">
+              <div class = "searchText mx-auto my-auto">
+                Add to Plan
+              </div>
+            </a>
+          </div>
 
-        <h1><strong>$SGD{{result.price}}</strong></h1>
-        <p> button add to plan </p>
+
+        </div>
       </li>
       {% endfor %}
 

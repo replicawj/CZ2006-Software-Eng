@@ -95,9 +95,8 @@
   border-radius: 25px;
   text-align: center; */
 
-  min-width: 351px;
-  height: 281px;
-  line-height: 110px;
+  min-width: 447px;
+  height: 263px;
   text-align: center;
   color: black;
   font-size: 20;
@@ -163,6 +162,31 @@
   object-fit: cover;
   border-radius: 50%;
 
+}
+
+
+.card .font1{
+  color:black;
+  font-weight: 700;
+  font-size:22px;
+}
+
+.card .font2{
+  color:black;
+  font-weight:400;
+  font-size: 20px;
+}
+
+.card .logo{
+  width: 423px;
+  height: 132px;
+  object-fit: fill;
+  border-radius: 25px;
+
+}
+.card .info{
+  width:423px;
+  height: 100%;
 }
 
 

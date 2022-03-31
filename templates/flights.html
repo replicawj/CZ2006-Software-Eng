@@ -105,16 +105,28 @@
       <div class="scrolling-wrapper">
         {% for result in result %}
         <div class="card">
-          <p span="flightsInfo">Travelling from {{result.origin}} to {{result.destination}}
+          <div>
+            <img src= "https://www.logolynx.com/images/logolynx/2b/2bbabac56c986b5fa404ced4eef54d36.jpeg" class="logo mt-2" />
+          </div>
+          
+          <div span="flightsInfo" class =  "info mx-auto">
 
-          Starting from {{result.price}}
 
-          <!--Substring-->
-          {% set d = result.depart_date %}
+            <div class = "font1">
+              {% set d = result.depart_date %}
+              d- date: {{d[12:16]}}
+              d- time: {{d[0:10]}}
+            </div>
 
-          Departure date {{d[0:10]}}
-          Depart time {{d[12:16]}}
-          </p>
+            <div class = "font2 mt-1">
+              {{result.origin}} - {{result.destination}}
+            </div>
+
+            <div class = "font2">
+              $SGD{{result.price}}
+            </div>
+          </div>
+          
 
         </div>
         {% endfor %}

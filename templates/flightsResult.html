@@ -110,7 +110,7 @@
       {% for result in result %}
       <li class = "flex-item mx-auto row ">
 
-        <div class= "col font1 d-flex justify-content-center align-items-center"> 
+        <div class= "col d-flex justify-content-center align-items-center"> 
         
          <img src= "https://www.marketing91.com/wp-content/uploads/2018/04/SWOT-analysis-of-Singapore-Airlines-3.jpg" class="logo" />
 
@@ -122,7 +122,7 @@
       
         <div class = "col-6 d-flex align-items-center">
           <div>
-            <div class = "font2">Depart at <strong>{{d[11:16]}}</strong> </div>
+            <div class = "font2">Depart at {{d[11:16]}} </div>
             
             <div class = "font2">{{result.origin}} - {{result.destination}}</div>
             <div class = "font2">Transfers: {{result.transfers}}</div>

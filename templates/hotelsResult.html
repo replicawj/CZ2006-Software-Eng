@@ -124,18 +124,46 @@
 
     <ul class = "hotelsList">
       {% for result in result %}
-      <li class = "flex-item">
+      <li class = "flex-item mx-auto row">
         <!--Fake it so whatever user input as check-in and check-out date is displayed here, aka all hotel availble-->
         <!-- only 'real' stuff user can do is filter via hotel name and price-->
+        <div class= "col d-flex justify-content-center align-items-center"> 
+          <!--retrieve picture link from DB based on the name of the hotel-->
+          <img src= "https://www.hospitalitynet.org/picture/xxl_153051374.jpg?t=1401371218" class="logo" />
+ 
+        </div>
 
-        <!--checkin-checkout date-->
+        <!-- old code-->
+        <!--
         <p style="color:black;">{{result.name}}</p>
         <p style="color:black;">{{result.address.street}} {{result.address.postalcode}}</p>
         <p style="color:black;">{{result.phone}}</p>
-
         <p style="color:black;">$SGD{{result.price}}</p>
-        <!--button to save to plan-->
+        -->
+        <!--checkin-checkout date-->
 
+        <div class = "col-6 d-flex align-items-center">
+          <div>
+            <div class = "font2">{{result.name}}</div>
+            <div class = "font2">{{result.origin}} - {{result.destination}}</div>
+            <div class = "font2">{{result.address.street}} {{result.address.postalcode}}</div>
+            <div class = "font2">{{result.phone}}</div>
+
+          </div>
+        </div>
+        <!--button to save to plan-->
+        <div class = "col my-auto">
+          <div class = "d-flex flex-wrap justify-content-center">
+            <div class = "font3">
+              $SGD{{result.price}}
+            </div>
+            
+            <a class = "addButton mt-2" id = "addButton" type="submit">
+              <div class = "searchText mx-auto my-auto">
+                Add to Plan
+              </div>
+            </a>
+          </div>
       </li>
       {% endfor %}
 

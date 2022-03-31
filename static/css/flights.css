@@ -73,6 +73,39 @@
   border-radius: 25px;
 }
 
+.flex-item .font1{
+  color:black;
+  font-weight: 700;
+  font-size:19px;
+}
+.flex-item .font2 {
+  color:black;
+  font-weight:400;
+  font-size: 17px;
+}
+
+.flex-item .font3{
+  color:black;
+  font-weight:700;
+  font-size: 30px;
+}
+.flex-item .addButton{
+  width: 150px;
+  height: 40px;
+  border: none;
+  background: #43468a;
+  border-radius: 25px;
+  display: flex;
+  /* position: absolute; */
+}
+
+.flex-item .logo{
+  width:150px;
+  height:150px;
+  object-fit: cover;
+  border-radius: 50%;
+
+}
 .scrolling-wrapper {
   display: flex;
   overflow-x: auto;

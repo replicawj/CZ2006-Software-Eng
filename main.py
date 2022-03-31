@@ -64,16 +64,21 @@ def signup():
 
 @app.route('/attractions')
 def attractions():
-    return render_template("attractions.html")
+    no_adults = [0,1,2,3,4,5,6,7,8,9,10]
+    no_children = [0,1,2,3,4,5,6,7,8,9,10]
+    
+    return render_template("attractions.html", no_adults = no_adults, no_children = no_children)
 
 @app.route('/attractionsResult')
 def attractionsResult():
-    return render_template("attractionsResult.html")
+    no_adults = [0,1,2,3,4,5,6,7,8,9,10]
+    no_children = [0,1,2,3,4,5,6,7,8,9,10]
+    return render_template("attractionsResult.html", no_adults = no_adults, no_children = no_children)
 
 @app.route('/flights')
 def flights():
     flight_class = ["Economy", "Business", "First Class"]
-    no_travellers = ["Travellers:",1,2,3,4,5,6,7,8,9,10]
+    no_travellers = ["Travellers:",0,1,2,3,4,5,6,7,8,9,10]
     return render_template("flights.html", flight_class = flight_class, no_travellers = no_travellers, result = flightsData)
 
 @app.route('/flightsResult')
@@ -85,12 +90,16 @@ def flightsResult():
 
 @app.route('/hotels')
 def hotels():
-    numbers = [0,1,2,3,4,5,6,7,8,9,10]
-    return render_template("hotels.html", numbers=numbers,result = hotelReccoCard)
+    no_adults = [0,1,2,3,4,5,6,7,8,9,10]
+    no_children = [0,1,2,3,4,5,6,7,8,9,10]
+    
+    return render_template("hotels.html",no_adults = no_adults, no_children = no_children, result = hotelReccoCard)
 
 @app.route('/hotelsResult')
 def hotelsResult():
-    return render_template("hotelsResult.html",result = hotelReccoCard)
+    no_adults = [0,1,2,3,4,5,6,7,8,9,10]
+    no_children = [0,1,2,3,4,5,6,7,8,9,10]
+    return render_template("hotelsResult.html",no_adults = no_adults, no_children = no_children, result = hotelReccoCard)
 
 @app.route('/transport')
 def transport():

@@ -32,7 +32,7 @@
 
         <div class = "col d-flex flex-wrap align-content-center justify-content-center">
           <input
-            type="search"
+            type="date"
             class="form-control form-rounded"
             id="dateSelection"
             name = "dateSelection"
@@ -52,25 +52,37 @@
               placeholder="Total Pax:"
             />
          
-          <div class = "row d-flex flex-wrap px-4">
-           
-              <input
-                type="search "
-                class="col form-control form-rounded mt-3 mr-2"
-                id="paxSelection"
-                name = "adults"
-                placeholder="Adults:"
-              />
-        
-              <input
-                type="search"
-                class="col form-control form-rounded mt-3 ml-2"
+            <span class = "row d-flex flex-wrap align-items-center form-rounded px-4 mt-3">
+              <h1 class = "choiceFont my-auto">Adults:</h1>
+              <select
+                  name="no_adults"
+                  class="col form-control border-0 mr-1"
+                  id="paxSelection"
+                  name = "adults"
+                 
+                >
+                  {% for adults in no_adults %}
+                      <option value="{{adults}}">{{adults}}</option>"
+                  {% endfor %}
+                </select>
+  
+                <h1 class = "choiceFont my-auto">Children:</h1>
+  
+  
+                <select
+                name="no_children"
+                class="col form-control border-0 ml-1"
                 id="paxSelection"
                 name = "children"
-                placeholder="Children:"
-              />
-            
-          </div>
+               
+                >
+                {% for child in no_children %}
+                    <option value="{{child}}">{{child}}</option>"
+                {% endfor %}
+                </select>
+                
+              
+              </span>
 
         </div>
         

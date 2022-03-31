@@ -76,63 +76,43 @@
               placeholder="Total Pax:"
             />
 
-          <div class = "row d-flex flex-wrap px-4">
-
+            <span class = "row d-flex flex-wrap align-items-center form-rounded px-4 mt-3">
+              <h1 class = "choiceFont my-auto">Adults:</h1>
               <select
-                name="number"
-                class="col form-control form-rounded mt-3 mr-2"
-                id="paxSelection"
-                name = "adults"
-                placeholder="Adults:"
-              >
-                {% for number in numbers %}
-                    <option value="{{number}}">{{number}}</option>"
-                {% endfor %}
-              </select>
-
-              <!-- <select name="number" method="GET" action="/">
-                <option value="{{numbers[0]}}" selected>{{numbers[0]}}</option>
-                {% for colour in numbers[1:] %}
-                  <option value="{number}}">{{number}}</option>
-                {% endfor %}
-              </select> -->
-
-              <!-- <input
-                class="col form-control form-rounded mt-3 mr-2"
-                id="paxSelection"
-                name = "adults"
-                placeholder="Adults:"
-              /> -->
-
-              <!-- <input
-                type="number"
-                min="1"
-                max="10"
-                class="col form-control form-rounded mt-3 ml-2"
+                  name="no_adults"
+                  class="col form-control border-0 mr-1"
+                  id="paxSelection"
+                  name = "adults"
+                 
+                >
+                  {% for adults in no_adults %}
+                      <option value="{{adults}}">{{adults}}</option>"
+                  {% endfor %}
+                </select>
+  
+                <h1 class = "choiceFont my-auto">Children:</h1>
+  
+  
+                <select
+                name="no_children"
+                class="col form-control border-0 ml-1"
                 id="paxSelection"
                 name = "children"
-                placeholder="Children:"
-              /> -->
-
-              <select
-                name="number"
-                class="col form-control form-rounded mt-3 mr-2"
-                id="paxSelection"
-                name = "children"
-                placeholder="Children:"
-              >
-                {% for number in numbers %}
-                    <option value="{{number}}">{{number}}</option>"
+               
+                >
+                {% for child in no_children %}
+                    <option value="{{child}}">{{child}}</option>"
                 {% endfor %}
-              </select>
-
-          </div>
+                </select>
+                
+              
+              </span>
 
         </div>
 
         <div class = "col-1 d-flex flex-wrap align-content-center mr-3">
           <a href="/hotelsResult" class = "btn btn-primary" id = "searchButton" type="submit">
-            <div class = "searchText">
+            <div class = "searchText my-auto mx-auto">
               Search
             </div>
           </a>

@@ -11,7 +11,7 @@
 <body>
     {% extends "template.html" %}
     {% block content %}
-    
+    <script src = "static/javascript/attractions.js"></script>
       
     <div class="attractionsImageWrapper">
       <img src ="{{ url_for('static',filename='assets/img/attractionsHeaderImage.png')}}" width = 100%/>
@@ -41,48 +41,51 @@
 
         </div>
 
-        <div class = "col d-flex flex-wrap align-content-center justify-content-center">
-    
-            
-            <input
-              type="search"
-              class="form-control form-rounded m-0"
-              id="dateSelection"
-              name = "dateSelection"
-              placeholder="Total Pax:"
-            />
+        <div class = " col d-flex flex-wrap align-content-center justify-content-center">
          
-            <span class = "row d-flex flex-wrap align-items-center form-rounded px-4 mt-3">
-              <h1 class = "choiceFont my-auto">Adults:</h1>
-              <select
-                  name="no_adults"
-                  class="col form-control border-0 mr-1"
-                  id="paxSelection"
-                  name = "adults"
-                 
-                >
-                  {% for adults in no_adults %}
-                      <option value="{{adults}}">{{adults}}</option>"
-                  {% endfor %}
-                </select>
-  
-                <h1 class = "choiceFont my-auto">Children:</h1>
-  
-  
+            <span class = "form-rounded px-4 d-flex align-items-center">
+              <h2 class = "choiceFont my-auto ">Total:</h2>
+              <input
+                type="search"
+                class="form-control border-0 ml-3"
+                id="total_pax"
+                name = "total_pax"
+                placeholder = "0"
+              />
+            </span>
+              <span class = "row d-flex  align-items-center form-rounded px-4 mt-3">
+                <h1 class = "choiceFont my-auto">Adults:</h1>
                 <select
-                name="no_children"
-                class="col form-control border-0 ml-1"
-                id="paxSelection"
-                name = "children"
-               
-                >
-                {% for child in no_children %}
-                    <option value="{{child}}">{{child}}</option>"
-                {% endfor %}
-                </select>
+                    name="no_adults"
+                    class="col form-control border-0 mr-1"
+                    id="adults"
+                    name = "adults"
+                    onchange = "cal_pax()"
+                   
+                  >
+                    {% for adults in no_adults %}
+                        <option value="{{adults}}">{{adults}}</option>"
+                    {% endfor %}
+                  </select>
+    
+                  <h1 class = "choiceFont my-auto">Children:</h1>
+    
+    
+                  <select
+                  name="no_children"
+                  class="col form-control border-0 ml-1"
+                  id="children"
+                  name = "children"
+                  onchange = "cal_pax()"
+                 
+                  >
+                  {% for child in no_children %}
+                      <option value="{{child}}">{{child}}</option>"
+                  {% endfor %}
+                  </select>
+                  
                 
-              
-              </span>
+                </span>
 
         </div>
         

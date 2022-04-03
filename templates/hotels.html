@@ -9,6 +9,7 @@
 </head>
 
 <body>
+  <script src = "static/javascript/hotels.js"></script>
     {% extends "template.html" %}
     {% block content %}
 
@@ -50,6 +51,7 @@
                 id="checkInDate"
                 name = "checkInDate"
                 placeholder="Check in date:"
+            
               />
 
               <!-- <label>Calendar: </label> -->
@@ -59,6 +61,7 @@
                 id="checkOutDate"
                 name = "checkoutDate"
                 placeholder="Check out Date:"
+                onchange= "cal()"
               />
 
           </div>
@@ -67,22 +70,24 @@
 
         <div class = "col d-flex flex-wrap align-content-center justify-content-center">
 
-
+          <span class = "form-rounded px-4 d-flex align-items-center">
+            <h2 class = "choiceFont my-auto ">Total:</h2>
             <input
               type="search"
-              class="form-control form-rounded m-0"
-              id="dateSelection"
-              name = "dateSelection"
-              placeholder="Total Pax:"
+              class="form-control border-0 ml-3"
+              id="total_pax"
+              name = "total_pax"
+              placeholder = "0"
             />
-
-            <span class = "row d-flex flex-wrap align-items-center form-rounded px-4 mt-3">
+          </span>
+            <span class = "row d-flex  align-items-center form-rounded px-4 mt-3">
               <h1 class = "choiceFont my-auto">Adults:</h1>
               <select
                   name="no_adults"
                   class="col form-control border-0 mr-1"
-                  id="paxSelection"
+                  id="adults"
                   name = "adults"
+                  onchange = "cal_pax()"
                  
                 >
                   {% for adults in no_adults %}
@@ -96,8 +101,9 @@
                 <select
                 name="no_children"
                 class="col form-control border-0 ml-1"
-                id="paxSelection"
+                id="children"
                 name = "children"
+                onchange = "cal_pax()"
                
                 >
                 {% for child in no_children %}
@@ -111,7 +117,7 @@
         </div>
 
         <div class = "col-1 d-flex flex-wrap align-content-center mr-3">
-          <a href="/hotelsResult" class = "btn btn-primary" id = "searchButton" type="submit">
+          <a href="/hotelsResult" class = "btn btn-primary" id = "searchButton" onclick = "myfunction()">
             <div class = "searchText my-auto mx-auto">
               Search
             </div>

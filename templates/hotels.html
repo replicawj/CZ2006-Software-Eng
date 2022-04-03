@@ -35,13 +35,16 @@
         <div class = "col d-flex flex-wrap align-content-center justify-content-center">
 
 
+          <span class = "form-rounded pl-2 pr-4 d-flex align-items-center">
+            <h2 class = "col-8 choiceFont my-auto ">Number of nights: </h2>
             <input
               type="search"
-              class="form-control form-rounded m-0"
+              class="form-control border-0"
               id="noOfNights"
               name = "noOfNights"
-              placeholder="Number of Nights:"
+              placeholder = "0"
             />
+          </span>
 
           <div class = "row d-flex flex-wrap px-4">
               <!-- <label>Calendar: </label> -->
@@ -51,7 +54,7 @@
                 id="checkInDate"
                 name = "checkInDate"
                 placeholder="Check in date:"
-            
+                onchange = "cal_days()"
               />
 
               <!-- <label>Calendar: </label> -->
@@ -61,7 +64,7 @@
                 id="checkOutDate"
                 name = "checkoutDate"
                 placeholder="Check out Date:"
-                onchange= "cal()"
+                onchange= "cal_days()"
               />
 
           </div>
@@ -141,12 +144,26 @@
       <div class="scrolling-wrapper">
         {% for result in result if result.price > 410 %}
         <div class="card">
-          <p>{{result.name}}</p>
+          <div class = "mx-auto">
+            <img src= "https://www.hospitalitynet.org/picture/xxl_153051374.jpg?t=1401371218" class="logo mt-2" />
+          </div>
 
-          <img src ="{{ url_for('static',filename='assets/img/pin.png')}}" width = 5%/>
-          <p>{{result.address.street}}</p>
-          
-          <p>${{result.price}}/night</p>
+
+          <div class =  "info mx-auto pt-2">
+
+            <div class = "font1">
+              {{result.name}}
+            </div>
+            <span class = "font2 mt-1">
+              <img src ="{{ url_for('static',filename='assets/img/pin.png')}}" width = 5%/>
+              {{result.address.street}}
+            </span>
+
+            <div class = "font2">
+              $SGD{{result.price}}/Night
+            </div>
+          </div>
+  
         </div>
         {% endfor %}
 

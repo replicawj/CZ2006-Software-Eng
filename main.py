@@ -110,6 +110,10 @@ def transport():
 def account():
     return render_template("account.html")
 
+@app.route('/plans')
+def plans():
+    return render_template("plans.html")
+
 @app.route('/settings')
 def settings():
     return render_template("settings.html")

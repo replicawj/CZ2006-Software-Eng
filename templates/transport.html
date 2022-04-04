@@ -2,7 +2,10 @@
 <html lang="en" dir="ltr">
 <head>
 
-	<script src="static/assets/build/map.js" > </script>
+  <script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script> 
+	<script 
+  src="static/assets/build/transportSearch.js"> </script>
+  <script src="static/assets/build/transportTest.js"> </script>
   
   <meta charset="utf-8">
   <title>Transport</title>
@@ -15,7 +18,7 @@
     {% extends "template.html" %}
     {% block content %}
     <!-- <br> -->
-    <!-- <h1> This is the transport page. </h1> -->z
+    <!-- <h1> This is the transport page. </h1> -->
 
     <div class = "transportImageWrapper">
       <img src ="{{ url_for('static',filename='assets/img/transport.png')}}" width = 100%/>
@@ -40,12 +43,13 @@
             <input
               type="search"
               class="form-control form-rounded m-0"
-              id="noOfNights"
-              name = "noOfNights"
+              id="destination"
+              name = "destination"
               placeholder="Going To:"
             />
 
         </div>
+
 
         <div class = "col d-flex flex-wrap align-content-center justify-content-center">
     
@@ -71,6 +75,7 @@
 
         </div>
         
+        <!--
         <div class = "col-1 d-flex flex-wrap align-content-center mr-3">
           <a href="/hotelsResult" class = "btn btn-primary" id = "searchButton" type="submit">
             <div class = "searchText">
@@ -78,21 +83,36 @@
             </div>
           </a>
         </div>
+        -->
       </div>
     </div>
-	
-	<div class =  "bt-5" >
-	<p align="center">
-	<iframe 
-	width="900"
-	height="550"
-	style="border:0" 
-	src="https://www.google.com/maps/embed/v1/search?key=AIzaSyAyIxVTSvRTgAXXBOgUbkwasimuxWlqMaQ">>
-	</iframe>
-	</p>
-	</div>
+    
+    <div>
+      <button onclick="reloadMap()">
+        Search
+      </button>
+    </div>
+
+
+    <div class =  "bt-5" >
+    <p align="center">
+    <iframe 
+    id="map"
+    width="900"
+    height="550"
+    style="border:0" 
+    allowfullscreen = true;
+    src="https://www.w3schools.com">
+    </iframe>
+    </p>
+    </div>
 
     {% endblock %}
+
+    <script
+    async  
+    src="https://maps.googleapis.com/maps/api/js?key=https://www.google.com/maps/embed/v1/search?key=AIzaSyAyIxVTSvRTgAXXBOgUbkwasimuxWlqMaQ&callback=initMap&v=weekly"
+    </script>
     
     
 </body>

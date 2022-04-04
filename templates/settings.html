@@ -6,6 +6,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="{{ url_for('static',filename='css/account.css')}}">
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/settings.css')}}">
 </head>
 
 <body>
@@ -37,8 +38,71 @@
     <div class="welcomeWrapper">
 
         <div class = "welcomeText">
-            Profile
+            Your <br> Profile
         </div>
+    </div>
+
+    <div class="settingsWrapper">
+      <div class="emailText">
+        Email:
+
+        <div class="form-floating" id = '1'>
+          <input
+            type="email"
+            class="form-control form-rounded mb-2"
+            id="floatingInput"
+            name = "floatingInput"
+            placeholder="name@example.com"
+          />
+        </div>
+      </div>
+
+      <div class="passwordText">
+        Password:
+        <div class="form-floating" id = '2'>
+          <input
+            type="password"
+            class="form-control form-rounded mt-2"
+            id="floatingPassword"
+            name = "floatingPassword"
+            placeholder="Password"
+          />
+        </div>
+      </div>
+
+      <button type="submit" class="confirmButton">
+        Confirm
+      </button>
+
+      <div class="changePasswordWrapper">
+        Change Password:
+      </div>
+
+      <div class="passwordText">
+        New Password:
+        <div class="form-floating" id = '2'>
+          <input
+            type="password"
+            class="form-control form-rounded mt-2"
+            id="floatingPassword"
+            name = "floatingPassword"
+            placeholder="Password"
+          />
+        </div>
+      </div>
+
+      <div class="passwordText">
+        Confirm:
+        <div class="form-floating" id = '3'>
+          <input
+            type="password"
+            class="form-control form-rounded mt-2"
+            id="floatingPassword"
+            name = "floatingPassword"
+            placeholder="Password"
+          />
+        </div>
+      </div>
     </div>
 
     {% endblock %}

@@ -50,9 +50,39 @@
       </div>
 
       <div class="planWrapper">
-
+        <div class="planNumber">
+            Plan 1
+            <div class="dateWrapper">
+              <img src ="{{ url_for('static',filename='assets/img/Vector.png')}}" width = 23px height=23px class="calendarIcon"/>
+              <div class="planDate">
+                01/02-03/02
+              </div>
+            </div>
+        </div>
+        <img src= "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/15/1a/9e/23/img-20181020-113259-largejpg.jpg?w=1200&h=-1&s=1" class="logo" />
       </div>
+
+      <div class="planWrapper">
+        <div class="planNumber">
+            Plan 2
+            <div class="dateWrapper">
+              <img src ="{{ url_for('static',filename='assets/img/Vector.png')}}" width = 23px height=23px class="calendarIcon"/>
+              <div class="planDate">
+                01/02-03/02
+              </div>
+            </div>
+        </div>
+        <img src= "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/15/1a/9e/23/img-20181020-113259-largejpg.jpg?w=1200&h=-1&s=1" class="logo" />
+      </div>
+
+      <button type="submit" class="addPlanWrapper">
+        <div class="addPlan">
+          +
+        </div>
+      </button>
+
     </div>
+
 
 
     {% endblock %}

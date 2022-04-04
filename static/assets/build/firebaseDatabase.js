@@ -2,7 +2,7 @@
  * For Travello Signup page.
  */
  
-const form = document.querySelector('addAccount'); //form reference
+//const form = document.querySelector('addAccount'); //form reference
  
 // Function load contents of the doc onto console.
 function loadDocuments(doc){

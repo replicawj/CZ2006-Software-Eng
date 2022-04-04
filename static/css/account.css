@@ -1,0 +1,24 @@
+.sideBarWrapper {
+  position: absolute;
+  height: 100%;
+  background: #f9f9f9;
+  width: 335px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.imageWrapper {
+  position: absolute;
+  left: 69px;
+  top: 191px;
+}
+
+.AccountTitle {
+  position: absolute;
+  margin-top: 86px;
+  left: 82px;
+  font-size: 20x;
+  font-weight: 700;
+  color: black;
+}

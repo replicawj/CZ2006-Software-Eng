@@ -1,0 +1,199 @@
+.ImageWrapper {
+  position: relative;
+  text-align: center;
+}
+
+.Title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 60px;
+  font-weight: 700;
+}
+
+.searchWrapper {
+  height: 250px;
+  width: 100%;
+  background-color: white;
+  padding-top: 30px;
+}
+.searchBorder {
+  width: 90%;
+  height: 172px;
+  background: #ffffff;
+  border: 2px solid #e0e0e0;
+  box-sizing: border-box;
+  border-radius: 50px;
+}
+.searchBorder .form-rounded {
+  border: 2px solid #8e8e8e;
+  border-radius: 2rem;
+  width: 95%;
+  height: 51px;
+  font-size: 18px;
+}
+
+.Recommended-Wrapper {
+  width: 100%;
+  height: 38px;
+  padding-left: 5%;
+  margin-bottom: 25px;
+}
+
+.Recommended-Title {
+  width: 443px;
+  height: 38px;
+
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 25px;
+  line-height: 127.7%;
+  /* or 32px */
+
+  color: #43468a;
+}
+
+.flightsList {
+  background-color: white;
+  width: 100%;
+  height: 500px;
+  position: absolute;
+  overflow-y: scroll;
+}
+.flex-item {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 76px;
+  width: 75%;
+  height: 189px;
+  background: #f2f3f9;
+  box-shadow: 0px 30px 80px rgba(88, 92, 229, 0.12);
+  border-radius: 25px;
+}
+
+.flex-item .font1{
+  color:black;
+  font-weight: 700;
+  font-size:19px;
+}
+.flex-item .font2 {
+  color:black;
+  font-weight:400;
+  font-size: 17px;
+}
+
+.flex-item .font3{
+  color:black;
+  font-weight:700;
+  font-size: 30px;
+}
+.flex-item .addButton{
+  width: 150px;
+  height: 40px;
+  border: none;
+  background: #43468a;
+  border-radius: 25px;
+  display: flex;
+  /* position: absolute; */
+}
+
+.flex-item .logo{
+  width:150px;
+  height:150px;
+  object-fit: cover;
+  border-radius: 50%;
+
+}
+.scrolling-wrapper {
+  display: flex;
+  overflow-x: auto;
+  max-height: 550px;
+  padding-left: 5%;
+  padding-bottom:3%;
+}
+
+.scrolling-wrapper::-webkit-scrollbar {
+  width: 0;
+}
+
+.scrolling-wrapper .card {
+  /* position: absolute;
+  width: 351px;
+  height: 281px;
+  left: 100px;
+  top: 734px;
+  background: #f2f3f9;
+  box-shadow: 0px 30px 80px rgba(88, 92, 229, 0.12);
+  border-radius: 25px;
+  text-align: center; */
+
+  min-width: 447px;
+  height: 263px;
+  text-align: left;
+  color: black;
+  font-size: 20;
+  background-color: #f2f3f9;
+  margin-right: 36px;
+  border-radius: 25px;
+  box-shadow: 0px 30px 80px rgba(88, 92, 229, 0.12);
+  border: none;
+}
+.searchBorder .economyClassbtn {
+  background-color: white;
+  color: #43468a;
+}
+.searchBorder .economyClassbtn .dropmenu {
+  color: #43468a;
+}
+
+.searchBorder .box {
+  width: 96%;
+}
+
+#searchButton {
+  width: 192%;
+  height: 50%;
+  border: none;
+  background: #43468a;
+  border-radius: 25px;
+  display: flex;
+  /* position: absolute; */
+}
+.searchText {
+  color: white;
+}
+
+
+
+.card .font1{
+  color:black;
+  font-weight: 700;
+  font-size:22px;
+}
+
+.card .font2{
+  color:black;
+  font-weight:400;
+  font-size: 20px;
+}
+
+.card .logo{
+  width: 423px;
+  height: 132px;
+  object-fit: fill;
+  border-radius: 25px;
+
+}
+.card .info{
+  height: 100%;
+  width:85%;
+
+}
+
+
+
+
+
+

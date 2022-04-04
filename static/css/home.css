@@ -1,0 +1,21 @@
+.topWrapper {
+    background-color: #f2f3f9;
+    padding-top: 5%;
+  }
+  
+  .wordsWrapper {
+    height: 591px;
+  }
+  
+  .title1 {
+    font-family: "Montserrat";
+    font-weight: 700;
+    font-size: 60px;
+    color: #43468a;
+  }
+  .paragraph1 {
+    font-family: "Montserrat";
+    font-weight: 400;
+    font-size: 22px;
+    color: #43468a;
+  }

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>Attractions</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/attractions.css')}}">
+</head>
+
+<body>
+    {% extends "template.html" %}
+    {% block content %}
+    
+      
+    <div class="attractionsImageWrapper">
+      <img src ="{{ url_for('static',filename='assets/img/attractionsHeaderImage.png')}}" width = 100%/>
+      <div class = "attractionsTitle">Attractions</div>
+    </div>
+    <div class= "searchWrapper">
+      <div class = "searchBorder mx-auto row">
+        <div class = "col d-flex flex-wrap align-content-center justify-content-center">
+            <input
+              type="search"
+              class="form-control form-rounded"
+              id="searchAttraction"
+              name = "searchAttraction"
+              placeholder="Search Attraction"
+            />
+  
+        </div>
+
+        <div class = "col d-flex flex-wrap align-content-center justify-content-center">
+          <input
+            type="date"
+            class="form-control form-rounded"
+            id="dateSelection"
+            name = "dateSelection"
+            placeholder="Select Date"
+          />
+
+        </div>
+
+        <div class = " col d-flex flex-wrap align-content-center justify-content-center">
+    
+            
+            <input
+              type="search"
+              class="form-control form-rounded m-0"
+              id="dateSelection"
+              name = "dateSelection"
+              placeholder="Total Pax:"
+            />
+         
+          <span class = "row d-flex flex-wrap align-items-center form-rounded px-4 mt-3">
+            <h1 class = "choiceFont my-auto">Adults:</h1>
+            <select
+                name="no_adults"
+                class="col form-control border-0 mr-1"
+                id="paxSelection"
+                name = "adults"
+               
+              >
+                {% for adults in no_adults %}
+                    <option value="{{adults}}">{{adults}}</option>"
+                {% endfor %}
+              </select>
+
+              <h1 class = "choiceFont my-auto">Children:</h1>
+
+
+              <select
+              name="no_children"
+              class="col form-control border-0 ml-1"
+              id="paxSelection"
+              name = "children"
+             
+              >
+              {% for child in no_children %}
+                  <option value="{{child}}">{{child}}</option>"
+              {% endfor %}
+              </select>
+              
+            
+            </span>
+
+        </div>
+        
+        <div class = "col-1 d-flex flex-wrap align-content-center mr-3">
+          <a href="/attractionsResult" class = "searchButton" id = "searchButton" type="submit">
+            <div class = "searchText mx-auto my-auto">
+              Search
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class = "Recommended-Wrapper">
+      <div class = "Recommended-Title">Recommended List</div>
+    </div>
+
+    <div>
+      <div class="scrolling-wrapper">
+        <div class="card"><h2>Card</h2></div>
+        <div class="card"><h2>Card</h2></div>
+        <div class="card"><h2>Card</h2></div>
+        <div class="card"><h2>Card</h2></div>
+        <div class="card"><h2>Card</h2></div>
+        <div class="card"><h2>Card</h2></div>
+        <div class="card"><h2>Card</h2></div>
+        <div class="card"><h2>Card</h2></div>
+        <div class="card"><h2>Card</h2></div>
+      </div>
+    </div>
+
+
+
+
+
+    
+
+
+
+
+
+    {% endblock %}
+</body>

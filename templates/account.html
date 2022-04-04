@@ -75,13 +75,90 @@
         <img src= "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/15/1a/9e/23/img-20181020-113259-largejpg.jpg?w=1200&h=-1&s=1" class="logo" />
       </div>
 
-      <button type="submit" class="addPlanWrapper">
+      <!-- <button type="submit" class="addPlanWrapper">
+        <div class="addPlan">
+          +
+        </div>
+      </button> -->
+
+      <button type="button" id = "addPlanWrapper" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
         <div class="addPlan">
           +
         </div>
       </button>
+      
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">Add New Plan</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="planNameWrapper">
+                Plan Name:
+
+                <div class = "col d-flex flex-wrap">
+                  <input
+                    type="search"
+                    class="form-control form-rounded"
+                    id="searchHotels"
+                    name = "searchHotels"
+                    placeholder="Enter plan name"
+                  />
+      
+                </div>
+              </div>
+
+              <div class="basicWrapper">
+                <div class="planNameWrapper">
+                  Start Date:
+  
+                  <div class = "col d-flex flex-wrap">
+                    <input
+                      type="date"
+                      class="form-control form-rounded"
+                      id="dateSelection"
+                      name = "dateSelection"
+                      placeholder="Select Date"
+                    />
+        
+                  </div>
+                </div>
+              </div>
+
+              <div class="basicWrapper">
+                <div class="planNameWrapper">
+                  End Date:
+  
+                  <div class = "col d-flex flex-wrap">
+                    <input
+                      type="date"
+                      class="form-control form-rounded"
+                      id="dateSelection"
+                      name = "dateSelection"
+                      placeholder="Select Date"
+                    />
+        
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" id = "closeButton" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" id="saveButton">Save</button>
+            </div>
+          </div>
+        </div>
+      </div>
 
     </div>
+
+
 
 
 

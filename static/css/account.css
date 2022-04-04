@@ -127,7 +127,7 @@
   color: #8e8e8e;
 }
 
-.addPlanWrapper {
+#addPlanWrapper {
   width: 100px;
   height: 100px;
   margin-left: 20%;
@@ -137,6 +137,7 @@
   color: white;
   border-radius: 50%;
 }
+
 .addPlan {
   font-family: "Montserrat";
   font-style: normal;
@@ -145,4 +146,41 @@
   line-height: 127.7%;
   color: #43468a;
   text-shadow: 0px 10px 10px rgba(0, 0, 0, 0.25);
+}
+
+.modal-title {
+  padding-left: 20px;
+  border-radius: 20px, 20px, 0px, 0px;
+}
+.modal-header {
+  border: none;
+}
+
+.modal-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#closeButton {
+  border-radius: 25px;
+}
+
+#saveButton {
+  border-radius: 25px;
+  background: #43468a;
+}
+
+.planNameWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  color: black;
+  font-size: 20px;
+}
+
+.basicWrapper {
+  margin-top: 20px;
 }

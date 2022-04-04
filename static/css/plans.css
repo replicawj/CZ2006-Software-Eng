@@ -1,65 +1,53 @@
-#main {
-  padding: 0;
-  margin: 0 auto;
-  width: 600px;
-  font-family: arial;
-  font-weight: 600;
-  font-size: 12px;
-}
-
-#upper-panel {
-  padding: 0;
-  margin: 0;
-  width: 100%;
-  height: 200px;
-  background-color: #4b4949;
-}
-
-#middle-panel {
-  padding: 0;
-  margin: 0;
-  width: 100%;
-  background-color: #c6c6c6;
-  overflow: visible;
-}
-
-#middle-panel-inner-div {
-  padding: 0;
-  margin: 0 auto;
-  width: 90%;
-  position: relative;
-  top: -30px;
+.overallWrapper {
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
-.red-box-and-label {
-  padding: 0;
-  margin: 0;
-  width: 25%;
+.headerWrapper {
+  margin-top: 37px;
+  padding-top: 20px;
+  width: 50%;
+  height: 125px;
+  margin-left: 33%;
+  background: #daddf2;
+  box-shadow: 0px 30px 80px rgba(88, 92, 229, 0.12);
+  border-radius: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
-.red-box {
-  padding: 10px 0;
-  margin: 0 auto;
-  width: 65px;
-  height: 45px;
-  background-color: #e80505;
-  text-align: center;
+.headerWrapper .headerText {
+  padding-left: 5%;
+  padding-top: 9px;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 35px;
+  line-height: 127.7%;
+  color: #43468a;
+  text-shadow: 0px 10px 10px rgba(0, 0, 0, 0.25);
 }
 
-.box-label {
-  padding: 0;
-  margin: 6px 0 0 0;
-  width: 100%;
-  text-align: center;
+.headerWrapper .dateText {
+  padding-left: 5%;
+  padding-top: 5px;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 127.7%;
+  color: #43468a;
+  text-shadow: 0px 10px 10px rgba(0, 0, 0, 0.25);
 }
 
-#lower-panel {
-  padding: 0;
-  margin: 0;
-  width: 100%;
-  height: 100px;
-  background-color: #868585;
+.flightsTitle {
+  padding-left: 36%;
+  margin-top: 50px;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 25px;
+  color: #000000;
 }

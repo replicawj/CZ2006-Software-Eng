@@ -6,6 +6,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="{{ url_for('static',filename='css/account.css')}}">
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/plans.css')}}">
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/flights.css')}}">
+
 </head>
 
 <body>
@@ -37,32 +40,64 @@
     
   </nav>
 
-  <div>
+  <div class="overallWrapper">
+    <div class="headerWrapper">
+      <div class = "headerText">
+          Plan 1
+      </div>
+      <div class="dateText">
+        01/02-03/02
+      </div>
+    </div>
+
+    <div class="flightsTitle">
+      Flights
+    </div>
+
+    <div>
+      <div class="scrolling-wrapper">
+        {% for result in result %}
+        <div class="card">
+          <div class = "mx-auto">
+            <img src= "https://www.logolynx.com/images/logolynx/2b/2bbabac56c986b5fa404ced4eef54d36.jpeg" class="logo mt-2" />
+          </div>
+          
+          <div class =  "info mx-auto pt-2">
+
+
+            <div class = "font1">
+              {% set d = result.depart_date %}
+              date: {{d[12:16]}}
+              time: {{d[0:10]}}
+            </div>
+
+            <div class = "font2 mt-1">
+              {{result.origin}} - {{result.destination}}
+            </div>
+
+            <div class = "font2">
+              $SGD{{result.price}}
+            </div>
+          </div>
+          
+
+        </div>
+        {% endfor %}
+      </div>
+  </div>
+
+  <!-- <div>
     <img
       src="{{ url_for('static',filename='assets/img/planHeader.png')}}"
     />
-  </div>
 
-  <div class="whiteBoxWrapper bg-dark">
-    hello
-  </div>
-
-  <!-- <div id="main">
-    <div id="upper-panel"></div>
     <div id="middle-panel">
-      <div id="middle-panel-inner-div">
-        <div class="red-box-and-label">
-          <div class="red-box"></div>
-          <div class="box-label">
-            Lorem Ipsum
-          </div>
-        </div>
+      <div id="middle-panel">
+
       </div>
     </div>
-    <div id="lower-panel"></div>
-  </div> -->
 
-
+  </div>
 
     {% endblock %}
 </body>

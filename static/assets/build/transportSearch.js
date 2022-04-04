@@ -3,16 +3,16 @@ async attribute allows the browser to continue to parse the remainder of your pa
 const element = document.getElementById("button"); 
 https://www.google.com/maps/embed/v1/search?key=AIzaSyAyIxVTSvRTgAXXBOgUbkwasimuxWlqMaQ&q=Space+Needle,Seattle+WA
 */
-var iframe = document.getElementById('map');
+//var iframe = document.getElementById('map');
 
 
 function reloadMap() { //execute after 'search' button is pressed.
-	var iframe = document.getElementById("myFrame");
-	var url = iframe.src;
+	//var iframe = document.getElementById("myFrame");
+	//var url = iframe.src;
 
-	console.log(url);
+	//console.log(url);
 
-	document.getElementById('calendar').src = "https://www.google.com/maps/embed/v1/search?key=AIzaSyAyIxVTSvRTgAXXBOgUbkwasimuxWlqMaQ&q=Space+Needle,Seattle+WA";
+	//document.getElementById('calendar').src = "https://www.google.com/maps/embed/v1/search?key=AIzaSyAyIxVTSvRTgAXXBOgUbkwasimuxWlqMaQ&q=Space+Needle,Seattle+WA";
 
 	var destination = document.getElementById('destination').value; //Get text in input box. For destination.
 	var leavingFrom = document.getElementById('leavingFrom').value;

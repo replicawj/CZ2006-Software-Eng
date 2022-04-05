@@ -31,17 +31,30 @@ function reloadMap() { //execute after 'search' button is pressed.
 		//only destination entered
 		mapMode = "place";
 		var search = destination.replace(/\s/g, "+"); //string with + in the spaces\
-		console.log(search);
+		//var index = document.getElementById('map').src.lastIndexOf("=");
+		document.getElementById('map').src = "https://www.google.com/maps/embed/v1/search?key=AIzaSyAyIxVTSvRTgAXXBOgUbkwasimuxWlqMaQ&q=" + search;
 	
 	} else if (leavingFrom != "" && destination == ""){
 		mapMode = "place";
 		var search = leavingFrom.replace(/\s/g, "+"); //string with + in the spaces
+		//var index = document.getElementById('map').src.lastIndexOf("=");
+		document.getElementById('map').src = "https://www.google.com/maps/embed/v1/search?key=AIzaSyAyIxVTSvRTgAXXBOgUbkwasimuxWlqMaQ&q=" + search;
 	
 	} else if (leavingFrom != "" && destination != ""){
 		mapMode = "directions";
-		var search = leavingFrom.replace(/\s/g, "+"); //string with + in the spaces
-		search = search + destination.replace(/\s/g, "+");
-		console.log(search);
+		var search1 = leavingFrom.replace(/\s/g, "+"); //string with + in the spaces
+		var search2 = destination.replace(/\s/g, "+");
+		var transportType = getTransportType();
+		if (transportType != "Mode of Transport:")
+			document.getElementById('map').src = "https://www.google.com/maps/embed/v1/directions?key=AIzaSyAyIxVTSvRTgAXXBOgUbkwasimuxWlqMaQ&origin=" + search1 + "&destination=" + search2 + "&mode=" + transportType;
+		//console.log(search);
 	}
 	
+}
+
+function getTransportType(){
+	var transObj = document.getElementById("transport_type");
+	var result = transObj.options[transObj.selectedIndex].value;
+	console.log(result);
+	return result;
 }

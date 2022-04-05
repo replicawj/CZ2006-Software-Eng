@@ -103,7 +103,7 @@ def hotelsResult():
 
 @app.route('/transport')
 def transport():
-    transportMode = ['Mode of Transport:', 'Car', 'Bus', "Walk", "Taxi"]
+    transportMode = ["Mode of Transport:", "driving", "walking", "bicycling", "transit", "flying"]
     return render_template("transport.html", transportMode=transportMode)
 
 @app.route('/account')

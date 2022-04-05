@@ -75,7 +75,7 @@
   color: black;
 }
 
-.planWrapper {
+#planWrapper {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -87,7 +87,7 @@
   border-radius: 25px;
 }
 
-.planWrapper .planNumber {
+#planWrapper .planNumber {
   padding-left: 10%;
   width: 70%;
   display: flex;
@@ -101,14 +101,14 @@
   color: #000000;
 }
 
-.planWrapper .dateWrapper {
+#planWrapper .dateWrapper {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   margin-top: 13px;
 }
 
-.planWrapper .logo {
+#planWrapper .logo {
   margin-top: 16px;
   margin-right: 10%;
   width: 100px;
@@ -117,7 +117,7 @@
   border-radius: 50%;
 }
 
-.planWrapper .planDate {
+#planWrapper .planDate {
   margin-left: 9px;
   font-family: "Montserrat";
   font-style: normal;

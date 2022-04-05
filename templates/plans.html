@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="{{ url_for('static',filename='css/account.css')}}">
   <link rel="stylesheet" href="{{ url_for('static',filename='css/plans.css')}}">
-  <link rel="stylesheet" href="{{ url_for('static',filename='css/flights.css')}}">
+  <!-- <link rel="stylesheet" href="{{ url_for('static',filename='css/flights.css')}}"> -->
 
 </head>
 
@@ -17,7 +17,9 @@
 
     <!-- <div class="wholeWrapper">
 
+
     </div> -->
+
     <nav class="navbar bg-light" id = "sideBarWrapper">
 
       <!-- Links -->
@@ -38,7 +40,7 @@
         </li>
       </ul>
     
-  </nav>
+    </nav>
 
   <div class="overallWrapper">
     <div class="headerWrapper">
@@ -54,7 +56,7 @@
       Flights
     </div>
 
-    <div>
+    <div class="flightsWrapping">
       <div class="scrolling-wrapper">
         {% for result in result %}
         <div class="card">
@@ -85,6 +87,7 @@
         {% endfor %}
       </div>
   </div>
+
 
   <!-- <div>
     <img

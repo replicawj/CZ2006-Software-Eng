@@ -112,7 +112,7 @@ def account():
 
 @app.route('/plans')
 def plans():
-    return render_template("plans.html")
+    return render_template("plans.html", result = flightsData)
 
 @app.route('/settings')
 def settings():

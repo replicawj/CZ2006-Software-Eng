@@ -121,6 +121,7 @@
   overflow-x: auto;
   max-height: 500px;
   padding-left: 5%;
+  padding-bottom:3%;
 }
 
 .scrolling-wrapper::-webkit-scrollbar {
@@ -140,8 +141,6 @@
 
   min-width: 351px;
   height: 281px;
-  line-height: 110px;
-  text-align: center;
   color: black;
   font-size: 20;
   background-color: #f2f3f9;
@@ -183,4 +182,29 @@
   color: #8e8e8e;
   font-size: 18px;
   font-weight: 400;
+}
+
+.card .font1{
+  color:black;
+  font-weight: 700;
+  font-size:18px;
+}
+
+.card .font2{
+  color:black;
+  font-weight:400;
+  font-size: 15px;
+}
+
+.card .logo{
+  width: 331px;
+  height: 169px;
+  object-fit: fill;
+  border-radius: 25px;
+
+}
+.card .info{
+  height: 100%;
+  width:85%;
+
 }

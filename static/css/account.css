@@ -1,0 +1,186 @@
+.wholeWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+#sideBarWrapper {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  background-color: #fbfbff;
+  width: 25%;
+  height: 100%;
+  position: absolute;
+}
+
+.imageWrapper {
+  position: absolute;
+  left: 69px;
+  top: 191px;
+}
+
+.AccountTitle {
+  /* position: absolute; */
+  margin-top: 86px;
+  left: 82px;
+  font-size: 20x;
+  font-weight: 700;
+  color: black;
+}
+
+.nav-link {
+  margin-top: 20px;
+  font-size: 20x;
+  font-weight: 700;
+  color: black;
+}
+
+.welcomeWrapper {
+  margin-top: 37px;
+  padding-top: 20px;
+  width: 60%;
+  height: 125px;
+  margin-left: 33%;
+  background: #daddf2;
+  box-shadow: 0px 30px 80px rgba(88, 92, 229, 0.12);
+  border-radius: 25px;
+}
+
+.welcomeWrapper .welcomeText {
+  padding-left: 5%;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 35px;
+  line-height: 127.7%;
+  color: #43468a;
+  text-shadow: 0px 10px 10px rgba(0, 0, 0, 0.25);
+}
+
+.contentWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-left: 40%;
+}
+
+.contentWrapper .plansTitle {
+  margin-top: 57px;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 127.7%;
+  color: black;
+}
+
+.planWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 26px;
+  width: 463px;
+  height: 132px;
+  background: #f2f3f9;
+  box-shadow: 0px 30px 80px rgba(88, 92, 229, 0.12);
+  border-radius: 25px;
+}
+
+.planWrapper .planNumber {
+  padding-left: 10%;
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 127.7%;
+  color: #000000;
+}
+
+.planWrapper .dateWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin-top: 13px;
+}
+
+.planWrapper .logo {
+  margin-top: 16px;
+  margin-right: 10%;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.planWrapper .planDate {
+  margin-left: 9px;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 127.7%;
+  color: #8e8e8e;
+}
+
+#addPlanWrapper {
+  width: 100px;
+  height: 100px;
+  margin-left: 20%;
+  margin-top: 46px;
+  border: none;
+  background: #daddf2;
+  color: white;
+  border-radius: 50%;
+}
+
+.addPlan {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 60px;
+  line-height: 127.7%;
+  color: #43468a;
+  text-shadow: 0px 10px 10px rgba(0, 0, 0, 0.25);
+}
+
+.modal-title {
+  padding-left: 20px;
+  border-radius: 20px, 20px, 0px, 0px;
+}
+.modal-header {
+  border: none;
+}
+
+.modal-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#closeButton {
+  border-radius: 25px;
+}
+
+#saveButton {
+  border-radius: 25px;
+  background: #43468a;
+}
+
+.planNameWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  color: black;
+  font-size: 20px;
+}
+
+.basicWrapper {
+  margin-top: 20px;
+}

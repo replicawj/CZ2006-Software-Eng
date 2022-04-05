@@ -1,0 +1,114 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap");
+body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  /* padding-top: 40px;
+  padding-bottom: 40px; */
+  background-color: #f2f3f9;
+}
+
+h1 {
+  color: #43468a;
+  font-family: "Montserrat", sans-serif;
+  font-size: 45px;
+  font-weight: 600;
+}
+
+button {
+  /* background-color: #797baa;
+  color: white;
+  font-size: 15;
+  border-radius: 100;
+  border: none;
+  width: 10;
+  height: 49;
+  padding: 50px; */
+  /* position: absolute; */
+  width: 119px;
+  height: 49px;
+  left: 348px;
+  top: 704px;
+  border: none;
+  background: #797baa;
+  color: white;
+  border-radius: 100px;
+}
+
+a {
+  color: black;
+}
+
+.form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+  font-family: "Montserrat", sans-serif;
+}
+
+/* #1 {
+  width: 334px;
+  height: 49px;
+  left: 241px;
+  top: 501px;
+
+  background: #ffffff;
+  border-radius: 25px;
+} */
+
+/* #1.form-floating {
+  padding-top: 92px;
+} */
+
+#floatingInput.form-rounded {
+  border-radius: 3rem;
+  width: 334px;
+  height: 49px;
+  margin: auto;
+}
+
+#floatingPassword.form-rounded {
+  border-radius: 3rem;
+  width: 334px;
+  height: 49px;
+  margin: auto;
+}
+
+#floatingVerifyPassword.form-rounded {
+  border-radius: 3rem;
+  width: 334px;
+  height: 49px;
+  margin: auto;
+}
+
+.form-signin .checkbox {
+  font-weight: 300;
+  font-size: 17px;
+}
+
+.form-signin .form-floating:focus-within {
+  z-index: 2;
+}
+
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 50;
+  border-bottom-left-radius: 0;
+
+  font-size: 17px;
+}
+
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  font-size: 17px;
+}
+
+.checkbox {
+  padding-top: 37px;
+}

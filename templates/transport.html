@@ -3,7 +3,8 @@
 <head>
 
   <script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script> 
-	<script src="static/javascript/transportSearch.js"> </script>
+	<script src="static/assets/build/transportSearch.js"> </script>
+  <script src="static/assets/build/transportTest.js"> </script>
   
   <meta charset="utf-8">
   <title>Transport</title>
@@ -60,11 +61,11 @@
             /> -->
 
             <select 
-              type="search"
+              name = "transport_type"
               class="col form-control form-rounded m-0"
-              id="dateSelection"
-              name = "dateSelection"
+              id="transport_type"
               placeholder="Mode of Transport"
+              onchange = "getTransportType()"
             >
               {% for mode in transportMode %}
                   <option value="{{mode}}">{{mode}}</option>"

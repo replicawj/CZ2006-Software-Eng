@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
+
+  <script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script> 
+	<script src="static/javascript/transportSearch.js"> </script>
+  
   <meta charset="utf-8">
   <title>Transport</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,6 +12,7 @@
 </head>
 
 <body>
+	
     {% extends "template.html" %}
     {% block content %}
     <!-- <br> -->
@@ -17,7 +22,7 @@
       <img src ="{{ url_for('static',filename='assets/img/transport.png')}}" width = 100%/>
       <div class = "transportTitle">Transport</div>
     </div>
-
+	
     <div class= "searchWrapper">
       <div class = "searchBorder mx-auto row">
         <div class = "col d-flex flex-wrap align-content-center justify-content-center">
@@ -36,12 +41,13 @@
             <input
               type="search"
               class="form-control form-rounded m-0"
-              id="noOfNights"
-              name = "noOfNights"
+              id="destination"
+              name = "destination"
               placeholder="Going To:"
             />
 
         </div>
+
 
         <div class = "col d-flex flex-wrap align-content-center justify-content-center">
     
@@ -54,11 +60,11 @@
             /> -->
 
             <select 
-              type="search"
+              name = "transport_type"
               class="col form-control form-rounded m-0"
-              id="dateSelection"
-              name = "dateSelection"
+              id="transport_type"
               placeholder="Mode of Transport"
+              onchange = "getTransportType()"
             >
               {% for mode in transportMode %}
                   <option value="{{mode}}">{{mode}}</option>"
@@ -67,6 +73,7 @@
 
         </div>
         
+        <!--
         <div class = "col-1 d-flex flex-wrap align-content-center mr-3">
           <a href="/hotelsResult" class = "btn btn-primary" id = "searchButton" type="submit">
             <div class = "searchText">
@@ -74,9 +81,38 @@
             </div>
           </a>
         </div>
+        -->
+
+        <div class = "col-1 d-flex flex-wrap align-content-center mr-3"b>
+          <button onclick="reloadMap()">
+            Search
+          </button>
+        </div>
       </div>
     </div>
+    
+    
 
+
+    <div class =  "bt-5" >
+    <p align="center">
+    <iframe 
+    id="map"
+    width="900"
+    height="550"
+    style="border:0" 
+    allowfullscreen = true;
+    src="https://www.google.com/maps/embed/v1/search?key=AIzaSyAyIxVTSvRTgAXXBOgUbkwasimuxWlqMaQ&q=Singapore">
+    </iframe>
+    </p>
+    </div>
 
     {% endblock %}
+
+    <script
+    async  
+    src="https://maps.googleapis.com/maps/api/js?key=https://www.google.com/maps/embed/v1/search?key=AIzaSyAyIxVTSvRTgAXXBOgUbkwasimuxWlqMaQ&callback=initMap&v=weekly"
+    </script>
+    
+    
 </body>

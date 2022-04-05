@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="{{ url_for('static',filename='css/flights.css')}}">
 </head>
 
-<body>
+<body class = "backgroundSet">
     {% extends "template.html" %}
     {% block content %}
 
@@ -89,7 +89,7 @@
 
         <div class = "col-1 d-flex flex-wrap align-content-center mr-3">
           <a class = "btn btn-primary" id = "searchButton" type="submit" href="{{ url_for('flightsResult') }}">
-            <div class = "searchText">
+            <div class = "searchText mx-auto my-auto">
               Search
             </div>
           </a>
@@ -105,16 +105,28 @@
       <div class="scrolling-wrapper">
         {% for result in result %}
         <div class="card">
-          <p span="flightsInfo">Travelling from {{result.origin}} to {{result.destination}}
+          <div class = "mx-auto">
+            <img src= "https://www.logolynx.com/images/logolynx/2b/2bbabac56c986b5fa404ced4eef54d36.jpeg" class="logo mt-2" />
+          </div>
+          
+          <div class =  "info mx-auto pt-2">
 
-          Starting from {{result.price}}
 
-          <!--Substring-->
-          {% set d = result.depart_date %}
+            <div class = "font1">
+              {% set d = result.depart_date %}
+              date: {{d[12:16]}}
+              time: {{d[0:10]}}
+            </div>
 
-          Departure date {{d[0:10]}}
-          Depart time {{d[12:16]}}
-          </p>
+            <div class = "font2 mt-1">
+              {{result.origin}} - {{result.destination}}
+            </div>
+
+            <div class = "font2">
+              $SGD{{result.price}}
+            </div>
+          </div>
+          
 
         </div>
         {% endfor %}

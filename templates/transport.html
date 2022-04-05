@@ -61,11 +61,11 @@
             /> -->
 
             <select 
-              type="search"
+              name = "transport_type"
               class="col form-control form-rounded m-0"
-              id="dateSelection"
-              name = "dateSelection"
+              id="transport_type"
               placeholder="Mode of Transport"
+              onchange = "getTransportType()"
             >
               {% for mode in transportMode %}
                   <option value="{{mode}}">{{mode}}</option>"
@@ -103,7 +103,7 @@
     height="550"
     style="border:0" 
     allowfullscreen = true;
-    src="https://www.google.com/maps/embed/v1/search?key=AIzaSyAyIxVTSvRTgAXXBOgUbkwasimuxWlqMaQ&q=Space+Needle,Seattle+WA">
+    src="https://www.google.com/maps/embed/v1/search?key=AIzaSyAyIxVTSvRTgAXXBOgUbkwasimuxWlqMaQ&q=Singapore">
     </iframe>
     </p>
     </div>

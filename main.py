@@ -3,7 +3,7 @@ import requests
 import folium
 import json
 from datetime import datetime
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 
 ### Flights API -wj ###
 
@@ -131,6 +131,8 @@ def hotels():
 
     for i in range(len(hotelsList2)):
         temp = hotelsList2[i]
+        if hotelInput == temp:
+            return redirect(url_for('hotelsResult'), hotelInput=hotelInput)
 
     return render_template("hotels.html", no_adults=no_adults, no_children=no_children, result=hotelReccoCard)
 
@@ -140,6 +142,8 @@ def hotelsResult():
     no_adults = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     no_children = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     plan_no = ["Plan Number:", 1, 2]
+    # hotelInput = request.args.get('hotelInput', None)
+
     return render_template("hotelsResult.html", no_adults=no_adults, no_children=no_children, result=hotelReccoCard, plan_no=plan_no)
 
 

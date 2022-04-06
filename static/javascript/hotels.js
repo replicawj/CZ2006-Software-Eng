@@ -21,6 +21,7 @@ function cal_pax(){
     var children = getChildren();
     var result = adults + children;
     document.getElementById("total_pax").value = result;
+    return result;
 }
 
 function getPax(){
@@ -33,7 +34,7 @@ function getHotelSearch(){
 }
 
 function getNoDays(){
-    var noDays = doucment.getElementById("noOfNights");
+    var noDays = document.getElementById("noOfNights");
     return noDays;
 }
 function getCheckInDate(){
@@ -68,7 +69,31 @@ function myFunction() {
   }
 
 
+//myFunction();
+//const form = document.forms["savePlans"]; //form reference
+// saving data (add new document under account) - listen for 'submit' button.
+//form.addEventListener('submit', (e) => {
+function savePlans() {
+    var hotelSearch = getHotelSearch();
+    var numOfDays = getNoDays().value;
+    var children = getChildren();
+    var adults = getAdults();
+    var pax = getPax();
+    var checkInDate = getCheckInDate();
+    var checkOutDate = getCheckOutDate();
+    console.log(numOfDays);
 
-
-
+	db.collection('planner').add({ //adds a document into the collection 'planner'
+        //plan_no: plan_no,
+        hotelSearch: hotelSearch,
+        numOfDays: numOfDays.toString(),
+        children: children,
+        adults: adults,
+        pax: pax.toString(),
+        checkInDate: checkInDate,
+        checkOutDate, checkOutDate
+    });
+    alert("Plan saved!");
+    
+}
 

@@ -165,7 +165,88 @@
 
 
 
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">Add New Plan</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="planNameWrapper">
+                Plan Name:
 
+                <div class = "col d-flex flex-wrap">
+
+                  <!-- <input
+                    type="search"
+                    class="form-control form-rounded"
+                    id="searchHotels"
+                    name = "searchHotels"
+                    placeholder="Enter plan name"
+                  /> -->
+
+                  <select
+                    name="plan_no"
+                    class="form-control form-rounded"
+                    id="plan_no"
+                    name = "plan_no"
+                  >
+                  {% for plan_no in plan_no %}
+                      <option value="{{plan_no}}">{{plan_no}}</option>"
+                  {% endfor %}
+                  </select>
+      
+                </div>
+
+                
+              </div>
+
+              <!-- <div class="basicWrapper">
+                <div class="planNameWrapper">
+                  Start Date:
+  
+                  <div class = "col d-flex flex-wrap">
+                    <input
+                      type="date"
+                      class="form-control form-rounded"
+                      id="dateSelection"
+                      name = "dateSelection"
+                      placeholder="Select Date"
+                    />
+        
+                  </div>
+                </div>
+              </div> -->
+
+              <!-- <div class="basicWrapper">
+                <div class="planNameWrapper">
+                  End Date:
+  
+                  <div class = "col d-flex flex-wrap">
+                    <input
+                      type="date"
+                      class="form-control form-rounded"
+                      id="dateSelection"
+                      name = "dateSelection"
+                      placeholder="Select Date"
+                    />
+        
+                  </div>
+                </div>
+              </div> -->
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" id = "closeButton" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" id="saveButton">Save</button>
+            </div>
+          </div>
+        </div>
+      </div>
 
     {% endblock %}
 </body>

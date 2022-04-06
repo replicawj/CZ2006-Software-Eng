@@ -37,6 +37,22 @@ flightsData = flightsPage()
 
 ### Hotel API -wj ###
 
+# with open('hotelInfo.json') as f:
+#     dataHotel = json.load(f)
+
+# print(data)
+hotelsList = []
+
+
+def hotelsFunction():
+    data = hotelRecco()
+    for i in range(len(data)):
+        data1 = data[i]
+        data2 = data1["name"]
+        hotelsList.append(data2)
+
+    return (hotelsList)
+
 
 def hotelRecco():
     f = open('hotelInfo.json')
@@ -47,8 +63,10 @@ def hotelRecco():
 
 
 hotelReccoCard = hotelRecco()
+# print(hotelsFunction())
 
 app = Flask(__name__)
+print(hotelsFunction())
 
 
 @app.route('/')  # landing page
@@ -100,10 +118,19 @@ def flightsResult():
     # return render_template("flightsResult.html", result = flightsData)
 
 
-@app.route('/hotels')
+@app.route('/hotels', methods=["GET", "POST"])
 def hotels():
     no_adults = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     no_children = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+    if request.method == 'GET':
+        hotelInput = request.form.get("searchHotels")
+        print(hotelInput)
+
+    hotelsList2 = hotelsFunction()
+
+    for i in range(len(hotelsList2)):
+        temp = hotelsList2[i]
 
     return render_template("hotels.html", no_adults=no_adults, no_children=no_children, result=hotelReccoCard)
 

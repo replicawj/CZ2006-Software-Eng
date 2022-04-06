@@ -43,7 +43,7 @@
 }
 
 .flightsTitle {
-  padding-left: 36%;
+  padding-left: 33%;
   margin-top: 50px;
   font-family: "Montserrat";
   font-style: normal;
@@ -52,11 +52,14 @@
   color: #000000;
 }
 
+.flightsWrapping {
+  padding-left: 33%;
+}
+
 .scrolling-wrapper {
   display: flex;
   overflow-x: auto;
   max-height: 550px;
-  padding-left: 36%;
   margin-top: 12px;
   padding-bottom: 3%;
 }
@@ -66,11 +69,11 @@
 }
 
 .scrolling-wrapper .card {
-  min-width: 447px;
-  height: 263px;
+  min-width: 350px;
+  height: 200px;
   text-align: left;
   color: black;
-  font-size: 20;
+  font-size: 18;
   background-color: #f2f3f9;
   margin-right: 36px;
   border-radius: 25px;
@@ -81,17 +84,17 @@
 .card .font1 {
   color: black;
   font-weight: 700;
-  font-size: 22px;
+  font-size: 14px;
 }
 
 .card .font2 {
   color: black;
   font-weight: 400;
-  font-size: 20px;
+  font-size: 14px;
 }
 
 .card .logo {
-  width: 423px;
+  width: 330px;
   height: 132px;
   object-fit: fill;
   border-radius: 25px;
@@ -99,4 +102,56 @@
 .card .info {
   height: 100%;
   width: 85%;
+}
+
+.hotelsTitle {
+  margin-top: 30px;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 25px;
+  color: #000000;
+}
+
+.itineraryDate {
+  margin-top: 13px;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 22px;
+  color: #000000;
+}
+
+.itineraryTitle {
+  margin-top: 30px;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 25px;
+  color: #000000;
+}
+
+.budgetWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.expenseButton {
+  /* background-color: #797baa;
+    color: white;
+    font-size: 15;
+    border-radius: 100;
+    border: none;
+    width: 10;
+    height: 49;
+    padding: 50px; */
+  /* position: absolute; */
+  width: 170px;
+  height: 46px;
+  border: none;
+  background: #43468a;
+  color: white;
+  border-radius: 100px;
 }

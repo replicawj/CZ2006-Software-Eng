@@ -1,0 +1,7 @@
+.empty {
+  height: 200px;
+  color: grey;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

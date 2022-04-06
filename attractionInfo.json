@@ -1,0 +1,90 @@
+[
+  {
+    "name": "Gardens by the Bay",
+    "price": "12",
+    "rating": "4.8",
+    "info": "Visit the Cloud Forest and feel refreshed by the mist coming from the world's tallest indoor waterfall; Plunge into the fascinating world of plant and animal kingdom in National Geographic latest Weird But True exhibition! Precious Peonies is on display at Gardens by the Bay from 9 April to 3 May 2022! The inaugural Precious Peony floral display showcases the beauty of the 'King of Flowers'. Amidst a landscape of vibrant ornamental peonies from China, Japan and the Netherlands, visitors will also experience the rich depictions of the peony in Chinese cultural artefacts. These include an antique Peranakan blackwood bench inlaid with mother-of-pearl on loan from the Asian Civilisations Museum, a rare iron-splash glazed blackware vase that is over 700 years old contributed by the Society of Chinese Ceramics Studies, and intricate Peranakan hand-beaded slippers from The Intan",
+    "address": "18 Marina Gardens Drive",
+    "link": "https://www.klook.com/en-SG/activity/127-gardens-by-the-bay-singapore/"
+  },
+  {
+    "name": "S.E.A. Aquarium One-Day Ticket",
+    "price": "30",
+    "rating": "4.7",
+    "info": "S.E.A. Aquarium at Resorts World Sentosa is one of the world’s largest aquariums and home to more than 100,000 marine life representing 1,000 species in more than 45 diverse habitats See exhibits close to 80 threatened species including the manta ray, Napoleon wrasse and a variety of corals that mirror a pristine aquatic environment",
+    "address": "S.E.A. Aquarium, 8 Sentosa Gateway, Sentosa Island",
+    "link": "https://www.klook.com/en-SG/activity/119-sea-aquarium-singapore/"
+  },
+  {
+    "name": "Sentosa Luge Ticket: Skyline Luge & Skyride",
+    "price": "23",
+    "rating": "4.8",
+    "info": "Enjoy an exciting ride through various slopes, corners, and tunnels at Skyline Luge in Sentosa Choose your adventure between 4 thrilling tracks: Kuppu Kuppu Trail, Expedition Trail, Jungle Trail, and Dragon Trail Check out a night Luge experience as you ride down tracks designed with vibrant colors to light the evening Fly above Sentosa onboard the Sentosa Skyride, a 4-seater chairlift for views of the Island and South China Sea",
+    "address": "45 Siloso Beach Walk",
+    "link": "https://www.klook.com/en-SG/activity/132-skyline-luge-singapore/"
+  },
+  {
+    "name": "ArtScience Museum at Marina Bay Sands Ticket",
+    "price": "19",
+    "rating": "4.6",
+    "info": "Have an immersive, educational experience and learn about art, space, technology, and more at ArtScience Museum at Marina Bay Sands The building’s form is made up of 10 ‘fingers’ anchored by a unique round base in the middle Fall in love with this experiential museum igniting all of your senses through exhibitions of light, art, science, and more!",
+    "address": "6 Bayfront Ave",
+    "link": "https://www.klook.com/en-SG/activity/2501-marina-bay-sands-artscience-museum-singapore/"
+  },
+  {
+    "name": "Singapore Zoo Tickets",
+    "price": "48",
+    "rating": "4.7",
+    "info": "Get your Singapore Zoo tickets and see over 300 species from elevated platforms, glass observatories, and more! Travel aboard a guided tram (included in the Senior ticket) to explore Singapore Zoo’s 6 different zones and listen to the commentary along the way Get the chance to feed different animals like elephants, giraffes, goats, and white rhinoceroses",
+    "address": "80 Mandai Lake Road",
+    "link": "https://www.klook.com/en-SG/activity/141-singapore-zoo-singapore/"
+  },
+  {
+    "name": "River Wonders Singapore Ticket",
+    "price": "40",
+    "rating": "4.6",
+    "info": "Inspired by the mighty rivers of the world, Singapore's Mandai River Wonders is Asia’s first and only river themed wildlife park Get an up-close look at the Iconic Giant Pandas at the Yangtze River zone See the fish exhibit at the Congo River and observe ancient-looking creatures at the Nile-inspired River of Life Admire the vibrant colors of various fish and ancient-looking creatures as you wander the Mandai River Wonders",
+    "address": "80 Mandai Lake Road",
+    "link": "https://www.klook.com/en-SG/activity/124-singapore-river-safari-singapore/"
+  },
+  {
+    "name": "Night Safari Singapore Ticket With Tram Ride",
+    "price": "55",
+    "rating": "4.4",
+    "info": "Go on an exciting adventure at the world’s first nocturnal wildlife park with a memorable trip to Night Safari Enjoy flexibility and visit the park at your own leisure with this convenient open dated ticket Join closer encounters with the wildlife at the 4 trails: Fishing Cat, Leopard, East Lodge, and Wallaby See otters, civets, and other animals show off their talents during the famous Creatures of the Night showMeet the Night Safari animals of with exciting tram rides through 7 geographical regions",
+    "address": "80 Mandai Lake Road",
+    "link": "https://www.klook.com/en-SG/activity/3928-singapore-night-safari-singapore/"
+  },
+  {
+    "name": "Science Centre Singapore, Butterflies Up-Close, Omni Theatre",
+    "price": "12",
+    "rating": "4.6",
+    "info": "Learn with your family at Science Centre Singapore, acclaimed as one of the top science centres in the world. Explore this learning institution and discover the different branches of science that will inspire the next generation of kids Science Centre’s Highlights! Professor Crackitts Light Fantastic Mirror Maze & The Mind’s Eye Exhibition! Butterflies Up-Close: Get up close with butterflies @ Singapore’s first indoor butterfly sanctuary! See what different butterfly species go through, from an egg to a beautiful winged adult Get set for an eye-opening experience @ Omni-Theatre Fulldome Movie with crystal-clear images on a 23m wide dome screen, crisp surround sound and specially designed seating!",
+    "address": "15 Science Centre Road",
+    "link": "https://www.klook.com/en-SG/activity/1347-science-centre-singapore-omni-theatre-movie-singapore/"
+  },
+  {
+    "name": "Marina Bay Sands Skypark Observation Deck or Sampan Ride",
+    "price": "10",
+    "rating": "4.7",
+    "info": "Soak in panoramic views of Singapore's iconic skyline at the Marina Bay Sands Skypark Observation Deck Marvel at the city’s popular attractions like Gardens by the Bay and see the sculptures of the Supertree Grove While 200 meters above the ground, capture stunning photos of this large observation deck perched above three towers",
+    "address": "Marina Bay Sands, The Shoppes",
+    "link": "https://www.klook.com/en-SG/activity/10552-marina-bay-sands-skypark-observation-deck-admission-ticket-singapore/"
+  },
+  {
+    "name": "Sentosa 4D Adventureland",
+    "price": "30",
+    "rating": "4.1",
+    "info": "Immerse in a 4D movie experience with 'Journey 2: The Mysterious Island",
+    "address": "51B Imbiah Road, Sentosa",
+    "link": "https://www.klook.com/en-SG/activity/136-sentosa-4d-adventureland-singapore/"
+  },
+  {
+    "name": "Jurong Bird Park Admission Ticket",
+    "price": "36",
+    "rating": "4.6",
+    "info": "Book your Jurong Bird Park ticket now and be amazed by the nine-storey Lory Loft aviary, the open Flamingo Lake, a 30m waterfall, and more",
+    "address": "2 Jurong Hill",
+    "link": "https://www.klook.com/en-SG/activity/136-sentosa-4d-adventureland-singapore/"
+  }
+]

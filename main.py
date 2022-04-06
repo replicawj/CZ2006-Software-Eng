@@ -24,7 +24,7 @@ def flightsPage():
 
     data = response.json()
     #print(data)
-    print(data['prices'])
+    #print(data['prices'])
     data = data['prices']
 
     return(data)
@@ -41,6 +41,15 @@ def hotelRecco():
 
 hotelReccoCard = hotelRecco()
 
+### Attraction API -wj ###
+def attractionPage():
+    g = open('attractionInfo.json')
+
+    hotelData = json.load(g)
+
+    return (hotelData)
+
+attractionData = attractionPage()
 
 
 
@@ -68,13 +77,13 @@ def attractions():
     no_adults = [0,1,2,3,4,5,6,7,8,9,10]
     no_children = [0,1,2,3,4,5,6,7,8,9,10]
 
-    return render_template("attractions.html", no_adults = no_adults, no_children = no_children)
+    return render_template("attractions.html", no_adults = no_adults, no_children = no_children, result = attractionData)
 
 @app.route('/attractionsResult')
 def attractionsResult():
     no_adults = [0,1,2,3,4,5,6,7,8,9,10]
     no_children = [0,1,2,3,4,5,6,7,8,9,10]
-    return render_template("attractionsResult.html", no_adults = no_adults, no_children = no_children)
+    return render_template("attractionsResult.html", no_adults = no_adults, no_children = no_children, result = attractionData)
 
 @app.route('/flights')
 def flights():
@@ -104,21 +113,36 @@ def hotelsResult():
 
 @app.route('/transport')
 def transport():
-    transportMode = ['Mode of Transport:', 'Car', 'Bus', "Walk", "Taxi"]
+    transportMode = ['Mode of Transport:', 'Car', 'Bus', "Walk"]
     return render_template("transport.html", transportMode=transportMode)
 
-@app.route('/account')
+@app.route('/account', methods=['GET', 'POST'])
 def account():
+
+    if request.method == 'POST':
+        print(request.form)
+        # planName = request.form.get("planName")
     return render_template("account.html")
+
+
+@app.route('/plans')
+def plans():
+    return render_template("plans.html", result=flightsData)
+
+
+@app.route('/emptyPlan')
+def emptyPlan():
+    return render_template("emptyPlan.html")
+
 
 @app.route('/settings')
 def settings():
     return render_template("settings.html")
 
+
 @app.route('/about')
 def about():
     return render_template("about.html")
-
 
 
 if __name__ == "__main__":

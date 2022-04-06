@@ -84,29 +84,29 @@
                   class="col form-control border-0 mr-1"
                   id="paxSelection"
                   name = "adults"
-                 
+
                 >
                   {% for adults in no_adults %}
                       <option value="{{adults}}">{{adults}}</option>"
                   {% endfor %}
                 </select>
-  
+
                 <h1 class = "choiceFont my-auto">Children:</h1>
-  
-  
+
+
                 <select
                 name="no_children"
                 class="col form-control border-0 ml-1"
                 id="paxSelection"
                 name = "children"
-               
+
                 >
                 {% for child in no_children %}
                     <option value="{{child}}">{{child}}</option>"
                 {% endfor %}
                 </select>
-                
-              
+
+
               </span>
 
         </div>
@@ -125,12 +125,11 @@
     <ul class = "hotelsList">
       {% for result in result %}
       <li class = "flex-item mx-auto row">
-        <!--Fake it so whatever user input as check-in and check-out date is displayed here, aka all hotel availble-->
-        <!-- only 'real' stuff user can do is filter via hotel name and price-->
-        <div class= "col d-flex justify-content-center align-items-center"> 
+
+        <div class= "col d-flex justify-content-center align-items-center">
           <!--retrieve picture link from DB based on the name of the hotel-->
           <img src= "https://www.hospitalitynet.org/picture/xxl_153051374.jpg?t=1401371218" class="logo" />
- 
+
         </div>
 
         <!-- old code-->
@@ -145,7 +144,6 @@
         <div class = "col-6 d-flex align-items-center">
           <div>
             <div class = "font2">{{result.name}}</div>
-            <div class = "font2">{{result.origin}} - {{result.destination}}</div>
             <div class = "font2">{{result.address.street}} {{result.address.postalcode}}</div>
             <div class = "font2">{{result.phone}}</div>
 
@@ -155,9 +153,9 @@
         <div class = "col my-auto">
           <div class = "d-flex flex-wrap justify-content-center">
             <div class = "font3">
-              $SGD{{result.price}}
+              $SGD{{result.price}}/night
             </div>
-            
+
             <a class = "addButton mt-2" id = "addButton" type="submit">
               <div class = "searchText mx-auto my-auto">
                 Add to Plan
@@ -169,6 +167,88 @@
 
     </ul>
 
+    <!-- Modal -->
+      <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">Add New Plan</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="planNameWrapper">
+                Plan Name:
+
+                <div class = "col d-flex flex-wrap">
+
+                  <!-- <input
+                    type="search"
+                    class="form-control form-rounded"
+                    id="searchHotels"
+                    name = "searchHotels"
+                    placeholder="Enter plan name"
+                  /> -->
+
+                  <select
+                    name="plan_no"
+                    class="form-control form-rounded"
+                    id="plan_no"
+                    name = "plan_no"
+                  >
+                  {% for plan_no in plan_no %}
+                      <option value="{{plan_no}}">{{plan_no}}</option>"
+                  {% endfor %}
+                  </select>
+
+                </div>
+
+
+              </div>
+
+              <!-- <div class="basicWrapper">
+                <div class="planNameWrapper">
+                  Start Date:
+
+                  <div class = "col d-flex flex-wrap">
+                    <input
+                      type="date"
+                      class="form-control form-rounded"
+                      id="dateSelection"
+                      name = "dateSelection"
+                      placeholder="Select Date"
+                    />
+
+                  </div>
+                </div>
+              </div> -->
+
+              <!-- <div class="basicWrapper">
+                <div class="planNameWrapper">
+                  End Date:
+
+                  <div class = "col d-flex flex-wrap">
+                    <input
+                      type="date"
+                      class="form-control form-rounded"
+                      id="dateSelection"
+                      name = "dateSelection"
+                      placeholder="Select Date"
+                    />
+
+                  </div>
+                </div>
+              </div> -->
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" id = "closeButton" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" id="saveButton">Save</button>
+            </div>
+          </div>
+        </div>
+      </div>
 
 
 

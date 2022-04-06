@@ -11,8 +11,8 @@
 <body>
     {% extends "template.html" %}
     {% block content %}
-    
-      
+
+
     <div class="attractionsImageWrapper">
       <img src ="{{ url_for('static',filename='assets/img/attractionsHeaderImage.png')}}" width = 100%/>
       <div class = "attractionsTitle">Attractions</div>
@@ -27,7 +27,7 @@
               name = "searchAttraction"
               placeholder="Search Attraction"
             />
-  
+
         </div>
 
         <div class = "col d-flex flex-wrap align-content-center justify-content-center">
@@ -42,8 +42,8 @@
         </div>
 
         <div class = " col d-flex flex-wrap align-content-center justify-content-center">
-    
-            
+
+
             <input
               type="search"
               class="form-control form-rounded m-0"
@@ -51,7 +51,7 @@
               name = "dateSelection"
               placeholder="Total Pax:"
             />
-         
+
           <span class = "row d-flex flex-wrap align-items-center form-rounded px-4 mt-3">
             <h1 class = "choiceFont my-auto">Adults:</h1>
             <select
@@ -59,7 +59,7 @@
                 class="col form-control border-0 mr-1"
                 id="paxSelection"
                 name = "adults"
-               
+
               >
                 {% for adults in no_adults %}
                     <option value="{{adults}}">{{adults}}</option>"
@@ -74,18 +74,18 @@
               class="col form-control border-0 ml-1"
               id="paxSelection"
               name = "children"
-             
+
               >
               {% for child in no_children %}
                   <option value="{{child}}">{{child}}</option>"
               {% endfor %}
               </select>
-              
-            
+
+
             </span>
 
         </div>
-        
+
         <div class = "col-1 d-flex flex-wrap align-content-center mr-3">
           <a href="/attractionsResult" class = "searchButton" id = "searchButton" type="submit">
             <div class = "searchText mx-auto my-auto">
@@ -102,23 +102,19 @@
 
     <div>
       <div class="scrolling-wrapper">
-        <div class="card"><h2>Card</h2></div>
-        <div class="card"><h2>Card</h2></div>
-        <div class="card"><h2>Card</h2></div>
-        <div class="card"><h2>Card</h2></div>
-        <div class="card"><h2>Card</h2></div>
-        <div class="card"><h2>Card</h2></div>
-        <div class="card"><h2>Card</h2></div>
-        <div class="card"><h2>Card</h2></div>
-        <div class="card"><h2>Card</h2></div>
+        {% for result in result  %}
+        <div class="card">
+          <p>{{result.name}}</p>
+
+          <img src ="{{ url_for('static',filename='assets/img/pin.png')}}" width = 5%/>
+          <p>{{result.address}}</p>
+
+          <p>$SGD{{result.price}}</p>
+        </div>
+        {% endfor %}
+
       </div>
     </div>
-
-
-
-
-
-    
 
 
 

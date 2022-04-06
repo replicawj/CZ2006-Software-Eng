@@ -3,79 +3,75 @@
 <head>
   <meta charset="utf-8">
   <title>Transport</title>
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="{{ url_for('static',filename='css/transport.css')}}">
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/flights.css')}}">
 </head>
 
-<body>
+<body class = "backgroundSet">
     {% extends "template.html" %}
     {% block content %}
-    <!-- <br> -->
-    <!-- <h1> This is the transport page. </h1> -->
 
-    <div class = "transportImageWrapper">
+
+    <div class="ImageWrapper">
       <img src ="{{ url_for('static',filename='assets/img/transport.png')}}" width = 100%/>
-      <div class = "transportTitle">Transport</div>
+      <div class = "Title">Transport</div>
     </div>
-
     <div class= "searchWrapper">
       <div class = "searchBorder mx-auto row">
-        <div class = "col d-flex flex-wrap align-content-center justify-content-center">
-            <input
-              type="search"
-              class="form-control form-rounded"
-              id="leavingFrom"
-              name = "leavingFrom"
-              placeholder="Leaving From:"
-            />
-  
-        </div>
 
         <div class = "col d-flex flex-wrap align-content-center justify-content-center">
-      
-            <input
-              type="search"
-              class="form-control form-rounded m-0"
-              id="noOfNights"
-              name = "noOfNights"
-              placeholder="Going To:"
-            />
+
+          <input
+            type="search"
+            class="form-control form-rounded"
+            id="start_location"
+            name = "end_location"
+            placeholder="Leaving From:"
+          />
 
         </div>
 
-        <div class = "col d-flex flex-wrap align-content-center justify-content-center">
-    
-            <!-- <input
-              type="search"
-              class="form-control form-rounded m-0"
-              id="dateSelection"
-              name = "dateSelection"
-              placeholder="Mode of Transport"
-            /> -->
 
-            <select 
-              type="search"
-              class="col form-control form-rounded m-0"
-              id="dateSelection"
-              name = "dateSelection"
-              placeholder="Mode of Transport"
-            >
-              {% for mode in transportMode %}
-                  <option value="{{mode}}">{{mode}}</option>"
-              {% endfor %}
-            </select>
+        <div class = "col d-flex flex-wrap align-content-center justify-content-center">
+
+          <input
+            type="search"
+            class="form-control form-rounded"
+            id="end_location"
+            name = "end_location"
+            placeholder="To:"
+          />
 
         </div>
-        
+
+        <div class = "col d-flex flex-wrap align-content-center justify-content-center">
+
+          <select
+            name="flight_class"
+            class="form-control form-rounded "
+            id="transportMode"
+            name = "transportMode"
+          >
+          {% for choice in transportMode %}
+              <option value="{{choice}}">{{choice}}</option>"
+          {% endfor %}
+          </select>
+
+        </div>
+
         <div class = "col-1 d-flex flex-wrap align-content-center mr-3">
-          <a href="/hotelsResult" class = "btn btn-primary" id = "searchButton" type="submit">
-            <div class = "searchText">
+          <a class = "btn btn-primary" id = "searchButton" type="submit" href="{{ url_for('flightsResult') }}">
+            <div class = "searchText mx-auto my-auto">
               Search
             </div>
           </a>
         </div>
       </div>
     </div>
+
+
+
 
 
     {% endblock %}

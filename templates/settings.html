@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>Account</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/account.css')}}">
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/settings.css')}}">
+</head>
+
+<body>
+    {% extends "template.html" %}
+    {% block content %}
+
+    <nav class="navbar bg-light" id = "sideBarWrapper">
+
+        <!-- Links -->
+        <ul class="navbar-nav">
+            <li class="nav-item" id="imageWrapper">
+                <img
+                    src="{{ url_for('static',filename='assets/img/userIcon.png')}}"
+                />
+            </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/account">My account</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="plans">My plans</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/settings">Settings</a>
+          </li>
+        </ul>
+      
+    </nav>
+
+    <div class="welcomeWrapper">
+
+        <div class = "welcomeText">
+            Your <br> Profile
+        </div>
+    </div>
+
+    <!-- <div class="changePasswordWrapper2">
+
+    </div> -->
+
+    <div class="settingsWrapper">
+
+      <div class="changePasswordWrapper2">
+        <div class="emailText">
+          Email:
+  
+          <div class="form-floating" id = '1'>
+            <input
+              type="email"
+              class="form-control form-rounded mb-2"
+              id="floatingInput"
+              name = "floatingInput"
+              placeholder="name@example.com"
+            />
+          </div>
+        </div>
+  
+        <div class="passwordText">
+          Password:
+          <div class="form-floating" id = '2'>
+            <input
+              type="password"
+              class="form-control form-rounded mt-2"
+              id="floatingPassword"
+              name = "floatingPassword"
+              placeholder="Password"
+            />
+          </div>
+        </div>
+        <button type="submit" class="confirmButton">
+          Confirm
+        </button>
+
+      </div>
+
+
+      <div class="changePasswordWrapper">
+        Change Password:
+      </div>
+
+      <div class="changePasswordWrapper2">
+
+        <div class="passwordText">
+          New Password:
+          <div class="form-floating" id = '2'>
+            <input
+              type="password"
+              class="form-control form-rounded mt-2"
+              id="floatingPassword"
+              name = "floatingPassword"
+              placeholder="Password"
+            />
+          </div>
+        </div>
+  
+        <div class="passwordText">
+          Confirm:
+          <div class="form-floating" id = '3'>
+            <input
+              type="password"
+              class="form-control form-rounded mt-2"
+              id="floatingPassword"
+              name = "floatingPassword"
+              placeholder="Password"
+            />
+          </div>
+        </div>
+  
+        <button type="submit" class="confirmButton">
+          Save
+        </button>
+
+      </div>
+
+    </div>
+
+    {% endblock %}
+</body>

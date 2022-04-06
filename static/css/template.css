@@ -26,21 +26,18 @@ h5 {
   font-size: 25px;
   font-weight: 600;
 }
+.topHeader .blabla{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
 .topHeader .signup {
   margin-right: 30px;
   font-size: 17px;
   color: #797baa;
 }
 button {
-  /* background-color: #797baa;
-    color: white;
-    font-size: 15;
-    border-radius: 100;
-    border: none;
-    width: 10;
-    height: 49;
-    padding: 50px; */
-  /* position: absolute; */
+
   width: 100px;
   height: 40px;
   left: 348px;

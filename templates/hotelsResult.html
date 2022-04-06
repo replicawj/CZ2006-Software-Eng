@@ -120,11 +120,13 @@
         </div>
 
         <div class = "col-1 d-flex flex-wrap align-content-center mr-3">
-          <a href="/hotelsResult" class = "btn btn-primary" id = "searchButton" onclick = "myfunction()">
-            <div class = "searchText my-auto mx-auto">
-              Search
-            </div>
-          </a>
+        
+            <a href="/hotelsResult" class = "btn btn-primary" id = "searchButton" onclick = "myfunction()">
+              <div class = "searchText my-auto mx-auto">
+                Search
+              </div>
+            </a>
+          
         </div>
       </div>
     </div>
@@ -166,11 +168,26 @@
               $SGD{{result.price}}
             </div>
             
+<<<<<<< Updated upstream
             <a class = "addButton mt-2" id = "addButton" type="submit">
               <div class = "searchText mx-auto my-auto">
                 Add to Plan
               </div>
             </a>
+=======
+            <!-- <a class = "addButton mt-2" id = "addButton" type="submit">
+              <div class = "searchText mx-auto my-auto">
+                Add to Plan
+              </div>
+            </a> -->
+            <form action = "addtoplan" method = "post">
+              <a class = "addButton mt-2" id = "addButton" type="submit" data-toggle="modal" data-target="#exampleModalCenter">
+                <div class = "searchText mx-auto my-auto">
+                  Add to Plan
+                </div>
+              </a>
+            </form>
+>>>>>>> Stashed changes
           </div>
       </li>
       {% endfor %}

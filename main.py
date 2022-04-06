@@ -66,7 +66,7 @@ hotelReccoCard = hotelRecco()
 # print(hotelsFunction())
 
 app = Flask(__name__)
-print(hotelsFunction())
+# print(hotelsFunction())
 
 
 @app.route('/')  # landing page
@@ -155,7 +155,17 @@ def hello(temp2):
     no_adults = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     no_children = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     plan_no = ["Plan Number:", 1, 2]
-    return render_template("hotelsResult.html", no_adults=no_adults, no_children=no_children, result=hotelReccoCard, plan_no=plan_no, hotelName=temp2)
+    finalList = []
+    bigData = hotelRecco()
+    # hotelsList2 = hotelsFunction()
+    for i in range(len(bigData)):
+        hotelIndex = bigData[i]
+        hotelName = hotelIndex["name"]
+        for j in range(len(randomList)):
+            if randomList[j] == hotelName:
+                finalList.append(bigData[i])
+
+    return render_template("hotelsResult.html", no_adults=no_adults, no_children=no_children, result=hotelReccoCard, plan_no=plan_no, finalList=finalList)
 
 
 @app.route('/hotelsResult')

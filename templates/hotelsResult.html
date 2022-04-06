@@ -120,7 +120,7 @@
         </div>
 
         <div class = "col-1 d-flex flex-wrap align-content-center mr-3">
-          <a href="/hotelsResult" class = "btn btn-primary" id = "searchButton" onclick = "myfunction()">
+          <a href="/hotelsResult" class = "btn btn-primary" id = "searchButton">
             <div class = "searchText my-auto mx-auto">
               Search
             </div>
@@ -178,11 +178,14 @@
               </div>
             </a> -->
             
-            <a class = "addButton mt-2" id = "addButton" type="submit" data-toggle="modal" data-target="#exampleModalCenter">
-              <div class = "searchText mx-auto my-auto">
-                Add to Plan
-              </div>
-            </a>
+            <input type="submit" name="addPlan" value="{{hotelName}}" class="random">
+              <a class = "addButton mt-2" id = "addButton" type="submit" data-toggle="modal" data-target="#exampleModalCenter">
+                <!-- <input type ="submit" name="addPlan" value="{{hotelName}}"> -->
+                <div class = "searchText mx-auto my-auto">
+                  Add to Plan
+                </div>
+              </a>
+            </input>
           </div>
       </li>
       {% endfor %}
@@ -194,7 +197,7 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLongTitle">Add New Plan</h5>
+              <h5 class="modal-title" id="exampleModalLongTitle">{{hotelName}}</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>

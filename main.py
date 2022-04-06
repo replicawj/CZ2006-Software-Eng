@@ -118,23 +118,44 @@ def flightsResult():
     # return render_template("flightsResult.html", result = flightsData)
 
 
+randomList = []
+
+
 @app.route('/hotels', methods=["GET", "POST"])
 def hotels():
     no_adults = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     no_children = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
-    if request.method == 'GET':
-        hotelInput = request.form.get("searchHotels")
-        print(hotelInput)
+    if request.method == 'POST':
+        temp = request.form["searchHotels"]
+        bigData = hotelRecco()
+        hotelsList2 = hotelsFunction()
+        for i in range(len(hotelsList2)):
+            hotelData = hotelsList2[i]
+            if temp == hotelData:
+                randomList.append(hotelData)
+                return redirect(url_for("hello", temp2=randomList))
+            else:
+                return render_template("hotels.html", no_adults=no_adults, no_children=no_children, result=hotelReccoCard)
 
-    hotelsList2 = hotelsFunction()
+    else:
+        return render_template("hotels.html", no_adults=no_adults, no_children=no_children, result=hotelReccoCard)
 
-    for i in range(len(hotelsList2)):
-        temp = hotelsList2[i]
-        if hotelInput == temp:
-            return redirect(url_for('hotelsResult'), hotelInput=hotelInput)
+        # hotelInput = request.form.get("searchHotels")
+        # hotelsList2 = hotelsFunction()
 
-    return render_template("hotels.html", no_adults=no_adults, no_children=no_children, result=hotelReccoCard)
+        # for i in range(len(hotelsList2)):
+        #     temp = hotelsList2[i]
+        #     if hotelInput == temp:
+        #         return redirect(url_for('hotelsResult'), hotelInput=hotelInput)
+
+
+@app.route("/<temp2>")
+def hello(temp2):
+    no_adults = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    no_children = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    plan_no = ["Plan Number:", 1, 2]
+    return render_template("hotelsResult.html", no_adults=no_adults, no_children=no_children, result=hotelReccoCard, plan_no=plan_no, hotelName=temp2)
 
 
 @app.route('/hotelsResult')

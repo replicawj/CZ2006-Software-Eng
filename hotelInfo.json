@@ -21,6 +21,27 @@
         }
     },
     {
+        "name": "Marina Bay Sands",
+        "price": 320,
+        "totalrooms": 2561,
+        "country": "Singapore",
+        "phone": "+65-66888866",
+        "address": {
+            "street": "10 Bayfront Avenue",
+            "city": "Singapore",
+            "state": null,
+            "postalcode": 18956
+        },
+        "location": {
+            "latitude": 1.2832096,
+            "longitude": 103.8606548
+        },
+        "social": {
+            "instagram": "https://www.instagram.com/marinabaysands/",
+            "facebook": "https://www.facebook.com/marinabaysands/"
+        }
+    },
+    {
         "name": "Hotel Boss",
         "price": 70,
         "totalrooms": 1500,

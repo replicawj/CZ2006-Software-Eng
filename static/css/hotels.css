@@ -242,3 +242,7 @@
 .basicWrapper {
   margin-top: 20px;
 }
+
+.random {
+  display: none;
+}

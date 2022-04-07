@@ -12,7 +12,7 @@ if (sessionStorage.getItem("email") == null){ //not logged in
     document.getElementById("loginButton").innerHTML = null;
 
     //change login button to display user profile pic.
-    document.getElementById("loginButton").innerHTML = "<img id=\"profilePic\" src=\"static/assets/img/userIcon.png/\" style=\"width:60px;height:60px;\"  onclick=\"goToAccount()\"> ";
+    document.getElementById("loginButton").innerHTML = "<img id=\"profilePic\"  src=\"static/assets/img/userIcon.png/\"  class =\"mr-3\"  style=\"width:60px;height:60px;\"  onclick=\"goToAccount()\"> ";
     
 }
 

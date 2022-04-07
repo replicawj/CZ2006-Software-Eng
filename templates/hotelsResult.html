@@ -177,15 +177,24 @@
                 Add to Plan
               </div>
             </a> -->
-            
-            <input type="submit" name="addPlan" value="{{hotelName}}" class="random">
-              <a class = "addButton mt-2" id = "addButton" type="submit" data-toggle="modal" data-target="#exampleModalCenter">
-                <!-- <input type ="submit" name="addPlan" value="{{hotelName}}"> -->
-                <div class = "searchText mx-auto my-auto">
-                  Add to Plan
-                </div>
-              </a>
-            </input>
+            <div class = "a" id = "ai">
+              <input type="submit" name="addPlan" value="{{hotelName}}" class="random">
+                <a class = "addButton mt-2" id = "addButton" type="submit" data-toggle="modal" data-target="#exampleModalCenter">
+                  <!-- <input type ="submit" name="addPlan" value="{{hotelName}}"> -->
+                  <div class = "searchText mx-auto my-auto">
+                    Add to Plan
+                  </div>
+                </a>
+              </input>
+            </div>
+            <script>
+              //nuke the buttons if the user is not submit
+              if (sessionStorage.getItem("email") == null){ //not logged in
+                  const buttons = document.querySelectorAll('.a');
+                  buttons.forEach(button =>{button.remove()});
+                }
+      
+            </script>
           </div>
       </li>
       {% endfor %}
@@ -267,10 +276,12 @@
               </div> -->
 
             </div>
+            
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" id = "closeButton" data-dismiss="modal">Close</button>
               <button type="button" class="btn btn-primary" id="saveButton">Save</button>
             </div>
+          
           </div>
         </div>
       </div>

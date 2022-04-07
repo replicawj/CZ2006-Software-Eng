@@ -1,8 +1,8 @@
 if (sessionStorage.getItem("email") == null){ //not logged in
     //alert("not logged in");
     sessionStorage.setItem("loggedIn", false);
-    document.getElementById("signupButton").innerHTML = "<a class = \"signup ml-auto\" onclick=\"goToSignup()\">Signup</a>"
-    document.getElementById("loginButton").innerHTML = "<button  class = \"mr-5\" > <a class = \"text-white\" onclick=\"goToLogin()\"> Log in </a> </button>"
+    document.getElementById("signupButton").innerHTML = "<a class = \"signup\" onclick=\"goToSignup()\">Signup</a>"
+    document.getElementById("loginButton").innerHTML = "<button> <a class = \"text-white\" onclick=\"goToLogin()\"> Log in </a> </button>"
     //document.getElementById("loginButton").innerHTML = 
     //display_image();
     //alert("here");
@@ -15,8 +15,8 @@ if (sessionStorage.getItem("email") == null){ //not logged in
     document.getElementById("loginButton").innerHTML = null;
 
     //change login button to display user profile pic.
-    document.getElementById("signupButton").innerHTML = "<img id=\"profilePic\"  src=\"static/assets/img/userIcon.png/\"  class =\"mr-3\"  style=\"width:60px;height:60px;\"  onclick=\"goToAccount()\"> ";
-    document.getElementById("loginButton").innerHTML = "<button onclick=\"goToSignout()\" class = \"mr-5\"> <div class = \"searchText my-auto mx-auto\"> Logout </div> </button>"
+    document.getElementById("signupButton").innerHTML = "<img id=\"profilePic\"  src=\"static/assets/img/userIcon.png/\"  style=\"width:60px;height:60px;\"  onclick=\"goToAccount()\"> ";
+    document.getElementById("loginButton").innerHTML = "<button onclick=\"goToSignout()\"> <div class = \"searchText my-auto mx-auto\"> Logout </div> </button>"
 }
 
 function goToAccount(){

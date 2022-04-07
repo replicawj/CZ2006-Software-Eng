@@ -10,6 +10,13 @@
 </head>
 
 <body>
+    <script src = "static/javascript/settings.js"></script>
+    <script>
+      let loginData = {
+        email : sessionStorage.getItem("email"),
+        password : sessionStorage.getItem("password")
+    }
+    </script>
     {% extends "template.html" %}
     {% block content %}
 
@@ -51,7 +58,7 @@
       <div class="changePasswordWrapper2">
         <div class="emailText">
           Email:
-  
+          <!--
           <div class="form-floating" id = '1'>
             <input
               type="email"
@@ -61,10 +68,15 @@
               placeholder="name@example.com"
             />
           </div>
+          -->
+        <div id="email"> email </div>
+        <script>document.getElementById("email").innerHTML = loginData.email</script>
         </div>
-  
+
+        
         <div class="passwordText">
           Password:
+          <!--
           <div class="form-floating" id = '2'>
             <input
               type="password"
@@ -74,10 +86,15 @@
               placeholder="Password"
             />
           </div>
+          -->
+          <div id="password"> password </div>
+          <script>document.getElementById("password").innerHTML = loginData.password</script>
         </div>
+        <!--
         <button type="submit" class="confirmButton">
           Confirm
         </button>
+        -->
 
       </div>
 
@@ -88,14 +105,15 @@
 
       <div class="changePasswordWrapper2">
 
+        <!-- start form here -->
         <div class="passwordText">
           New Password:
           <div class="form-floating" id = '2'>
             <input
               type="password"
               class="form-control form-rounded mt-2"
-              id="floatingPassword"
-              name = "floatingPassword"
+              id="newPassword"
+              name = "floatingPassword1"
               placeholder="Password"
             />
           </div>
@@ -107,14 +125,14 @@
             <input
               type="password"
               class="form-control form-rounded mt-2"
-              id="floatingPassword"
+              id="verifyPassword"
               name = "floatingPassword"
               placeholder="Password"
             />
           </div>
         </div>
   
-        <button type="submit" class="confirmButton">
+        <button type="submit" class="confirmButton" id="changePasswordButton" onclick = "changePassword()">
           Save
         </button>
 
@@ -123,4 +141,24 @@
     </div>
 
     {% endblock %}
+
+    <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-firestore.js"></script>
+    <script>
+	    // Initialize Firebase
+	    var config = {
+		    apiKey: "AIzaSyDFOHLm7znnFt-n_HeemWcIhhh_9wlk4qo",
+			authDomain: "travello-fd292.firebaseapp.com",
+			databaseURL: "https://travello-fd292-default-rtdb.asia-southeast1.firebasedatabase.app",
+			projectId: "travello-fd292",
+			storageBucket: "travello-fd292.appspot.com",
+			messagingSenderId: "771482085344",
+			appId: "1:771482085344:web:f596fe26914b66601f6d85",
+			measurementId: "G-RN0N391VX2"
+	    };
+	    firebase.initializeApp(config);
+	    const db = firebase.firestore(); //reference to database and store to const db
+	    db.settings({ timestampsInSnapshots: true }); 
+    </script>
+    
 </body>

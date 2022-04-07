@@ -6,8 +6,6 @@ from datetime import datetime
 from flask import Flask, render_template, request, redirect, url_for
 
 ### Flights API -wj ###
-
-
 def flightsPage():
     url = "https://travelpayouts-travelpayouts-flight-data-v1.p.rapidapi.com/v2/prices/nearest-places-matrix"
 
@@ -27,7 +25,7 @@ def flightsPage():
 
     data = response.json()
     # print(data)
-    print(data['prices'])
+    # print(data['prices'])
     data = data['prices']
 
     return(data)
@@ -65,6 +63,19 @@ def hotelRecco():
 hotelReccoCard = hotelRecco()
 # print(hotelsFunction())
 
+
+### Attraction API -wj ###
+def attractionPage():
+    g = open('attractionInfo.json')
+
+    hotelData = json.load(g)
+
+    return (hotelData)
+
+attractionData = attractionPage()
+
+
+
 app = Flask(__name__)
 # print(hotelsFunction())
 
@@ -93,14 +104,14 @@ def attractions():
     no_adults = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     no_children = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
-    return render_template("attractions.html", no_adults=no_adults, no_children=no_children)
+    return render_template("attractions.html", no_adults=no_adults, no_children=no_children, result = attractionData)
 
 
 @app.route('/attractionsResult')
 def attractionsResult():
     no_adults = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     no_children = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-    return render_template("attractionsResult.html", no_adults=no_adults, no_children=no_children)
+    return render_template("attractionsResult.html", no_adults=no_adults, no_children=no_children, result = attractionData)
 
 
 @app.route('/flights')

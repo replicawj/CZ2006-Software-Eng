@@ -13,3 +13,5 @@ In this project I use Python, Bootstrap and Flask to create a web application an
 - Itsdangerous
 - Numpy
 - Pandas
+- jinja2
+- werkzeug

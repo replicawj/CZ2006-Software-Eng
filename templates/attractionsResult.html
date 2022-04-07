@@ -12,7 +12,7 @@
     {% extends "template.html" %}
     {% block content %}
     <script src = "static/javascript/attractions.js"></script>
-      
+
     <div class="attractionsImageWrapper">
       <img src ="{{ url_for('static',filename='assets/img/attractionsHeaderImage.png')}}" width = 100%/>
       <div class = "attractionsTitle">Attractions</div>
@@ -27,7 +27,7 @@
               name = "searchAttraction"
               placeholder="Search Attraction"
             />
-  
+
         </div>
 
         <div class = "col d-flex flex-wrap align-content-center justify-content-center">
@@ -42,7 +42,7 @@
         </div>
 
         <div class = " col d-flex flex-wrap align-content-center justify-content-center">
-         
+
             <span class = "form-rounded px-4 d-flex align-items-center">
               <h2 class = "choiceFont my-auto ">Total:</h2>
               <input
@@ -61,34 +61,34 @@
                     id="adults"
                     name = "adults"
                     onchange = "cal_pax()"
-                   
+
                   >
                     {% for adults in no_adults %}
                         <option value="{{adults}}">{{adults}}</option>"
                     {% endfor %}
                   </select>
-    
+
                   <h1 class = "choiceFont my-auto">Children:</h1>
-    
-    
+
+
                   <select
                   name="no_children"
                   class="col form-control border-0 ml-1"
                   id="children"
                   name = "children"
                   onchange = "cal_pax()"
-                 
+
                   >
                   {% for child in no_children %}
                       <option value="{{child}}">{{child}}</option>"
                   {% endfor %}
                   </select>
-                  
-                
+
+
                 </span>
 
         </div>
-        
+
         <div class = "col-1 d-flex flex-wrap align-content-center mr-3">
           <a href="/attractionsResult" class = "searchButton" id = "searchButton" type="submit">
             <div class = "searchText mx-auto my-auto">
@@ -100,18 +100,50 @@
     </div>
 
     <ul class = "attractionsList">
-      <li class = "flex-item"></li>
-      <li class = "flex-item"></li>
-      <li class = "flex-item"></li>
-      <li class = "flex-item"></li>
-      <li class = "flex-item"></li>
+      {% for result in result %}
+      <li class = "flex-item mx-auto row">
+
+
+
+        <!-- old code-->
+        <!--
+        <p style="color:black;">{{result.name}}</p>
+        <p style="color:black;">{{result.address.street}} {{result.address.postalcode}}</p>
+        <p style="color:black;">{{result.phone}}</p>
+        <p style="color:black;">$SGD{{result.price}}</p>
+        -->
+        <!--checkin-checkout date-->
+
+        <div class = "col-6 d-flex align-items-center">
+          <div>
+            <div class = "font2">{{result.name}}</div>
+            <div class = "font2">{{result.rating}} <img src ="{{ url_for('static',filename='assets/img/rating.png')}}" width = 5%/> </div>
+            <div class = "font2">{{result.address}}</div>
+
+          </div>
+        </div>
+        <!--button to save to plan-->
+        <div class = "col my-auto">
+          <div class = "d-flex flex-wrap justify-content-center">
+            <div class = "font3">
+              $SGD{{result.price}}
+            </div>
+
+            <a class = "addButton mt-2" id = "addButton" type="submit">
+              <div class = "searchText mx-auto my-auto">
+                Add to Plan
+              </div>
+            </a>
+          </div>
+      </li>
+      {% endfor %}
     </ul>
 
 
 
 
 
-    
+
 
 
 

@@ -61,7 +61,7 @@ form.addEventListener('submit', (e) => {
     } else if (checkEmailExists(email)) {
 		alert("Account already exists");
 	} else {
-        alert("else");
+        //alert("else");
         db.collection('accounts').add({ //adds a document into the collection 'accounts'
         email: email,
         password: password

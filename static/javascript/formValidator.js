@@ -35,8 +35,6 @@ db.collection('accounts').get().then((snapshot) => { //get all documents from 'a
 
 const form = document.forms["addAccount"]; //form reference
 
-//var accountCreated = false;
-
 form.addEventListener('submit', (e) => {
     e.preventDefault(); //remove default because default will reload the page.
 
@@ -61,20 +59,17 @@ form.addEventListener('submit', (e) => {
     } else if (checkEmailExists(email)) {
 		alert("Account already exists");
 	} else {
-        //alert("else");
         db.collection('accounts').add({ //adds a document into the collection 'accounts'
-        email: email,
-        password: password
+        email: form.floatingInput.value,
+        password: form.floatingPassword.value
     });
 
     form.floatingInput.value = ''; //clear the form after submit
     form.floatingPassword.value = '';
     form.floatingVerifyPassword.value = '';
-    accountCreated = true;
     alert("Account Created!");
 	//document.location.href = "/login";
 
     }
-
-
 }); 
+

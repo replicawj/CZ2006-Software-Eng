@@ -11,6 +11,7 @@
 <body>
     {% extends "template.html" %}
     {% block content %}
+    <script src = "static/javascript/account.js"></script>
     <div class="wholeWrapper">
 
         <nav class="navbar bg-light" id = "sideBarWrapper">
@@ -38,7 +39,8 @@
         <div class="welcomeWrapper">
 
             <div class = "welcomeText">
-                Welcome Back, <br>himariang@gmail.com
+                Welcome Back, <div id="email"> <br>user@email.com </div>
+                <script> document.getElementById("email").innerHTML = sessionStorage.getItem("email") </script>
             </div>
         </div>
 

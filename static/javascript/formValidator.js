@@ -5,7 +5,7 @@ let loginData = {
     email : sessionStorage.getItem("email"),
     password : sessionStorage.getItem("password")
 }
-console.log(sessionStorage.getItem("password"));
+//console.log(sessionStorage.getItem("password"));
 
 //if sessionStorage.getItem("email") == NULL ....
 

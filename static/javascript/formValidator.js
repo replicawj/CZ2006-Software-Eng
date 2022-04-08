@@ -41,7 +41,7 @@ form.addEventListener('submit', (e) => {
     var email = form.floatingInput.value;
     var password = form.floatingPassword.value;
     var verifyPassword = form.floatingVerifyPassword.value;
-
+    
 
     if (email == "" && password == "") {
         alert("Please fill in the details");
@@ -66,6 +66,20 @@ form.addEventListener('submit', (e) => {
                     db.collection('accounts').doc(email).set( //set document ID as email input from user. Field is password.
                     { password : form.floatingPassword.value}
                     );
+                    db.collection('planner').doc(email).collection('Plan1').doc('date').set(
+                        {name: 'placeholder',
+                        price: 320}
+                    );
+                    db.collection('planner').doc(email).collection('Plan2').doc('date').set(
+                        {name: 'placeholder',
+                        price: 320}
+                    );
+                    
+                    
+                   
+
+    
+                    
                     alert("Account Created!");
 
                     form.floatingInput.value = ''; //clear the form after submit

@@ -55,19 +55,29 @@ form.addEventListener('submit', (e) => {
 
         } else if (form.floatingPassword.value != form.floatingVerifyPassword.value){
         alert("Password does not match");
+    
+        } else {
+            //var docRef = ;
+            db.collection('accounts').doc(email).get().then((doc) => { //find if document(account) exist
+                if (doc.exists) { //if exist
+                    //console.log("Document data:", doc.data());
+                    alert("Account already exists");
+                } else { //if no exist
+                    db.collection('accounts').doc(email).set( //set document ID as email input from user. Field is password.
+                    { password : form.floatingPassword.value}
+                    );
+                    alert("Account Created!");
 
-    } else if (checkEmailExists(email)) {
-		alert("Account already exists");
-	} else {
-        db.collection('accounts').add({ //adds a document into the collection 'accounts'
-        email: form.floatingInput.value,
-        password: form.floatingPassword.value
-    });
+                    form.floatingInput.value = ''; //clear the form after submit
+                    form.floatingPassword.value = '';
+                    form.floatingVerifyPassword.value = '';
+                }
+            }).catch((error) => {
+                console.log("Error getting document:", error);
+            });
 
-    form.floatingInput.value = ''; //clear the form after submit
-    form.floatingPassword.value = '';
-    form.floatingVerifyPassword.value = '';
-    alert("Account Created!");
+    
+    
 	//document.location.href = "/login";
 
     }

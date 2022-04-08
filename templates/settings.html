@@ -10,6 +10,25 @@
 </head>
 
 <body>
+    <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-firestore.js"></script>
+    <script>
+      //import { initializeApp } from 'firebase/app'
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyDFOHLm7znnFt-n_HeemWcIhhh_9wlk4qo",
+      authDomain: "travello-fd292.firebaseapp.com",
+      databaseURL: "https://travello-fd292-default-rtdb.asia-southeast1.firebasedatabase.app",
+      projectId: "travello-fd292",
+      storageBucket: "travello-fd292.appspot.com",
+      messagingSenderId: "771482085344",
+      appId: "1:771482085344:web:f596fe26914b66601f6d85",
+      measurementId: "G-RN0N391VX2"
+      };
+      firebase.initializeApp(config);
+      const db = firebase.firestore(); //reference to database and store to const db
+      db.settings({ timestampsInSnapshots: true }); 
+    </script>
     <script src = "static/javascript/settings.js"></script>
     <script>
       let loginData = {
@@ -70,7 +89,10 @@
           </div>
           -->
         <div id="email"> email </div>
-        <script>document.getElementById("email").innerHTML = loginData.email</script>
+        <script>
+          //document.getElementById("email").innerHTML = loginData.email;
+          document.getElementById("email").innerHTML = sessionStorage.getItem("email");
+        </script>
         </div>
 
         
@@ -88,7 +110,10 @@
           </div>
           -->
           <div id="password"> password </div>
-          <script>document.getElementById("password").innerHTML = loginData.password</script>
+          <script>
+            //document.getElementById("password").innerHTML = loginData.password
+            document.getElementById("password").innerHTML = sessionStorage.getItem("password");
+          </script>
         </div>
         <!--
         <button type="submit" class="confirmButton">
@@ -142,23 +167,6 @@
 
     {% endblock %}
 
-    <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-firestore.js"></script>
-    <script>
-	    // Initialize Firebase
-	    var config = {
-		    apiKey: "AIzaSyDFOHLm7znnFt-n_HeemWcIhhh_9wlk4qo",
-			authDomain: "travello-fd292.firebaseapp.com",
-			databaseURL: "https://travello-fd292-default-rtdb.asia-southeast1.firebasedatabase.app",
-			projectId: "travello-fd292",
-			storageBucket: "travello-fd292.appspot.com",
-			messagingSenderId: "771482085344",
-			appId: "1:771482085344:web:f596fe26914b66601f6d85",
-			measurementId: "G-RN0N391VX2"
-	    };
-	    firebase.initializeApp(config);
-	    const db = firebase.firestore(); //reference to database and store to const db
-	    db.settings({ timestampsInSnapshots: true }); 
-    </script>
+    
     
 </body>

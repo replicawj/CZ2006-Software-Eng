@@ -47,18 +47,23 @@ form.addEventListener('submit', (e) => {
     var email = form.floatingInput.value;
     var password = form.floatingPassword.value;
 
-    if (checkAccountExists(email,password)) {
-		alert("Login!");
-		sessionStorage.setItem("email", email);
-		sessionStorage.setItem("password", password);
-		document.location.href = "/"; //goes to home
-		login = true;
-	} else {
-        alert("Incorrect password or username.");
-    }
 
-    form.floatingInput.value = ''; //clear the form after submit
-    form.floatingPassword.value = '';
+	db.collection('accounts').doc(email).get().then((doc) => { //find if document(account) exist
+		if (doc.exists) { //if exist
+			//console.log("Document data:", doc.data());
+			sessionStorage.setItem("email", email);
+			sessionStorage.setItem("password", password);
+			sessionStorage.setItem("doc",doc);
+			alert("Login!");
+			document.location.href = "/";
+		} else { //if no exist
+			alert("Incorrect password or username.");
+		}
+	}).catch((error) => {
+		console.log("Error getting document:", error);
+	});
+
+	form.floatingPassword.value = '';
 
 	
 

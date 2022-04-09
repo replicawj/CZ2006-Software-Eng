@@ -117,7 +117,7 @@
         <div class = "col-6 d-flex align-items-center" id = "{{result.name}}block">
           <div>
             <div class = "font2" id = "name{{result.name}}">{{result.name}}</div>
-            <div class = "font2" id = "price{{result.name}}">{{result.rating}} </div>
+            <div class = "font2" >{{result.rating}} </div>
             <div class = "font2" id = "address{{result.name}}">{{result.address}}</div>
 
           </div>
@@ -125,24 +125,46 @@
         <!--button to save to plan-->
         <div class = "col my-auto">
           <div class = "d-flex flex-wrap justify-content-center">
-            <div class = "font3" id = "price{{result.price}}">
+            <div class = "font3" id = "price{{result.name}}">
               $SGD{{result.price}}
             </div>
 
-            <a class = "addButton mt-2" id = "addButton" type="submit" onclick = "show('{{result.name}}')">
+            <!-- <button type="button" id = "addPlanWrapper" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+              <div class="addPlan">
+                +
+              </div>
+            </button> -->
+            
+            <!-- <a class = "addButton mt-2" id = "addButton" type="submit">
               <div class = "searchText mx-auto my-auto">
                 Add to Plan
               </div>
-            </a>
+            </a> -->
+            <div class = "a" id = "ai">
+              <input type="submit" name="addPlan" value="{{hotelName}}" class="random" >
+                <a class = "addButton mt-2" id = "addButton" type="submit" data-toggle="modal" data-target="#exampleModalCenter" onclick = "show('{{result.name}}')">
+                  <!-- <input type ="submit" name="addPlan" value="{{hotelName}}"> -->
+                  <div class = "searchText mx-auto my-auto">
+                    Add to Plan
+                  </div>
+                </a>
+              </input>
+            </div>
             <script>
+              //nuke the buttons if the user is not submit
+              if (sessionStorage.getItem("email") == null){ //not logged in
+                  const buttons = document.querySelectorAll('.a');
+                  buttons.forEach(button =>{button.remove()});
+                }
+              var name;
+              var price;
+              var address;
               function show(n){
-                var name = document.getElementById('name'.concat(n)).innerHTML;
-                var price = document.getElementById('price'.concat(n)).innerHTML;
-                var address = document.getElementById('address'.concat(n)).innerHTML;
-                console.log(name);
-                console.log(price);
-                console.log(address);
+                name = document.getElementById('name'.concat(n)).innerHTML;
+                price = document.getElementById('price'.concat(n)).innerHTML;
+                address = document.getElementById('address'.concat(n)).innerHTML;
               }
+      
             </script>
           </div>
         </div>
@@ -150,5 +172,104 @@
       {% endfor %}
     </ul>
 
+     <!-- Modal -->
+     <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">{{hotelName}}</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="planNameWrapper">
+              Plan Name:
+
+              <div class = "col d-flex flex-wrap">
+
+                <!-- <input
+                  type="search"
+                  class="form-control form-rounded"
+                  id="searchHotels"
+                  name = "searchHotels"
+                  placeholder="Enter plan name"
+                /> -->
+
+                <select
+                  name="plan_no"
+                  class="form-control form-rounded"
+                  id="plan_no"
+                  name = "plan_no"
+                >
+                {% for plan_no in plan_no %}
+                    <option value="{{plan_no}}">{{plan_no}}</option>"
+                {% endfor %}
+                </select>
+    
+              </div>
+
+              
+            </div>
+
+            <!-- <div class="basicWrapper">
+              <div class="planNameWrapper">
+                Start Date:
+
+                <div class = "col d-flex flex-wrap">
+                  <input
+                    type="date"
+                    class="form-control form-rounded"
+                    id="dateSelection"
+                    name = "dateSelection"
+                    placeholder="Select Date"
+                  />
+      
+                </div>
+              </div>
+            </div> -->
+
+            <!-- <div class="basicWrapper">
+              <div class="planNameWrapper">
+                End Date:
+
+                <div class = "col d-flex flex-wrap">
+                  <input
+                    type="date"
+                    class="form-control form-rounded"
+                    id="dateSelection"
+                    name = "dateSelection"
+                    placeholder="Select Date"
+                  />
+      
+                </div>
+              </div>
+            </div> -->
+
+          </div>
+          
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" id = "closeButton" data-dismiss="modal">Close</button>
+            <button onclick="savePlans()" type="button" class="btn btn-primary" id="saveButton" data-dismiss="modal">Save</button>
+            <script>
+              function savePlans(){
+                
+
+                var which_planObj = document.getElementById("plan_no");
+                var which_plan = parseInt(which_planObj.options[which_planObj.selectedIndex].value);
+                console.log(name);
+                console.log(price);
+                console.log(address);
+                console.log(which_plan);
+              }
+            </script>
+          </div>
+          
+        
+        </div>
+      </div>
+    </div>
+
+
     {% endblock %}
-</body>
+  </body>

@@ -63,9 +63,60 @@ form.addEventListener('submit', (e) => {
                     //console.log("Document data:", doc.data());
                     alert("Account already exists");
                 } else { //if no exist
+                    var plan = {
+                        date : "null",
+                        attractions : {},
+                        hotels : {},
+                        flights : {}
+                    }
                     db.collection('accounts').doc(email).set( //set document ID as email input from user. Field is password.
-                    { password : form.floatingPassword.value}
+                    {   password : form.floatingPassword.value,
+                        plans : {
+                                    1 : {
+                                        date:"null",
+                                        attractions : {},
+                                        hotels : {},
+                                        flights : {}
+
+                                    },
+                                    2 : {
+                                        date:"null",
+                                        attractions : {},
+                                        hotels : {},
+                                        flights : {}
+
+                                    },
+                                    3 : {
+                                        date:"null",
+                                        attractions : {},
+                                        hotels : {},
+                                        flights : {}
+
+                                    },
+                                }
+
+                    }
                     );
+
+                    /*
+                    const initialData = {
+                        name: 'Frank',
+                        age: 12,
+                        favorites: {
+                          food: 'Pizza',
+                          color: 'Blue',
+                          subject: 'recess'
+                        }
+                      };
+
+                      db.collection('accounts').doc(email).update({
+                        age: 13,
+                        'favorites.color': 'Red'
+                      });
+
+                      */
+
+                    //db.collection('accounts').doc(email).plans.set(()
                     
                     db.collection('accounts').doc(email).collection('plans').doc('1').set({
                         date: null

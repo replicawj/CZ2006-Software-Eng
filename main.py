@@ -4,8 +4,13 @@ import folium
 import json
 from datetime import datetime
 from flask import Flask, render_template, request, redirect, url_for
+import logging
 
 ### Flights API -wj ###
+
+logging.basicConfig(level=logging.DEBUG)
+
+
 def flightsPage():
     url = "https://travelpayouts-travelpayouts-flight-data-v1.p.rapidapi.com/v2/prices/nearest-places-matrix"
 
@@ -39,11 +44,12 @@ flightsData = flightsPage()
 #     dataHotel = json.load(f)
 
 # print(data)
-hotelsList = []
 
 
 def hotelsFunction():
+    # returns list of hotel names from hotels json
     data = hotelRecco()
+    hotelsList = []
     for i in range(len(data)):
         data1 = data[i]
         data2 = data1["name"]
@@ -61,10 +67,18 @@ def hotelRecco():
 
 
 hotelReccoCard = hotelRecco()
+hotelNameCard = hotelsFunction()
 # print(hotelsFunction())
+# print(hotelReccoCard)
+# print(len(hotelReccoCard))
+# print(len(hotelsFunction()))
 
+# for i in range(len(hotelNameCard)):
+#     print(hotelNameCard[i])
 
 ### Attraction API -wj ###
+
+
 def attractionPage():
     g = open('attractionInfo.json')
 
@@ -72,8 +86,8 @@ def attractionPage():
 
     return (hotelData)
 
-attractionData = attractionPage()
 
+attractionData = attractionPage()
 
 
 app = Flask(__name__)
@@ -104,14 +118,14 @@ def attractions():
     no_adults = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     no_children = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
-    return render_template("attractions.html", no_adults=no_adults, no_children=no_children, result = attractionData)
+    return render_template("attractions.html", no_adults=no_adults, no_children=no_children, result=attractionData)
 
 
 @app.route('/attractionsResult')
 def attractionsResult():
     no_adults = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     no_children = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-    return render_template("attractionsResult.html", no_adults=no_adults, no_children=no_children, result = attractionData)
+    return render_template("attractionsResult.html", no_adults=no_adults, no_children=no_children, result=attractionData)
 
 
 @app.route('/flights')
@@ -136,21 +150,41 @@ randomList = []
 def hotels():
     no_adults = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     no_children = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-
+    # for j in range(len(hotelNameCard)):
+    #     app.logger.info(hotelNameCard[j])
+    count = 1
     if request.method == 'POST':
         temp = request.form["searchHotels"]
-        bigData = hotelRecco()
-        hotelsList2 = hotelsFunction()
-        for i in range(len(hotelsList2)):
-            hotelData = hotelsList2[i]
+        print(temp)
+        for i in range(len(hotelNameCard)):
+            hotelData = hotelNameCard[i]
+            print(hotelNameCard[i])
+            print(len(hotelNameCard))
             if temp == hotelData:
-                randomList.append(hotelData)
-                return redirect(url_for("hello", temp2=randomList))
-            else:
+                # randomList.append(hotelData)
+                app.logger.info("match")
+                return redirect(url_for("hello", temp2=temp))
+            elif count == len(hotelNameCard):
                 return render_template("hotels.html", no_adults=no_adults, no_children=no_children, result=hotelReccoCard)
+            else:
+                app.logger.info("no match")
+                # return render_template("hotels.html", no_adults=no_adults, no_children=no_children, result=hotelReccoCard)
+            count = count+1
 
     else:
         return render_template("hotels.html", no_adults=no_adults, no_children=no_children, result=hotelReccoCard)
+
+    # if request.method == 'POST':
+    #     temp = request.form["searchHotels"]
+    #     bigData = hotelRecco()
+    #     hotelsList2 = hotelsFunction()
+    #     for i in range(len(hotelsList2)):
+    #         hotelData = hotelsList2[i]
+    #         if temp == hotelData:
+    #             randomList.append(hotelData)
+    #             return redirect(url_for("hello", temp2=randomList))
+    #         else:
+    #             return render_template("hotels.html", no_adults=no_adults, no_children=no_children, result=hotelReccoCard)
 
         # hotelInput = request.form.get("searchHotels")
         # hotelsList2 = hotelsFunction()
@@ -168,13 +202,26 @@ def hello(temp2):
     plan_no = ["Plan Number:", 1, 2]
     finalList = []
     bigData = hotelRecco()
+
     # hotelsList2 = hotelsFunction()
+
+    # for j in range(len(hotelNameCard)):
+    #     app.logger.info(hotelNameCard[j])
+    app.logger.info("not success")
     for i in range(len(bigData)):
         hotelIndex = bigData[i]
         hotelName = hotelIndex["name"]
-        for j in range(len(randomList)):
-            if randomList[j] == hotelName:
-                finalList.append(bigData[i])
+        # print(hotelName)
+        if temp2 == hotelName:
+            app.logger.info("success")
+            finalList.append(bigData[i])
+            break
+        else:
+            continue
+
+        # for j in range(len(randomList)):
+        #     if randomList[j] == hotelName:
+        #         finalList.appendß(bigData[i])
 
     return render_template("hotelsResult.html", no_adults=no_adults, no_children=no_children, result=hotelReccoCard, plan_no=plan_no, finalList=finalList)
 
@@ -191,7 +238,8 @@ def hotelsResult():
 
 @app.route('/transport')
 def transport():
-    transportMode = ["Mode of Transport:", "driving", "walking", "bicycling", "transit", "flying"]
+    transportMode = ["Mode of Transport:", "driving",
+                     "walking", "bicycling", "transit", "flying"]
     return render_template("transport.html", transportMode=transportMode)
 
 
@@ -223,9 +271,11 @@ def settings():
 def about():
     return render_template("about.html")
 
+
 @app.route('/signout')
 def signout():
     return render_template("signout.html")
+
 
 if __name__ == "__main__":
     app.run(host='127.0.0.1', port=8080, debug=True)

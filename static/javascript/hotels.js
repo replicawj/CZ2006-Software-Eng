@@ -70,5 +70,27 @@ function myFunction() {
 
 
 
+function savePlans() {
+    var hotelSearch = getHotelSearch();
+    var numOfDays = getNoDays().value;
+    var children = getChildren();
+    var adults = getAdults();
+    var pax = getPax();
+    var checkInDate = getCheckInDate();
+    var checkOutDate = getCheckOutDate();
+    console.log(numOfDays);
 
+	db.collection('planner').collection(sessionStorage.getItem("email")).collection("Plan1").add({ //adds a document into the collection 'planner'
+        //plan_no: plan_no,
+        hotelSearch: hotelSearch,
+        numOfDays: numOfDays.toString(),
+        children: children,
+        adults: adults,
+        pax: pax.toString(),
+        checkInDate: checkInDate,
+        checkOutDate, checkOutDate
+    });
+    alert("Plan saved!");
+    
+}
 

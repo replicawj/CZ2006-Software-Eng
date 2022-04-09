@@ -114,40 +114,41 @@
         -->
         <!--checkin-checkout date-->
 
-        <div class = "col-6 d-flex align-items-center">
+        <div class = "col-6 d-flex align-items-center" id = "{{result.name}}block">
           <div>
-            <div class = "font2">{{result.name}}</div>
-            <div class = "font2">{{result.rating}} <img src ="{{ url_for('static',filename='assets/img/rating.png')}}" width = 5%/> </div>
-            <div class = "font2">{{result.address}}</div>
+            <div class = "font2" id = "name{{result.name}}">{{result.name}}</div>
+            <div class = "font2" id = "price{{result.name}}">{{result.rating}} </div>
+            <div class = "font2" id = "address{{result.name}}">{{result.address}}</div>
 
           </div>
         </div>
         <!--button to save to plan-->
         <div class = "col my-auto">
           <div class = "d-flex flex-wrap justify-content-center">
-            <div class = "font3">
+            <div class = "font3" id = "price{{result.price}}">
               $SGD{{result.price}}
             </div>
 
-            <a class = "addButton mt-2" id = "addButton" type="submit">
+            <a class = "addButton mt-2" id = "addButton" type="submit" onclick = "show('{{result.name}}')">
               <div class = "searchText mx-auto my-auto">
                 Add to Plan
               </div>
             </a>
+            <script>
+              function show(n){
+                var name = document.getElementById('name'.concat(n)).innerHTML;
+                var price = document.getElementById('price'.concat(n)).innerHTML;
+                var address = document.getElementById('address'.concat(n)).innerHTML;
+                console.log(name);
+                console.log(price);
+                console.log(address);
+              }
+            </script>
           </div>
+        </div>
       </li>
       {% endfor %}
     </ul>
-
-
-
-
-
-
-
-
-
-
 
     {% endblock %}
 </body>

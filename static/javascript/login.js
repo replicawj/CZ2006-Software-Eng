@@ -49,15 +49,20 @@ form.addEventListener('submit', (e) => {
 
 
 	db.collection('accounts').doc(email).get().then((doc) => { //find if document(account) exist
-		if (doc.exists) { //if exist
+		if (doc.exists) { 								//if email exist in database...
 			//console.log("Document data:", doc.data());
-			sessionStorage.setItem("email", email);
-			sessionStorage.setItem("password", password);
-			sessionStorage.setItem("doc",doc);
-			alert("Login!");
-			document.location.href = "/";
-		} else { //if no exist
-			alert("Incorrect password or username.");
+			if(doc.data().password == password){ 		//if correct password
+				sessionStorage.setItem("email", email);
+				sessionStorage.setItem("password", password);
+				sessionStorage.setItem("doc",doc);
+				alert("Login!");
+				document.location.href = "/";
+			} else { 									//if wrong password
+				alert("Incorrect password");
+			}
+		} else { 										//if email does not exist in database.
+			alert("Account does not exist.");
+			form.floatingInput.value = '';
 		}
 	}).catch((error) => {
 		console.log("Error getting document:", error);

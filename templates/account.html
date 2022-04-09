@@ -9,6 +9,25 @@
 </head>
 
 <body>
+    <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-firestore.js"></script>
+    <script>
+      //import { initializeApp } from 'firebase/app'
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyDFOHLm7znnFt-n_HeemWcIhhh_9wlk4qo",
+      authDomain: "travello-fd292.firebaseapp.com",
+      databaseURL: "https://travello-fd292-default-rtdb.asia-southeast1.firebasedatabase.app",
+      projectId: "travello-fd292",
+      storageBucket: "travello-fd292.appspot.com",
+      messagingSenderId: "771482085344",
+      appId: "1:771482085344:web:f596fe26914b66601f6d85",
+      measurementId: "G-RN0N391VX2"
+      };
+      firebase.initializeApp(config);
+      const db = firebase.firestore(); //reference to database and store to const db
+      db.settings({ timestampsInSnapshots: true }); 
+    </script>
     {% extends "template.html" %}
     {% block content %}
     <script src = "static/javascript/account.js"></script>
@@ -56,31 +75,114 @@
         </div>
       </a> -->
 
-      <a class="btn btn-primary" id="planWrapper" href="{{ url_for('plans') }}">
-        <div class="planNumber">
-            Plan 1
-            <div class="dateWrapper">
-              <img src ="{{ url_for('static',filename='assets/img/Vector.png')}}" width = 23px height=23px class="calendarIcon"/>
-              <div class="planDate">
-                01/02-03/02
+      <div id="planTemplate">
+        <a class="btn btn-primary" id="planWrapper" href="{{ url_for('plans') }}">
+          <div class="planNumber">
+              <p> Plan Template </p>
+              <div class="dateWrapper">
+                <img src ="{{ url_for('static',filename='assets/img/Vector.png')}}" width = 23px height=23px class="calendarIcon"/>
+                <div class="planDate">
+                  01/02-03/02
+                </div>
               </div>
-            </div>
+          </div>
+          <img src= "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/15/1a/9e/23/img-20181020-113259-largejpg.jpg?w=1200&h=-1&s=1" class="logo" />
+        </a>
         </div>
-        <img src= "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/15/1a/9e/23/img-20181020-113259-largejpg.jpg?w=1200&h=-1&s=1" class="logo" />
-      </a>
 
-      <a class="btn btn-primary" id="planWrapper" href="{{ url_for('plans') }}">
-        <div class="planNumber">
-            Plan 2
-            <div class="dateWrapper">
-              <img src ="{{ url_for('static',filename='assets/img/Vector.png')}}" width = 23px height=23px class="calendarIcon"/>
-              <div class="planDate">
-                01/02-03/02
-              </div>
-            </div>
-        </div>
-        <img src= "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/15/1a/9e/23/img-20181020-113259-largejpg.jpg?w=1200&h=-1&s=1" class="logo" />
-      </a>
+      <div id="new"></div>
+          
+      <script>
+        document.getElementById('planTemplate').style.display = 'none'; //remove planTemplate from html
+
+        //document.getElementById("planTemplate").style.visibility = 'hidden';
+        // Create a clone of element with id ddl_1:
+        //let clone = document.querySelector('planWrapper').cloneNode( true );
+
+        // Change the id attribute of the newly created element:
+        //clone.setAttribute( 'id', newId );
+
+        // Append the newly created element on element p 
+        //document.querySelector('p').appendChild( clone );
+
+        //------ method 2 ------- (cloning div item)
+        //let clone2 = document.getElementById("planWrapper").cloneNode(true); // true means clone all childNodes and all event handlers
+        //clone2.id = "some_id";
+        //document.getElementById("new").appendChild(clone2); //add clone to div id
+
+        //===== try to copy using recursion ====
+        var counter = 3;
+        function clone(counter){
+          if (counter != 0){
+            // Create anchor element.
+            var a = document.createElement('a'); 
+            a.id="planWrapper"
+            //a.innerHTML = "<a class=\"btn btn-primary\" id=\"planWrapper\" href=\"{{ url_for('plans') }}\"></a>";
+            //var random = document.createTextNode("Plan " + counter);
+            //a.insertAdjacentText('beforeend', "asudh");
+            // Set the href property.
+            a.href = "{{ url_for('plans') }}";
+            a.setAttribute("class", "btn btn-primary");
+
+            //create another anchor element.
+            var b = document.createElement('b');
+            b.innerHTML = "<div class=\"planNumber\"></div>";
+            var planNumber = document.createTextNode("Plan " + counter);
+            b.setAttribute("class", "planNumber");
+            b.appendChild(planNumber);
+            a.appendChild(b);
+
+
+            //create another anchor element. 
+            var d = document.createElement('d'); //wrap tiny callandar and date together.
+            d.setAttribute("class", "dateWrapper");
+
+            //create anoter anchor element.
+            var c = document.createElement('c');
+            c.innerHTML = "<img src =\"{{ url_for('static',filename='assets/img/Vector.png')}}\" width = 23px height=23px class=\"calendarIcon\"/>"; //tiny calendar photo
+            //c.src = "{{ url_for('static',filename='assets/img/Vector.png')}}"
+            //c.setAttribute("class", "calendarIcon");
+            //c.style.height = '100px';
+            //c.style.width = '100px';
+            //document.body.appendChild(c);
+
+            //create another anchor element.
+            var e = document.createElement('e');
+            e.setAttribute("class", "planDate");
+            var date = document.createTextNode("date"); //put date here
+            e.appendChild(date);
+            
+            d.appendChild(c);
+            d.appendChild(e);
+
+            b.appendChild(d); //put date and tiny calendar bellow plan title
+
+
+            var f = document.createElement('f'); 
+            f.innerHTML = "<img src= \"https://dynamic-media-cdn.tripadvisor.com/media/photo-o/15/1a/9e/23/img-20181020-113259-largejpg.jpg?w=1200&h=-1&s=1\" class=\"logo\" />"
+            a.appendChild(f);
+
+            // Create the text node for anchor element.
+            var link = document.createTextNode("PlanName");
+              
+            // Append the text node to anchor element.
+            //a.appendChild(link); 
+              
+            // Set the title.
+            //a.title = "This is Link"; 
+              
+            // Append the anchor element to the body.
+            //document.body.appendChild(a); 
+            //var clonePlanWrapper = document.getElementById("planWrapper").cloneNode(true);
+            //clone2.id = "some_id";
+            document.getElementById("new").appendChild(a); //append to the html body in the div id="new"
+            return clone(counter - 1);
+          } else{
+            return counter;
+          }
+        }
+        console.log(clone(counter));
+      </script>
 
       <!-- <div class="planWrapper">
         <div class="planNumber">

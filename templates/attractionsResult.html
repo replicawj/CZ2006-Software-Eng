@@ -161,6 +161,7 @@
               var name;
               var price;
               var address;
+              var date;
               function show(n){
                 name = document.getElementById('name'.concat(n)).innerHTML;
                 price = document.getElementById('price'.concat(n)).innerHTML;
@@ -211,58 +212,40 @@
     
               </div>
 
+
               
             </div>
-
-            <!-- <div class="basicWrapper">
-              <div class="planNameWrapper">
-                Start Date:
-
-                <div class = "col d-flex flex-wrap">
-                  <input
-                    type="date"
-                    class="form-control form-rounded"
-                    id="dateSelection"
-                    name = "dateSelection"
-                    placeholder="Select Date"
-                  />
-      
-                </div>
-              </div>
-            </div> -->
-
-            <!-- <div class="basicWrapper">
-              <div class="planNameWrapper">
-                End Date:
-
-                <div class = "col d-flex flex-wrap">
-                  <input
-                    type="date"
-                    class="form-control form-rounded"
-                    id="dateSelection"
-                    name = "dateSelection"
-                    placeholder="Select Date"
-                  />
-      
-                </div>
-              </div>
-            </div> -->
-
+            
           </div>
           
           <div class="modal-footer">
+            <div class="planNameWrapper">
+              Date:
+
+              <div class = "col d-flex flex-wrap">
+                <input
+                type="date"
+                class="form-control form-rounded"
+                id="plandateSelection"
+                name = "plandateSelection"
+                placeholder="Select Date"
+              />
+              </div>
+            </div>
             <button type="button" class="btn btn-secondary" id = "closeButton" data-dismiss="modal">Close</button>
             <button onclick="savePlans()" type="button" class="btn btn-primary" id="saveButton" data-dismiss="modal">Save</button>
+          
             <script>
               function savePlans(){
                 
-
+                date = new Date(document.getElementById("plandateSelection").value);
                 var which_planObj = document.getElementById("plan_no");
                 var which_plan = parseInt(which_planObj.options[which_planObj.selectedIndex].value);
                 console.log(name);
                 console.log(price);
                 console.log(address);
                 console.log(which_plan);
+                console.log(date);
               }
             </script>
           </div>

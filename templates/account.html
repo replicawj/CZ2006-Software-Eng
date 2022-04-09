@@ -111,9 +111,147 @@
         //document.getElementById("new").appendChild(clone2); //add clone to div id
 
         //===== try to copy using recursion ====
-        var counter = 3;
+        var counter = 1;
         function clone(counter){
-          if (counter != 0){
+          if (counter <= 3){
+            //console.log(sessionStorage.getItem("doc").data());
+
+            /*
+            //db.collectionGroup('plans').where('email', '==', sessionStorage.getItem("email")).get();
+            db.collectionGroup('plans').where('email', '==', sessionStorage.getItem("email")).get().then((snapshot) => { 
+              snapshot.docs.forEach(doc =>  {
+                console.log(doc.data());
+              })
+            })
+            */
+
+            /*
+            const observer = doc.onSnapshot(docSnapshot => {
+              console.log(`Received doc snapshot:`);
+              //docSnapshot.collection('plans').doc("1")doc.onSnapshot(plan => { };
+              console.log(docSnapshot.data().collection('plans').doc("1").get() );
+              // ...
+            }, err => {
+              console.log(`Encountered error: ${err}`);
+            });
+            */
+            
+
+            //doc.collection('users').doc("1").get().then(snapshot => console.log(snapshot.data().date))
+
+            /*
+
+            db.collection('accounts').doc(sessionStorage.getItem("email")).get().then((doc) => { //find if document(account) exist
+              if (doc.exists) {
+                console.log("email doc found");
+
+              } else{
+                console.log("email doc not found");
+              }
+            });
+            */
+
+            /*
+            db.collection('accounts').doc(sessionStorage.getItem("email")).get().then((doc) => { //find if document(account) exist
+              if (doc.exists) { 								//if email exist in database...
+                //console.log("Document data:", doc.data());
+                console.log(doc.data().password);
+                doc.collection('plans').doc("1").get().then((plan)){
+                  if(plan.exists){
+                    console.log("plan found!");
+                  } else{
+                    console.log("plan not found");
+                  }
+                })
+              }
+            }); 
+            */
+
+            
+
+            db.collection('accounts').doc(sessionStorage.getItem("email")).get().then((doc) => {
+
+              //console.log(doc.data().plans);
+              var plans = doc.data().plans;
+              var object = plans; //three plans
+              //console.log(Object.values(object));
+              console.log(object[counter]); //get value of object using key reference. //get items in first plan.exists
+
+              plan = object[counter];
+              console.log(plan["date"]); //get value of "date" key
+              var dateValue = plan["date"];
+
+              //-------create html elements-----
+
+
+              // Create anchor element.
+              var box = document.createElement('box');
+              box.setAttribute("class", "btn btn-primary");
+              box.id="planWrapper"
+              box.href = "{{ url_for('plans') }}";
+              //box.innerHTML = "<a class=\"btn btn-primary\" id=\"planWrapper\" href=\"{{ url_for('plans') }}\">"
+              
+
+              //create another anchor element.
+              var planNo = document.createElement('planNo');
+              planNo.innerHTML = "<div class=\"planNumber\"></div>";
+              var planNumber = document.createTextNode("Plan " + counter);
+              planNo.setAttribute("class", "planNumber");
+              planNo.appendChild(planNumber);
+              box.appendChild(planNo);
+
+              //create another anchor element. //wraps tiny callandar and date together.
+              var dateStuff = document.createElement('dateStuff'); 
+              dateStuff.setAttribute("class", "dateWrapper");
+
+              //create anoter anchor element.
+              var tinyCalendar = document.createElement('tinyCalendar'); //tiny calendar photo
+              tinyCalendar.innerHTML = "<img src =\"{{ url_for('static',filename='assets/img/Vector.png')}}\" width = 23px height=23px class=\"calendarIcon\"/>";
+
+              //create another anchor element. //for date text
+              var dateText = document.createElement('dateText');
+              dateText.setAttribute("class", "planDate");
+              var date = document.createTextNode(dateValue); //put date here
+              dateText.appendChild(date);
+
+              dateStuff.appendChild(tinyCalendar);
+              dateStuff.appendChild(dateText);
+  
+              planNo.appendChild(dateStuff); //put date and tiny calendar bellow plan title
+
+              var photo = document.createElement('photo'); 
+              photo.innerHTML = "<img src= \"https://dynamic-media-cdn.tripadvisor.com/media/photo-o/15/1a/9e/23/img-20181020-113259-largejpg.jpg?w=1200&h=-1&s=1\" class=\"logo\" />"
+              box.appendChild(photo);
+
+              document.getElementById("new").appendChild(box);
+
+              
+
+            });
+
+            /*
+            var forURL = document.createElement('forURL');
+            forURL.id="planWrapper"
+            forURL.innerHTML = "<a class=\"btn btn-primary\" id=\"planWrapper\" href=\"{{ url_for('plans') }}\">"
+            forURL.href = "{{ url_for('plans') }}";
+            var URLText = document.createElement('URLText');
+            forURL.appendChild(URLText);
+
+
+            document.getElementById("new").appendChild(forURL);
+
+            */
+            
+
+
+
+
+
+
+
+
+
+            /*
             // Create anchor element.
             var a = document.createElement('a'); 
             a.id="planWrapper"
@@ -122,7 +260,7 @@
             //a.insertAdjacentText('beforeend', "asudh");
             // Set the href property.
             a.href = "{{ url_for('plans') }}";
-            a.setAttribute("class", "btn btn-primary");
+            a.href = "{{ url_for('plans') }}";
 
             //create another anchor element.
             var b = document.createElement('b');
@@ -162,21 +300,15 @@
             f.innerHTML = "<img src= \"https://dynamic-media-cdn.tripadvisor.com/media/photo-o/15/1a/9e/23/img-20181020-113259-largejpg.jpg?w=1200&h=-1&s=1\" class=\"logo\" />"
             a.appendChild(f);
 
-            // Create the text node for anchor element.
-            var link = document.createTextNode("PlanName");
-              
-            // Append the text node to anchor element.
-            //a.appendChild(link); 
-              
-            // Set the title.
-            //a.title = "This is Link"; 
-              
-            // Append the anchor element to the body.
-            //document.body.appendChild(a); 
-            //var clonePlanWrapper = document.getElementById("planWrapper").cloneNode(true);
-            //clone2.id = "some_id";
+
+            
+
+
             document.getElementById("new").appendChild(a); //append to the html body in the div id="new"
-            return clone(counter - 1);
+            */
+
+
+            return clone(counter + 1);
           } else{
             return counter;
           }

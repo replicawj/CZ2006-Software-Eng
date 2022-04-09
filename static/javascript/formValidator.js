@@ -66,6 +66,20 @@ form.addEventListener('submit', (e) => {
                     db.collection('accounts').doc(email).set( //set document ID as email input from user. Field is password.
                     { password : form.floatingPassword.value}
                     );
+                    
+                    db.collection('accounts').doc(email).collection('plans').doc('1').set({
+                        date: null
+                    });
+
+                    db.collection('accounts').doc(email).collection('plans').doc('2').set({
+                        date: null
+                    });
+
+                    db.collection('accounts').doc(email).collection('plans').doc('3').set({
+                        date: null
+                    });
+
+                    /*
                     db.collection('planner').doc(email).collection('Plan1').doc('date').set(
                         {name: 'placeholder',
                         price: 320}
@@ -74,11 +88,7 @@ form.addEventListener('submit', (e) => {
                         {name: 'placeholder',
                         price: 320}
                     );
-                    
-                    
-                   
-
-    
+                    */
                     
                     alert("Account Created!");
 

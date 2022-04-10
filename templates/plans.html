@@ -71,6 +71,7 @@
     </div>
 
     <script>
+      //display heading stuff
       var currentPlan = sessionStorage.getItem("numberOfPlans")
       var planNumberTextElement = document.createTextNode(currentPlan); //put current plan number here
       //planNumber.setAttribute("class", "headerText");
@@ -162,6 +163,47 @@
         </div>
         {% endfor %}
       </div>
+
+
+
+      <div class="hotelsTitle">
+        Attractions
+      </div>
+
+      <div class="scrolling-wrapper">
+        {% for result in result %}
+        <div class="card">
+          <div class = "mx-auto">
+            <img src= "https://www.logolynx.com/images/logolynx/2b/2bbabac56c986b5fa404ced4eef54d36.jpeg" class="logo mt-2" />
+          </div>
+          
+          <div class =  "info mx-auto pt-2">
+            
+            <div class = "font1">
+              {% set d = result.depart_date %}
+              date: {{d[12:16]}}
+              time: {{d[0:10]}}
+            </div>
+
+            <div class = "font2 mt-1">
+              {{result.origin}} - {{result.destination}}
+            </div>
+
+            <div class = "font2">
+              $SGD{{result.price}}
+            </div>
+          </div>
+          
+
+        </div>
+        {% endfor %}
+      </div>
+
+
+
+
+
+
 
       <div class="itineraryTitle">
         Itinerary

@@ -111,6 +111,7 @@
           var object = plans; //three plans
           var numberOfPlans = countProperties(object);
           console.log("Number of Plans:  " + numberOfPlans);
+          sessionStorage.setItem("numberOfPlans",numberOfPlans);
 
           var counter = 1;
 
@@ -214,7 +215,7 @@
                     <input
                       type="search"
                       class="form-control form-rounded"
-                      id="searchHotels"
+                      id="planName"
                       name = "planName"
                       placeholder="Enter plan name"
                     />
@@ -230,7 +231,7 @@
                       <input
                         type="date"
                         class="form-control form-rounded"
-                        id="dateSelection"
+                        id="startDateSelection"
                         name = "startDate"
                         placeholder="Select Date"
                       />
@@ -247,7 +248,7 @@
                       <input
                         type="date"
                         class="form-control form-rounded"
-                        id="dateSelection"
+                        id="endDateSelection"
                         name = "endDate"
                         placeholder="Select Date"
                       />
@@ -262,7 +263,7 @@
 
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" id = "closeButton" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary" id="saveButton">Save</button>
+              <button onclick="newPlan()" type="button" class="btn btn-primary" id="saveButton" >Save</button>
             </div>
           </div>
         </div>

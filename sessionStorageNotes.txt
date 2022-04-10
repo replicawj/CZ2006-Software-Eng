@@ -1,0 +1,5 @@
+Things in session storage:
+email
+password
+doc
+numberOfPlans

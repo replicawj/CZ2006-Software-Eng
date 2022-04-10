@@ -120,7 +120,7 @@ form.addEventListener('submit', (e) => {
                       */
 
                     //db.collection('accounts').doc(email).plans.set(()
-                    
+                    /*
                     db.collection('accounts').doc(email).collection('plans').doc('1').set({
                         date: null
                     });
@@ -132,7 +132,7 @@ form.addEventListener('submit', (e) => {
                     db.collection('accounts').doc(email).collection('plans').doc('3').set({
                         date: null
                     });
-
+                    */
                     /*
                     db.collection('planner').doc(email).collection('Plan1').doc('date').set(
                         {name: 'placeholder',

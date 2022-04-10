@@ -95,102 +95,35 @@
       <script>
         document.getElementById('planTemplate').style.display = 'none'; //remove planTemplate from html
 
-        //document.getElementById("planTemplate").style.visibility = 'hidden';
-        // Create a clone of element with id ddl_1:
-        //let clone = document.querySelector('planWrapper').cloneNode( true );
+        function countProperties(obj) { //count amt of elements in an object
+          var count = 0;
+      
+          for(var prop in obj) {
+              if(obj.hasOwnProperty(prop))
+                  ++count;
+          }
+      
+          return count;
+        }
 
-        // Change the id attribute of the newly created element:
-        //clone.setAttribute( 'id', newId );
+        db.collection('accounts').doc(sessionStorage.getItem("email")).get().then((doc) => {
+          var plans = doc.data().plans;
+          var object = plans; //three plans
+          var numberOfPlans = countProperties(object);
+          console.log("new read " + numberOfPlans);
 
-        // Append the newly created element on element p 
-        //document.querySelector('p').appendChild( clone );
+          var counter = 1;
 
-        //------ method 2 ------- (cloning div item)
-        //let clone2 = document.getElementById("planWrapper").cloneNode(true); // true means clone all childNodes and all event handlers
-        //clone2.id = "some_id";
-        //document.getElementById("new").appendChild(clone2); //add clone to div id
-
-        //===== try to copy using recursion ====
-        var counter = 1;
-        function clone(counter){
-          if (counter <= 3){
-            //console.log(sessionStorage.getItem("doc").data());
-
-            /*
-            //db.collectionGroup('plans').where('email', '==', sessionStorage.getItem("email")).get();
-            db.collectionGroup('plans').where('email', '==', sessionStorage.getItem("email")).get().then((snapshot) => { 
-              snapshot.docs.forEach(doc =>  {
-                console.log(doc.data());
-              })
-            })
-            */
-
-            /*
-            const observer = doc.onSnapshot(docSnapshot => {
-              console.log(`Received doc snapshot:`);
-              //docSnapshot.collection('plans').doc("1")doc.onSnapshot(plan => { };
-              console.log(docSnapshot.data().collection('plans').doc("1").get() );
-              // ...
-            }, err => {
-              console.log(`Encountered error: ${err}`);
-            });
-            */
-            
-
-            //doc.collection('users').doc("1").get().then(snapshot => console.log(snapshot.data().date))
-
-            /*
-
-            db.collection('accounts').doc(sessionStorage.getItem("email")).get().then((doc) => { //find if document(account) exist
-              if (doc.exists) {
-                console.log("email doc found");
-
-              } else{
-                console.log("email doc not found");
-              }
-            });
-            */
-
-            /*
-            db.collection('accounts').doc(sessionStorage.getItem("email")).get().then((doc) => { //find if document(account) exist
-              if (doc.exists) { 								//if email exist in database...
-                //console.log("Document data:", doc.data());
-                console.log(doc.data().password);
-                doc.collection('plans').doc("1").get().then((plan)){
-                  if(plan.exists){
-                    console.log("plan found!");
-                  } else{
-                    console.log("plan not found");
-                  }
-                })
-              }
-            }); 
-            */
-
-            
-
-            db.collection('accounts').doc(sessionStorage.getItem("email")).get().then((doc) => {
-
-              //console.log(doc.data().plans);
-              var plans = doc.data().plans;
-              var object = plans; //three plans
-              //console.log(Object.values(object));
-              console.log(object[counter]); //get value of object using key reference. //get items in first plan.exists
-
-              plan = object[counter];
-              console.log(plan["date"]); //get value of "date" key
-              var dateValue = plan["date"];
-
-              //-------create html elements-----
-
+          function clone(counter){
+            if (counter <= numberOfPlans){
+              plan = object[counter]; //look at 1 plan (current plan is looping)
+              var dateValue = plan["date"]; //get value of "date" key
 
               // Create anchor element.
               var box = document.createElement('box');
               box.setAttribute("class", "btn btn-primary");
               box.id="planWrapper"
               box.href = "{{ url_for('plans') }}";
-              //box.innerHTML = "<a class=\"btn btn-primary\" id=\"planWrapper\" href=\"{{ url_for('plans') }}\">"
-              
 
               //create another anchor element.
               var planNo = document.createElement('planNo');
@@ -225,95 +158,16 @@
 
               document.getElementById("new").appendChild(box);
 
-              
-
-            });
-
-            /*
-            var forURL = document.createElement('forURL');
-            forURL.id="planWrapper"
-            forURL.innerHTML = "<a class=\"btn btn-primary\" id=\"planWrapper\" href=\"{{ url_for('plans') }}\">"
-            forURL.href = "{{ url_for('plans') }}";
-            var URLText = document.createElement('URLText');
-            forURL.appendChild(URLText);
-
-
-            document.getElementById("new").appendChild(forURL);
-
-            */
-            
-
-
-
-
-
-
-
-
-
-            /*
-            // Create anchor element.
-            var a = document.createElement('a'); 
-            a.id="planWrapper"
-            //a.innerHTML = "<a class=\"btn btn-primary\" id=\"planWrapper\" href=\"{{ url_for('plans') }}\"></a>";
-            //var random = document.createTextNode("Plan " + counter);
-            //a.insertAdjacentText('beforeend', "asudh");
-            // Set the href property.
-            a.href = "{{ url_for('plans') }}";
-            a.href = "{{ url_for('plans') }}";
-
-            //create another anchor element.
-            var b = document.createElement('b');
-            b.innerHTML = "<div class=\"planNumber\"></div>";
-            var planNumber = document.createTextNode("Plan " + counter);
-            b.setAttribute("class", "planNumber");
-            b.appendChild(planNumber);
-            a.appendChild(b);
-
-
-            //create another anchor element. 
-            var d = document.createElement('d'); //wrap tiny callandar and date together.
-            d.setAttribute("class", "dateWrapper");
-
-            //create anoter anchor element.
-            var c = document.createElement('c');
-            c.innerHTML = "<img src =\"{{ url_for('static',filename='assets/img/Vector.png')}}\" width = 23px height=23px class=\"calendarIcon\"/>"; //tiny calendar photo
-            //c.src = "{{ url_for('static',filename='assets/img/Vector.png')}}"
-            //c.setAttribute("class", "calendarIcon");
-            //c.style.height = '100px';
-            //c.style.width = '100px';
-            //document.body.appendChild(c);
-
-            //create another anchor element.
-            var e = document.createElement('e');
-            e.setAttribute("class", "planDate");
-            var date = document.createTextNode("date"); //put date here
-            e.appendChild(date);
-            
-            d.appendChild(c);
-            d.appendChild(e);
-
-            b.appendChild(d); //put date and tiny calendar bellow plan title
-
-
-            var f = document.createElement('f'); 
-            f.innerHTML = "<img src= \"https://dynamic-media-cdn.tripadvisor.com/media/photo-o/15/1a/9e/23/img-20181020-113259-largejpg.jpg?w=1200&h=-1&s=1\" class=\"logo\" />"
-            a.appendChild(f);
-
-
-            
-
-
-            document.getElementById("new").appendChild(a); //append to the html body in the div id="new"
-            */
-
-
-            return clone(counter + 1);
-          } else{
-            return counter;
+              return clone(counter + 1);
+            } else {
+              return counter;
+            }
           }
-        }
-        console.log(clone(counter));
+
+          clone(counter);
+          console.log("Clone recursion finished.");
+
+        });
       </script>
 
       <!-- <div class="planWrapper">
@@ -415,10 +269,6 @@
       </div>
 
     </div>
-
-
-
-
 
     {% endblock %}
 </body>

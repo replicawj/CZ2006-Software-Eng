@@ -9,6 +9,25 @@
 </head>
 
 <body>
+    <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-firestore.js"></script>
+    <script>
+    //import { initializeApp } from 'firebase/app'
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyDFOHLm7znnFt-n_HeemWcIhhh_9wlk4qo",
+    authDomain: "travello-fd292.firebaseapp.com",
+    databaseURL: "https://travello-fd292-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "travello-fd292",
+    storageBucket: "travello-fd292.appspot.com",
+    messagingSenderId: "771482085344",
+    appId: "1:771482085344:web:f596fe26914b66601f6d85",
+    measurementId: "G-RN0N391VX2"
+    };
+    firebase.initializeApp(config);
+    const db = firebase.firestore(); //reference to database and store to const db
+    db.settings({ timestampsInSnapshots: true }); 
+    </script>
     {% extends "template.html" %}
     {% block content %}
     <script src = "static/javascript/attractions.js"></script>
@@ -232,6 +251,8 @@
               />
               </div>
             </div>
+
+            
             <button type="button" class="btn btn-secondary" id = "closeButton" data-dismiss="modal">Close</button>
             <button onclick="savePlans()" type="button" class="btn btn-primary" id="saveButton" data-dismiss="modal">Save</button>
           
@@ -246,6 +267,52 @@
                 console.log(address);
                 console.log(which_plan);
                 console.log(date);
+
+                if(date == "Invalid Date"){
+                  date = null;
+                  console.log("no date choosen");
+                }
+
+                db.collection('accounts').doc(sessionStorage.getItem("email")).get().then((doc) => {
+                  var plans = doc.data().plans;
+                  var object = plans; //three plans
+                  var plan = object[which_plan];
+                  var planSelected = which_plan;
+
+                  var copyPlan = {};
+                  
+                  Object.assign(copyPlan,plan);
+
+                  //console.log(thePlan.attractions);
+
+                  var newAttraction = {
+                    name:name,
+                    date:date,
+                    address : address,
+                    price : price,
+                  }
+
+                  copyPlan.attractions = newAttraction;
+
+                  //console.log(copyPlan.attractions);
+
+                  //plan.attractions = newAttraction; 
+
+                  var finalPlan = {};
+                  finalPlan[which_plan] = copyPlan;
+                  //object[which_plan]plan.attractions = "hee"
+                  //plan.attractions = "hee"
+                  //object[which_plan].attractions = "rrr";
+
+                  
+                  db.collection('accounts').doc(sessionStorage.getItem("email")).set({
+                    plans : finalPlan
+                  }, { merge : true});
+                  
+
+                  console.log(newAttraction);
+                });
+
               }
             </script>
           </div>

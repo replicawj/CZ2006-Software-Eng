@@ -124,7 +124,14 @@
               var box = document.createElement('box');
               box.setAttribute("class", "btn btn-primary");
               box.id="planWrapper"
-              box.href = "{{ url_for('plans') }}";
+              //box.href = "{{ url_for('plans') }}";
+              
+              box.onclick = function() { //go to plan details.
+                              sessionStorage.setItem("currentPlan",counter); 
+                              console.log(sessionStorage.getItem("currentPlan"));
+                              document.location.href = "/plans";
+                              alert('Go to plan'); 
+                            };
 
               //create another anchor element.
               var planNo = document.createElement('planNo');

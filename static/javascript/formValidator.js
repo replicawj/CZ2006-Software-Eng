@@ -71,32 +71,7 @@ form.addEventListener('submit', (e) => {
                     }
                     db.collection('accounts').doc(email).set( //set document ID as email input from user. Field is password.
                     {   password : form.floatingPassword.value,
-                        plans : {
-                                    1 : {
-                                        startDate:"null",
-                                        endDate:"null",
-                                        attractions : {},
-                                        hotels : {},
-                                        flights : {}
-
-                                    },
-                                    2 : {
-                                        startDate:"null",
-                                        endDate:"null",
-                                        attractions : {},
-                                        hotels : {},
-                                        flights : {}
-
-                                    },
-                                    3 : {
-                                        startDate:"null",
-                                        endDate:"null",
-                                        attractions : {},
-                                        hotels : {},
-                                        flights : {}
-
-                                    },
-                                }
+                        plans : null
 
                     }
                     );

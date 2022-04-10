@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>Hotels</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/hotels.css')}}">
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/hotelsResult.css')}}">
+</head>
+
+<body>
+  <script src="/static/javascript/hotels.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-firestore.js"></script>
+    <script>
+	    // Initialize Firebase
+	    var config = {
+		    apiKey: "AIzaSyDFOHLm7znnFt-n_HeemWcIhhh_9wlk4qo",
+			authDomain: "travello-fd292.firebaseapp.com",
+			databaseURL: "https://travello-fd292-default-rtdb.asia-southeast1.firebasedatabase.app",
+			projectId: "travello-fd292",
+			storageBucket: "travello-fd292.appspot.com",
+			messagingSenderId: "771482085344",
+			appId: "1:771482085344:web:f596fe26914b66601f6d85",
+			measurementId: "G-RN0N391VX2"
+	    };
+	    firebase.initializeApp(config);
+	    const db = firebase.firestore(); //reference to database and store to const db
+	    db.settings({ timestampsInSnapshots: true }); 
+    </script>
+    {% extends "template.html" %}
+    {% block content %}
+
+
+
+    <div class="hotelsImageWrapper">
+      <img src ="{{ url_for('static',filename='assets/img/hotelHeaderImage.png')}}" width = 100%/>
+      <div class = "hotelsTitle">Hotels</div>
+    </div>
+
+    <form method="POST">
+      <div class= "searchWrapper">
+        <div class = "searchBorder mx-auto row">
+          <div class = "col d-flex flex-wrap align-content-center justify-content-center">
+              <input
+                type="search"
+                class="form-control form-rounded"
+                id="searchHotels"
+                name = "searchHotels"
+                placeholder="Enter a destination or property"
+              />
+  
+          </div>
+  
+          <div class = "col d-flex flex-wrap align-content-center justify-content-center">
+  
+  
+            <span class = "form-rounded pl-2 pr-4 d-flex align-items-center">
+              <h2 class = "col-8 choiceFont my-auto ">Number of nights: </h2>
+              <input
+                type="search"
+                class="form-control border-0"
+                id="noOfNights"
+                name = "noOfNights"
+                placeholder = "0"
+              />
+            </span>
+  
+            <div class = "row d-flex flex-wrap px-4">
+                <!-- <label>Calendar: </label> -->
+                <input
+                  type="date"
+                  class="col form-control form-rounded mt-3 mr-2"
+                  id="checkInDate"
+                  name = "checkInDate"
+                  placeholder="Check in date:"
+                  onchange = "cal_days()"
+                />
+  
+                <!-- <label>Calendar: </label> -->
+                <input
+                  type="date"
+                  class="col form-control form-rounded mt-3 ml-2"
+                  id="checkOutDate"
+                  name = "checkoutDate"
+                  placeholder="Check out Date:"
+                  onchange= "cal_days()"
+                />
+  
+            </div>
+  
+          </div>
+  
+          <div class = "col d-flex flex-wrap align-content-center justify-content-center">
+  
+            <span class = "form-rounded px-4 d-flex align-items-center">
+              <h2 class = "choiceFont my-auto ">Total:</h2>
+              <input
+                type="search"
+                class="form-control border-0 ml-3"
+                id="total_pax"
+                name = "total_pax"
+                placeholder = "0"
+              />
+            </span>
+              <span class = "row d-flex  align-items-center form-rounded px-4 mt-3">
+                <h1 class = "choiceFont my-auto">Adults:</h1>
+                <select
+                    name="no_adults"
+                    class="col form-control border-0 mr-1"
+                    id="adults"
+                    name = "adults"
+                    onchange = "cal_pax()"
+                   
+                  >
+                    {% for adults in no_adults %}
+                        <option value="{{adults}}">{{adults}}</option>"
+                    {% endfor %}
+                  </select>
+    
+                  <h1 class = "choiceFont my-auto">Children:</h1>
+    
+    
+                  <select
+                  name="no_children"
+                  class="col form-control border-0 ml-1"
+                  id="children"
+                  name = "children"
+                  onchange = "cal_pax()"
+                 
+                  >
+                  {% for child in no_children %}
+                      <option value="{{child}}">{{child}}</option>"
+                  {% endfor %}
+                  </select>
+                  
+                
+                </span>
+  
+          </div>
+  
+          <div class = "col-1 d-flex flex-wrap align-content-center mr-3">
+            <a href="/hotelsResult" class = "btn btn-primary" id = "searchButton">
+              <div class = "searchText my-auto mx-auto">
+                Search
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+      </div>
+
+    </form>
+
+    <div action = "#" class="bg-dark">
+        Empty
+    </div>
+
+    {% endblock %}
+  <script src="/static/javascript/hotels.js"></script>
+</body>

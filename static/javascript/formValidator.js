@@ -73,21 +73,24 @@ form.addEventListener('submit', (e) => {
                     {   password : form.floatingPassword.value,
                         plans : {
                                     1 : {
-                                        date:"null",
+                                        startDate:"null",
+                                        endDate:"null",
                                         attractions : {},
                                         hotels : {},
                                         flights : {}
 
                                     },
                                     2 : {
-                                        date:"null",
+                                        startDate:"null",
+                                        endDate:"null",
                                         attractions : {},
                                         hotels : {},
                                         flights : {}
 
                                     },
                                     3 : {
-                                        date:"null",
+                                        startDate:"null",
+                                        endDate:"null",
                                         attractions : {},
                                         hotels : {},
                                         flights : {}

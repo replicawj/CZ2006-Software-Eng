@@ -110,14 +110,14 @@
           var plans = doc.data().plans;
           var object = plans; //three plans
           var numberOfPlans = countProperties(object);
-          console.log("new read " + numberOfPlans);
+          console.log("Number of Plans:  " + numberOfPlans);
 
           var counter = 1;
 
           function clone(counter){
             if (counter <= numberOfPlans){
               plan = object[counter]; //look at 1 plan (current plan is looping)
-              var dateValue = plan["date"]; //get value of "date" key
+              var dateValue = plan["startDate"]; //get value of "startDate" key
 
               // Create anchor element.
               var box = document.createElement('box');

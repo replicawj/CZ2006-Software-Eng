@@ -12,6 +12,25 @@
 </head>
 
 <body>
+    <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-firestore.js"></script>
+    <script>
+      //import { initializeApp } from 'firebase/app'
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyDFOHLm7znnFt-n_HeemWcIhhh_9wlk4qo",
+      authDomain: "travello-fd292.firebaseapp.com",
+      databaseURL: "https://travello-fd292-default-rtdb.asia-southeast1.firebasedatabase.app",
+      projectId: "travello-fd292",
+      storageBucket: "travello-fd292.appspot.com",
+      messagingSenderId: "771482085344",
+      appId: "1:771482085344:web:f596fe26914b66601f6d85",
+      measurementId: "G-RN0N391VX2"
+      };
+      firebase.initializeApp(config);
+      const db = firebase.firestore(); //reference to database and store to const db
+      db.settings({ timestampsInSnapshots: true }); 
+    </script>
     {% extends "template.html" %}
     {% block content %}
 
@@ -44,13 +63,37 @@
 
   <div class="overallWrapper">
     <div class="headerWrapper">
-      <div class = "headerText">
-          Plan 1
+      <div class = "headerText" id="planNumber">
+          Plan
       </div>
-      <div class="dateText">
-        01/02-03/02
+      <div class="dateText" id="startAndEndDate">
       </div>
     </div>
+
+    <script>
+      var currentPlan = sessionStorage.getItem("numberOfPlans")
+      var planNumberTextElement = document.createTextNode(currentPlan); //put current plan number here
+      //planNumber.setAttribute("class", "headerText");
+      document.getElementById("planNumber").appendChild(planNumberTextElement);
+
+      var userEmail = sessionStorage.getItem("email");
+      db.collection('accounts').doc(userEmail).get().then((doc) => {
+          var plans = doc.data().plans;
+          var object = plans; //plans
+
+          plan = object[currentPlan]; //look at 1 plan
+          var startDate = plan["startDate"];
+          var endDate = plan["endDate"];
+
+          //create text element
+          var startAndEndDate = startDate + " to " + endDate;
+          var dateTextElement = document.createTextNode(startAndEndDate); //put current plan number here
+          document.getElementById("startAndEndDate").appendChild(dateTextElement);
+
+          console.log(plan);
+      });
+
+    </script>
 
     <div class="flightsTitle">
       Flights

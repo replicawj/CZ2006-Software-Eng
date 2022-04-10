@@ -5,6 +5,7 @@ import json
 from datetime import datetime
 from flask import Flask, render_template, request, redirect, url_for
 import logging
+from fuzzywuzzy import fuzz
 
 ### Flights API -wj ###
 
@@ -66,8 +67,26 @@ def hotelRecco():
     return (data)
 
 
+def hotelsFunction():
+    # returns list of hotel names from hotels json
+    data = hotelRecco()
+    hotelsList = []
+    for i in range(len(data)):
+        data1 = data[i]
+        data2 = data1["name"]
+        data3 = str(data2)
+        data3 = data3.lower()
+        data3 = data3.strip()
+        new_string = ''.join(filter(str.isalnum, data3))
+        hotelsList.append(new_string)
+
+    return (hotelsList)
+
+
 hotelReccoCard = hotelRecco()
 hotelNameCard = hotelsFunction()
+
+
 # print(hotelsFunction())
 # print(hotelReccoCard)
 # print(len(hotelReccoCard))
@@ -89,6 +108,10 @@ def attractionPage():
 
 attractionData = attractionPage()
 
+Str1 = "My name is Ali"
+Str2 = "My name is Ali Abdaal"
+Ratio = fuzz.ratio(Str1.lower(), Str2.lower())
+print(Ratio)
 
 app = Flask(__name__)
 # print(hotelsFunction())
@@ -126,7 +149,7 @@ def attractionsResult():
     no_adults = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     no_children = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     plan_no = ["Plan Number:", 1, 2]
-    return render_template("attractionsResult.html", no_adults=no_adults, no_children=no_children, result=attractionData, plan_no = plan_no)
+    return render_template("attractionsResult.html", no_adults=no_adults, no_children=no_children, result=attractionData, plan_no=plan_no)
 
 
 @app.route('/flights')
@@ -154,46 +177,32 @@ def hotels():
     # for j in range(len(hotelNameCard)):
     #     app.logger.info(hotelNameCard[j])
     count = 1
+
     if request.method == 'POST':
         temp = request.form["searchHotels"]
-        print(temp)
-        for i in range(len(hotelNameCard)):
-            hotelData = hotelNameCard[i]
-            print(hotelNameCard[i])
-            print(len(hotelNameCard))
-            if temp == hotelData:
-                # randomList.append(hotelData)
-                app.logger.info("match")
-                return redirect(url_for("hello", temp2=temp))
-            elif count == len(hotelNameCard):
-                return render_template("hotels.html", no_adults=no_adults, no_children=no_children, result=hotelReccoCard)
-            else:
-                app.logger.info("no match")
-                # return render_template("hotels.html", no_adults=no_adults, no_children=no_children, result=hotelReccoCard)
-            count = count+1
+        temp2 = str(temp)
+        temp2 = temp2.lower()
+        temp2 = temp2.strip()
+        temp3 = ''.join(filter(str.isalnum, temp2))
+        print(temp3)
+        if len(temp3) == 0:
+            return render_template("hotels.html", no_adults=no_adults, no_children=no_children, result=hotelReccoCard)
+
+        return redirect(url_for("hello", temp2=temp3))
+
+        # for i in range(len(hotelNameCard)):
+        #     hotelData = hotelNameCard[i]
+        #     if temp3 == hotelData:
+        #         app.logger.info("match")
+        #         return redirect(url_for("hello", temp2=temp3))
+        #     elif count == len(hotelNameCard):
+        #         return render_template("hotels.html", no_adults=no_adults, no_children=no_children, result=hotelReccoCard)
+        #     else:
+        #         app.logger.info("no match")
+        #     count = count+1
 
     else:
         return render_template("hotels.html", no_adults=no_adults, no_children=no_children, result=hotelReccoCard)
-
-    # if request.method == 'POST':
-    #     temp = request.form["searchHotels"]
-    #     bigData = hotelRecco()
-    #     hotelsList2 = hotelsFunction()
-    #     for i in range(len(hotelsList2)):
-    #         hotelData = hotelsList2[i]
-    #         if temp == hotelData:
-    #             randomList.append(hotelData)
-    #             return redirect(url_for("hello", temp2=randomList))
-    #         else:
-    #             return render_template("hotels.html", no_adults=no_adults, no_children=no_children, result=hotelReccoCard)
-
-        # hotelInput = request.form.get("searchHotels")
-        # hotelsList2 = hotelsFunction()
-
-        # for i in range(len(hotelsList2)):
-        #     temp = hotelsList2[i]
-        #     if hotelInput == temp:
-        #         return redirect(url_for('hotelsResult'), hotelInput=hotelInput)
 
 
 @app.route("/<temp2>")
@@ -203,22 +212,34 @@ def hello(temp2):
     plan_no = ["Plan Number:", 1, 2]
     finalList = []
     bigData = hotelRecco()
+    count = 1
 
     # hotelsList2 = hotelsFunction()
 
     # for j in range(len(hotelNameCard)):
     #     app.logger.info(hotelNameCard[j])
     app.logger.info("not success")
+    temp2 = str(temp2)
     for i in range(len(bigData)):
         hotelIndex = bigData[i]
         hotelName = hotelIndex["name"]
+        tempHotelName = str(hotelName)
+        tempHotelName = tempHotelName.lower()
+        tempHotelName = tempHotelName.strip()
+        finalHotelName = ''.join(filter(str.isalnum, tempHotelName))
+        ratio = fuzz.ratio(temp2, finalHotelName)
+        # print(finalHotelName)
         # print(hotelName)
-        if temp2 == hotelName:
+        print(ratio)
+        if ratio > 70:
             app.logger.info("success")
             finalList.append(bigData[i])
-            break
+        elif count == len(bigData) and len(finalList) == 0:
+            return render_template("hotelsEmpty.html", no_adults=no_adults, no_children=no_children, result=hotelReccoCard)
         else:
             continue
+
+        count = count+1
 
         # for j in range(len(randomList)):
         #     if randomList[j] == hotelName:

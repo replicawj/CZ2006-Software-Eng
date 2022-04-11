@@ -42,12 +42,12 @@
     <nav class="navbar bg-light" id = "sideBarWrapper">
 
       <!-- Links -->
-      <ul class="navbar-nav">
-          <li class="nav-item" id="imageWrapper">
-              <img
-                  src="{{ url_for('static',filename='assets/img/userIcon.png')}}"
-              />
-          </li>
+      <ul class="navbar-nav"> <!-- ul tag defines an unordered (bulleted) list -->
+        <li class="nav-item" id="imageWrapper">
+            <img
+                src="{{ url_for('static',filename='assets/img/userIcon.png')}}"
+            />
+        </li>
         <li class="nav-item">
           <a class="nav-link" href="/account">My account</a>
         </li>
@@ -58,7 +58,6 @@
           <a class="nav-link" href="/settings">Settings</a>
         </li>
       </ul>
-    
     </nav>
 
   <div class="overallWrapper">
@@ -93,247 +92,266 @@
 
           console.log(plan);
       });
-
     </script>
 
-    <div class="flightsTitle">
+    <style>
+
+      .title {
+        padding-left: 33%;
+        margin-top: 50px;
+        font-family: "Montserrat";
+        font-style: normal;
+        font-weight: 700;
+        font-size: 25px;
+        color: #000000;
+      }
+
+      .itineraryDate {
+        padding-left: 33%;
+        margin-top: 3px;
+        font-family: "Montserrat";
+        font-style: normal;
+        font-weight: 700;
+        font-size: 2p00x;
+        color: #000000;
+      }
+
+      /*
+      .newScrollerWrapper {
+        padding-left: 33%;
+        display: flex;
+        overflow-x: auto;
+        max-height: 550px;
+        max-width: 1800px;
+        margin-top: 12px;
+        padding-bottom: 3%;
+
+        min-width: 350px;
+        height: 200px;
+        text-align: left;
+        color: black;
+        font-size: 18;
+        background-color: #f2f3f9;
+        margin-right: 36px;
+        border-radius: 20px;
+        box-shadow: 0px 30px 80px rgba(88, 92, 229, 0.12);
+        border: none;
+      }
+      */
+
+      .newScrollerWrapper {
+        padding-left: 1%;
+        padding-bottom: 3%;
+        padding-top: 1%;
+        overflow-x: auto;
+        display: flex;
+        max-height: 550px;
+        max-width: 1000px;
+        margin-top: 12px;
+        
+
+        min-width: 350px;
+        height: 200px;
+        text-align: left;
+        color: black;
+        font-size: 18;
+        background-color: #f2f3f9;
+        margin-left: 500px;
+        border-radius: 20px;
+        box-shadow: 0px 30px 80px rgba(88, 92, 229, 0.12);
+        border: none;
+      }
+
+      .attractionsScrollerWrapper {
+        padding-left: 1%;
+        padding-bottom: 3%;
+        padding-top: 1%;
+        overflow-x: auto;
+        display: flex;
+        max-height: 550px;
+        max-width: 1000px;
+        margin-top: 12px;
+        
+
+        min-width: 350px;
+        height: 300px;
+        text-align: left;
+        color: black;
+        font-size: 18;
+        background-color: #f2f3f9;
+        margin-left: 500px;
+        border-radius: 20px;
+        box-shadow: 0px 30px 80px rgba(88, 92, 229, 0.12);
+        border: none;
+      }
+
+    </style>
+
+    <div class="title">
       Flights
     </div>
 
-    <div class="flightsWrapping">
-      <div class="scrolling-wrapper">
-        {% for result in result %}
-        <div class="card">
-          <div class = "mx-auto">
-            <img src= "https://www.logolynx.com/images/logolynx/2b/2bbabac56c986b5fa404ced4eef54d36.jpeg" class="logo mt-2" />
-          </div>
-          
-          <div class =  "info mx-auto pt-2">
+    <div class="newScrollerWrapper">
+      <ul class="navbar-nav"> <!-- ul tag defines an unordered (bulleted) list -->
+        <li class="nav-item" id="imageWrapper">
+          <img src= "https://www.logolynx.com/images/logolynx/2b/2bbabac56c986b5fa404ced4eef54d36.jpeg" width="150" height="60"/>
+        </li>
+        <li>
+          <p>Date</p>
+        </li>
+        <li>
+          <p>My account</p>
+        </li>
+        <li>
+          <p>My account</p>
+        </li>
+      </ul>
+    </div>
 
+    <div class="title">
+      Hotels
+    </div>
 
-            <div class = "font1">
-              {% set d = result.depart_date %}
-              date: {{d[12:16]}}
-              time: {{d[0:10]}}
-            </div>
+    <div class="newScrollerWrapper">
+      <ul class="navbar-nav"> <!-- ul tag defines an unordered (bulleted) list -->
+        <li class="nav-item" id="imageWrapper">
+          <img src= "https://www.logolynx.com/images/logolynx/2b/2bbabac56c986b5fa404ced4eef54d36.jpeg" width="150" height="60"/>
+        </li>
+        <li>
+          <p>Name</p>
+        </li>
+        <li>
+          <p>Address</p>
+        </li>
+        <li>
+          <p>Date of plan</p>
+        </li>
+        <li>
+          <p>Price</p>
+        </li>
+      </ul>
+    </div>
 
-            <div class = "font2 mt-1">
-              {{result.origin}} - {{result.destination}}
-            </div>
+    <div class="title">
+      Attractions
+    </div>
 
-            <div class = "font2">
-              $SGD{{result.price}}
-            </div>
-          </div>
-          
+    <div class="attractionsScrollerWrapper" id="allAttractionsDisplay">
+    </div>
 
-        </div>
-        {% endfor %}
-      </div>
+    <script>
+      function countProperties(obj) { //count amt of elements in an object
+        var count = 0;
+    
+        for(var prop in obj) {
+            if(obj.hasOwnProperty(prop))
+                ++count;
+        }
+    
+        return count;
+      }
+      
+      var currentPlan = sessionStorage.getItem("currentPlan");
+      db.collection('accounts').doc(userEmail).get().then((doc) => {
+        var plans = doc.data().plans;
+        var object = plans; //plans
 
-      <div class="hotelsTitle">
-        Hotels
-      </div>
+        plan = object[currentPlan]; //look at 1 plan
+        var attractions = plan["attractions"];
+        var noOfAttractions = countProperties(attractions)
 
-      <div class="scrolling-wrapper">
-        {% for result in result %}
-        <div class="card">
-          <div class = "mx-auto">
-            <img src= "https://www.logolynx.com/images/logolynx/2b/2bbabac56c986b5fa404ced4eef54d36.jpeg" class="logo mt-2" />
-          </div>
-          
-          <div class =  "info mx-auto pt-2">
+        //var planNumberTextElement = document.createTextNode(attractions[0].name);
+
+        console.log("Number of attractions in plan: " + noOfAttractions);
+        console.log("Attractions object: " + attractions[1].name);  
+        //console.log("Attractions object: " + attractions[Object.keys(attractions)[0]].name); //gets 1st object in attractions
+
+        var counter = 0; //for indexing attraction in attractions
+        function cloneAttractions(counter){
+          if(counter < noOfAttractions){
+            var attraction = attractions[Object.keys(attractions)[counter]];
+            /*
+            var attractionDates = Object.keys(attractions);
+            var attractionDate = attractionDates[counter];
+            */
+            var attractionDate = attraction.date;
+            if (attractionDate == null){
+              attractionDate = "No date selected";
+            }
+            var attractionName = attraction.name;
+            var attractionAddress = attraction.address;
+            var attractionPrice = attraction.price;
+
+            //-----Create HTML elements
+            var ul = document.createElement('ul');
+            ul.setAttribute("class", "navbar-nav");
+
+            var photo = document.createElement('LI');
+            photo.setAttribute("class", "navbar-nav");
+            //photo.id = "imageWrapper"
+            photo.innerHTML = "<img src= \"https://www.logolynx.com/images/logolynx/2b/2bbabac56c986b5fa404ced4eef54d36.jpeg\" width=\"150\" height=\"60\"/>"
+            //photo.src = "https://www.logolynx.com/images/logolynx/2b/2bbabac56c986b5fa404ced4eef54d36.jpeg"
+            ul.appendChild(photo);
+
+            //Name li
+            var listElement = document.createElement("LI");
+            let textNode = document.createTextNode(attractionName);
+            listElement.appendChild(textNode);
+            ul.appendChild(listElement);
+
+            //Date li
+            var listElement = document.createElement("LI");
+            textNode = document.createTextNode(attractionDate);
+            listElement.appendChild(textNode);
+            ul.appendChild(listElement);
+
+            //Address li
+            var listElement = document.createElement("LI");
+            textNode = document.createTextNode(attractionAddress);
+            listElement.appendChild(textNode);
+            ul.appendChild(listElement);
+
+            //Address price
+            var listElement = document.createElement("LI");
+            textNode = document.createTextNode(attractionPrice);
+            listElement.appendChild(textNode);
+            ul.appendChild(listElement);
+
+            var attractionDisplay = document.getElementById('allAttractionsDisplay'); //get location of display
+            attractionDisplay.appendChild(ul);
+            //---end of html displays
+
             
-            <div class = "font1">
-              {% set d = result.depart_date %}
-              date: {{d[12:16]}}
-              time: {{d[0:10]}}
-            </div>
+            console.log("Attraction")
+            console.log("Attraction name: " + attractionName);
+            console.log("Attraction date: " + attractionDate);
+            console.log("Attraction address: " + attractionAddress);
+            console.log("Attraction price: " + attractionPrice);
+            return cloneAttractions(counter + 1);
+          } else {
+            return counter
+          }
+        }
+        console.log(cloneAttractions(counter));
+        
+      });
+    </script>
 
-            <div class = "font2 mt-1">
-              {{result.origin}} - {{result.destination}}
-            </div>
+    <div class="title">
+      Itinerary
+    </div>
 
-            <div class = "font2">
-              $SGD{{result.price}}
-            </div>
-          </div>
-          
+    <div class="itineraryDate" id="date">
+      Tuesday, February 1st
+    </div>
+      
+    <div class="itineraryDate" id="date">
+      Wednesday, February 1st
+    </div>
 
-        </div>
-        {% endfor %}
-      </div>
-
-
-
-      <div class="hotelsTitle">
-        Attractions
-      </div>
-
-      <div class="scrolling-wrapper">
-        {% for result in result %}
-        <div class="card">
-          <div class = "mx-auto">
-            <img src= "https://www.logolynx.com/images/logolynx/2b/2bbabac56c986b5fa404ced4eef54d36.jpeg" class="logo mt-2" />
-          </div>
-          
-          <div class =  "info mx-auto pt-2">
-            
-            <div class = "font1">
-              {% set d = result.depart_date %}
-              date: {{d[12:16]}}
-              time: {{d[0:10]}}
-            </div>
-
-            <div class = "font2 mt-1">
-              {{result.origin}} - {{result.destination}}
-            </div>
-
-            <div class = "font2">
-              $SGD{{result.price}}
-            </div>
-          </div>
-          
-
-        </div>
-        {% endfor %}
-      </div>
-
-
-
-
-
-
-
-      <div class="itineraryTitle">
-        Itinerary
-      </div>
-
-      <div class="itineraryDate">
-        Tuesday, February 1st
-      </div>
-
-      <div class="scrolling-wrapper">
-        {% for result in result %}
-        <div class="card">
-          <div class = "mx-auto">
-            <img src= "https://www.logolynx.com/images/logolynx/2b/2bbabac56c986b5fa404ced4eef54d36.jpeg" class="logo mt-2" />
-          </div>
-          
-          <div class =  "info mx-auto pt-2">
-
-
-            <div class = "font1">
-              {% set d = result.depart_date %}
-              date: {{d[12:16]}}
-              time: {{d[0:10]}}
-            </div>
-
-            <div class = "font2 mt-1">
-              {{result.origin}} - {{result.destination}}
-            </div>
-
-            <div class = "font2">
-              $SGD{{result.price}}
-            </div>
-          </div>
-          
-
-        </div>
-        {% endfor %}
-      </div>
-
-      <div>
-
-      </div>
-      <hr>
-      <div class="itineraryDate">
-        Wednesday, February 2nd
-      </div>
-
-      <div class="scrolling-wrapper">
-        {% for result in result %}
-        <div class="card">
-          <div class = "mx-auto">
-            <img src= "https://www.logolynx.com/images/logolynx/2b/2bbabac56c986b5fa404ced4eef54d36.jpeg" class="logo mt-2" />
-          </div>
-          
-          <div class =  "info mx-auto pt-2">
-
-
-            <div class = "font1">
-              {% set d = result.depart_date %}
-              date: {{d[12:16]}}
-              time: {{d[0:10]}}
-            </div>
-
-            <div class = "font2 mt-1">
-              {{result.origin}} - {{result.destination}}
-            </div>
-
-            <div class = "font2">
-              $SGD{{result.price}}
-            </div>
-          </div>
-          
-
-        </div>
-        {% endfor %}
-      </div>
-
-      <hr>
-
-      <div class="itineraryDate">
-        Thursday, February 3rd
-      </div>
-
-      <div class="scrolling-wrapper">
-        {% for result in result %}
-        <div class="card">
-          <div class = "mx-auto">
-            <img src= "https://www.logolynx.com/images/logolynx/2b/2bbabac56c986b5fa404ced4eef54d36.jpeg" class="logo mt-2" />
-          </div>
-          
-          <div class =  "info mx-auto pt-2">
-
-
-            <div class = "font1">
-              {% set d = result.depart_date %}
-              date: {{d[12:16]}}
-              time: {{d[0:10]}}
-            </div>
-
-            <div class = "font2 mt-1">
-              {{result.origin}} - {{result.destination}}
-            </div>
-
-            <div class = "font2">
-              $SGD{{result.price}}
-            </div>
-          </div>
-          
-
-        </div>
-        {% endfor %}
-      </div>
-
-      <!-- <div class="budgetWrapper">
-        <div class="itineraryDate">
-          Budget
-        </div>
-
-        <button class = "expenseButton ml-5" >
-          <a class = "text-white" href="{{ url_for('login') }}">
-               + Add Expense
-          </a>
-        </button>
-      </div> -->
-
-
-      <!-- <div class="itineraryDate">
-        Tuesday, February 1st
-      </div> -->
-  </div>
+    <div class="itineraryDate" id="date">
+      Thursday, February 1st
+    </div>
 
 
 

@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>Account</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/account.css')}}">
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/plans.css')}}">
+  <!-- <link rel="stylesheet" href="{{ url_for('static',filename='css/flights.css')}}"> -->
+
+</head>
+
+<body>
+    <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-firestore.js"></script>
+    <script>
+      //import { initializeApp } from 'firebase/app'
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyDFOHLm7znnFt-n_HeemWcIhhh_9wlk4qo",
+      authDomain: "travello-fd292.firebaseapp.com",
+      databaseURL: "https://travello-fd292-default-rtdb.asia-southeast1.firebasedatabase.app",
+      projectId: "travello-fd292",
+      storageBucket: "travello-fd292.appspot.com",
+      messagingSenderId: "771482085344",
+      appId: "1:771482085344:web:f596fe26914b66601f6d85",
+      measurementId: "G-RN0N391VX2"
+      };
+      firebase.initializeApp(config);
+      const db = firebase.firestore(); //reference to database and store to const db
+      db.settings({ timestampsInSnapshots: true }); 
+    </script>
+    {% extends "template.html" %}
+    {% block content %}
+
+    <!-- <div class="wholeWrapper">
+
+
+    </div> -->
+
+    <nav class="navbar bg-light" id = "sideBarWrapper">
+
+      <!-- Links -->
+      <ul class="navbar-nav"> <!-- ul tag defines an unordered (bulleted) list -->
+        <li class="nav-item" id="imageWrapper">
+            <img
+                src="{{ url_for('static',filename='assets/img/userIcon.png')}}"
+            />
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/account">My account</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="plans">My plans</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/settings">Settings</a>
+        </li>
+      </ul>
+    </nav>
+
+  <div class="overallWrapper">
+    <div class="headerWrapper">
+      <div class = "headerText" id="planNumber">
+          Plan
+      </div>
+      <div class="dateText" id="startAndEndDate">
+      </div>
+    </div>
+
+    <script>
+      //display heading stuff
+      var currentPlan = sessionStorage.getItem("currentPlan");
+      var planNumberTextElement = document.createTextNode(currentPlan); //put current plan number here
+      //planNumber.setAttribute("class", "headerText");
+      document.getElementById("planNumber").appendChild(planNumberTextElement);
+
+      var userEmail = sessionStorage.getItem("email");
+      db.collection('accounts').doc(userEmail).get().then((doc) => {
+          var plans = doc.data().plans;
+          var object = plans; //plans
+
+          plan = object[currentPlan]; //look at 1 plan
+          var startDate = plan["startDate"];
+          var endDate = plan["endDate"];
+
+          //create text element
+          var startAndEndDate = startDate + " to " + endDate;
+          var dateTextElement = document.createTextNode(startAndEndDate); //put current plan number here
+          document.getElementById("startAndEndDate").appendChild(dateTextElement);
+
+          console.log(plan);
+      });
+
+    </script>
+
+    <div class="flightsTitle">
+      Flights
+    </div>
+
+    
+
+    <div class="flightsWrapping">
+      <div class="scrolling-wrapper">
+        {% for result in result %}
+        <div class="card">
+          <div class = "mx-auto">
+            <img src= "https://www.logolynx.com/images/logolynx/2b/2bbabac56c986b5fa404ced4eef54d36.jpeg" class="logo mt-2" />
+          </div>
+          
+          <div class =  "info mx-auto pt-2">
+
+
+            <div class = "font1">
+              {% set d = result.depart_date %}
+              date: {{d[12:16]}}
+              time: {{d[0:10]}}
+            </div>
+
+            <div class = "font2 mt-1">
+              {{result.origin}} - {{result.destination}}
+            </div>
+
+            <div class = "font2">
+              $SGD{{result.price}}
+            </div>
+          </div>
+          
+
+        </div>
+        {% endfor %}
+      </div>
+
+      <style>
+        .bb2 {
+          margin-top: 20px;
+        }
+      </style>
+      
+      <div class="bb2">
+        asdfadsfsd
+      </div>
+
+      <div class="hotelsTitle">
+        Hotels
+      </div>
+
+      <div class="scrolling-wrapper">
+        {% for result in result %}
+        <div class="card">
+          <div class = "mx-auto">
+            <img src= "https://www.logolynx.com/images/logolynx/2b/2bbabac56c986b5fa404ced4eef54d36.jpeg" class="logo mt-2" />
+          </div>
+          
+          <div class =  "info mx-auto pt-2">
+            
+            <div class = "font1">
+              {% set d = result.depart_date %}
+              date: {{d[12:16]}}
+              time: {{d[0:10]}}
+            </div>
+
+            <div class = "font2 mt-1">
+              {{result.origin}} - {{result.destination}}
+            </div>
+
+            <div class = "font2">
+              $SGD{{result.price}}
+            </div>
+          </div>
+          
+
+        </div>
+        {% endfor %}
+      </div>
+
+
+
+      <div class="hotelsTitle">
+        Attractions
+      </div>
+
+      <div class="scrolling-wrapper">
+        {% for result in result %}
+        <div class="card">
+          <div class = "mx-auto">
+            <img src= "https://www.logolynx.com/images/logolynx/2b/2bbabac56c986b5fa404ced4eef54d36.jpeg" class="logo mt-2" />
+          </div>
+          
+          <div class =  "info mx-auto pt-2">
+            
+            <div class = "font1">
+              {% set d = result.depart_date %}
+              date: {{d[12:16]}}
+              time: {{d[0:10]}}
+            </div>
+
+            <div class = "font2 mt-1">
+              {{result.origin}} - {{result.destination}}
+            </div>
+
+            <div class = "font2">
+              $SGD{{result.price}}
+            </div>
+          </div>
+          
+
+        </div>
+        {% endfor %}
+      </div>
+
+
+
+
+
+
+
+      <div class="itineraryTitle">
+        Itinerary
+      </div>
+
+      <div class="itineraryDate">
+        Tuesday, February 1st
+      </div>
+
+      <div class="scrolling-wrapper">
+        {% for result in result %}
+        <div class="card">
+          <div class = "mx-auto">
+            <img src= "https://www.logolynx.com/images/logolynx/2b/2bbabac56c986b5fa404ced4eef54d36.jpeg" class="logo mt-2" />
+          </div>
+          
+          <div class =  "info mx-auto pt-2">
+
+
+            <div class = "font1">
+              {% set d = result.depart_date %}
+              date: {{d[12:16]}}
+              time: {{d[0:10]}}
+            </div>
+
+            <div class = "font2 mt-1">
+              {{result.origin}} - {{result.destination}}
+            </div>
+
+            <div class = "font2">
+              $SGD{{result.price}}
+            </div>
+          </div>
+          
+
+        </div>
+        {% endfor %}
+      </div>
+
+      <div>
+
+      </div>
+      <hr>
+      <div class="itineraryDate">
+        Wednesday, February 2nd
+      </div>
+
+      <div class="scrolling-wrapper">
+        {% for result in result %}
+        <div class="card">
+          <div class = "mx-auto">
+            <img src= "https://www.logolynx.com/images/logolynx/2b/2bbabac56c986b5fa404ced4eef54d36.jpeg" class="logo mt-2" />
+          </div>
+          
+          <div class =  "info mx-auto pt-2">
+
+
+            <div class = "font1">
+              {% set d = result.depart_date %}
+              date: {{d[12:16]}}
+              time: {{d[0:10]}}
+            </div>
+
+            <div class = "font2 mt-1">
+              {{result.origin}} - {{result.destination}}
+            </div>
+
+            <div class = "font2">
+              $SGD{{result.price}}
+            </div>
+          </div>
+          
+
+        </div>
+        {% endfor %}
+      </div>
+
+      <hr>
+
+      <div class="itineraryDate">
+        Thursday, February 3rd
+      </div>
+
+      <div class="scrolling-wrapper">
+        {% for result in result %}
+        <div class="card">
+          <div class = "mx-auto">
+            <img src= "https://www.logolynx.com/images/logolynx/2b/2bbabac56c986b5fa404ced4eef54d36.jpeg" class="logo mt-2" />
+          </div>
+          
+          <div class =  "info mx-auto pt-2">
+
+
+            <div class = "font1">
+              {% set d = result.depart_date %}
+              date: {{d[12:16]}}
+              time: {{d[0:10]}}
+            </div>
+
+            <div class = "font2 mt-1">
+              {{result.origin}} - {{result.destination}}
+            </div>
+
+            <div class = "font2">
+              $SGD{{result.price}}
+            </div>
+          </div>
+          
+
+        </div>
+        {% endfor %}
+      </div>
+
+      <!-- <div class="budgetWrapper">
+        <div class="itineraryDate">
+          Budget
+        </div>
+
+        <button class = "expenseButton ml-5" >
+          <a class = "text-white" href="{{ url_for('login') }}">
+               + Add Expense
+          </a>
+        </button>
+      </div> -->
+
+
+      <!-- <div class="itineraryDate">
+        Tuesday, February 1st
+      </div> -->
+  </div>
+
+
+
+    {% endblock %}
+</body>

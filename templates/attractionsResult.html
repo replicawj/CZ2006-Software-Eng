@@ -257,6 +257,16 @@
             <button onclick="savePlans()" type="button" class="btn btn-primary" id="saveButton" data-dismiss="modal">Save</button>
           
             <script>
+              function countProperties(obj) { //count amt of elements in an object
+                var count = 0;
+            
+                for(var prop in obj) {
+                    if(obj.hasOwnProperty(prop))
+                        ++count;
+                }
+            
+                return count;
+              }
               function savePlans(){
                 
                 date = new Date(document.getElementById("plandateSelection").value);
@@ -278,19 +288,29 @@
                   var object = plans; //three plans
                   var plan = object[which_plan];
                   var planSelected = which_plan;
+                  //var date = 
 
                   var copyPlan = {};
                   
                   Object.assign(copyPlan,plan);
 
-                  //console.log(thePlan.attractions);
+                  console.log(copyPlan.attractions);
+                  var numberOfAttractions = countProperties(copyPlan.attractions);
+                  console.log(numberOfAttractions);
 
-                  var newAttraction = {
-                    name:name,
-                    date:date,
-                    address : address,
-                    price : price,
-                  }
+                  var newAttraction = {}
+
+                  //var date = new Date(document.getElementById("plandateSelection").value);
+                  //date = String(date);
+                  var keyValue = date;
+
+                  var attractionCounter = numberOfAttractions + 1;
+                  newAttraction[attractionCounter] = {
+                                              name:name,
+                                              address : address,
+                                              date:date,
+                                              price : price
+                                            };
 
                   copyPlan.attractions = newAttraction;
 
@@ -300,16 +320,13 @@
 
                   var finalPlan = {};
                   finalPlan[which_plan] = copyPlan;
-                  //object[which_plan]plan.attractions = "hee"
-                  //plan.attractions = "hee"
-                  //object[which_plan].attractions = "rrr";
 
                   
                   db.collection('accounts').doc(sessionStorage.getItem("email")).set({
                     plans : finalPlan
                   }, { merge : true});
                   
-
+                  console.log("Attraction object:");
                   console.log(newAttraction);
                 });
 

@@ -41,8 +41,11 @@ form.addEventListener('submit', (e) => {
     var email = form.floatingInput.value;
     var password = form.floatingPassword.value;
     var verifyPassword = form.floatingVerifyPassword.value;
-    
+    var onlyUpper = password.replace(/[a-z]/g, '');
+    var onlyLower = password.replace(/[A-Z]/g, '');
+    const regex = /\S+@\S+\.\S+/
 
+    console.log(password)
     if (email == "" && password == "") {
         alert("Please fill in the details");
         return false;
@@ -53,10 +56,20 @@ form.addEventListener('submit', (e) => {
         } else if(password == ""){
             alert("Password must be filled out");
 
-        } else if (form.floatingPassword.value != form.floatingVerifyPassword.value){
+        }  else if (form.floatingPassword.value != form.floatingVerifyPassword.value){
         alert("Password does not match");
     
-        } else {
+        } else if (form.floatingPassword.value.length <8){
+            alert("Password must me at least 8 characters long!");
+
+        } else if (onlyUpper.length < 1) {
+            alert("Password must include at least One Upper Case Letter!");
+        } else if (onlyLower.length <1) {
+            alert("Password must include at least One Lower Case Letter!");
+        } else if (/\d/.test(password) === false) {
+            alert("Password must include at least One Number!");
+        }
+        else {
             //var docRef = ;
             db.collection('accounts').doc(email).get().then((doc) => { //find if document(account) exist
                 if (doc.exists) { //if exist

@@ -236,7 +236,7 @@
       Attractions
     </div>
 
-    <div class="attractionsScrollerWrapper" id="allAttractionsDisplay">
+    <div class="scrolling-wrapper" id="allAttractionsDisplay">
     </div>
 
     <script>
@@ -274,7 +274,11 @@
             var attractionDates = Object.keys(attractions);
             var attractionDate = attractionDates[counter];
             */
-            var attractionDate = attraction.date;
+
+            
+            var attractionD = attraction.date;
+            const attractionDate = attractionD.toDate().toDateString();
+    
             if (attractionDate == null){
               attractionDate = "No date selected";
             }
@@ -284,35 +288,34 @@
 
             //-----Create HTML elements
             var ul = document.createElement('ul');
-            ul.setAttribute("class", "navbar-nav");
-
-            var photo = document.createElement('LI');
-            photo.setAttribute("class", "navbar-nav");
-            //photo.id = "imageWrapper"
-            photo.innerHTML = "<img src= \"https://www.logolynx.com/images/logolynx/2b/2bbabac56c986b5fa404ced4eef54d36.jpeg\" width=\"150\" height=\"60\"/>"
-            //photo.src = "https://www.logolynx.com/images/logolynx/2b/2bbabac56c986b5fa404ced4eef54d36.jpeg"
-            ul.appendChild(photo);
+            ul.setAttribute("class", "card ");
+            ul.setAttribute("style", "list-style:none");
+            
 
             //Name li
             var listElement = document.createElement("LI");
+            listElement.setAttribute("class", "font1");
             let textNode = document.createTextNode(attractionName);
             listElement.appendChild(textNode);
             ul.appendChild(listElement);
 
             //Date li
             var listElement = document.createElement("LI");
+            listElement.setAttribute("class", "font2" )
             textNode = document.createTextNode(attractionDate);
             listElement.appendChild(textNode);
             ul.appendChild(listElement);
 
             //Address li
             var listElement = document.createElement("LI");
+            listElement.setAttribute("class", "font2" )
             textNode = document.createTextNode(attractionAddress);
             listElement.appendChild(textNode);
             ul.appendChild(listElement);
 
             //Address price
             var listElement = document.createElement("LI");
+            listElement.setAttribute("class", "font2" )
             textNode = document.createTextNode(attractionPrice);
             listElement.appendChild(textNode);
             ul.appendChild(listElement);

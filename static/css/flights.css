@@ -73,23 +73,23 @@
   border-radius: 25px;
 }
 
-.flex-item .font1{
-  color:black;
+.flex-item .font1 {
+  color: black;
   font-weight: 700;
-  font-size:19px;
+  font-size: 19px;
 }
 .flex-item .font2 {
-  color:black;
-  font-weight:400;
+  color: black;
+  font-weight: 400;
   font-size: 17px;
 }
 
-.flex-item .font3{
-  color:black;
-  font-weight:700;
+.flex-item .font3 {
+  color: black;
+  font-weight: 700;
   font-size: 30px;
 }
-.flex-item .addButton{
+.flex-item .addButton {
   width: 150px;
   height: 40px;
   border: none;
@@ -99,19 +99,18 @@
   /* position: absolute; */
 }
 
-.flex-item .logo{
-  width:150px;
-  height:150px;
+.flex-item .logo {
+  width: 150px;
+  height: 150px;
   object-fit: cover;
   border-radius: 50%;
-
 }
 .scrolling-wrapper {
   display: flex;
   overflow-x: auto;
   max-height: 550px;
   padding-left: 5%;
-  padding-bottom:3%;
+  padding-bottom: 3%;
 }
 
 .scrolling-wrapper::-webkit-scrollbar {
@@ -165,35 +164,25 @@
   color: white;
 }
 
-
-
-.card .font1{
-  color:black;
+.card .font1 {
+  color: black;
   font-weight: 700;
-  font-size:22px;
+  font-size: 22px;
 }
 
-.card .font2{
-  color:black;
-  font-weight:400;
+.card .font2 {
+  color: black;
+  font-weight: 400;
   font-size: 20px;
 }
 
-.card .logo{
+.card .logo {
   width: 423px;
   height: 132px;
   object-fit: fill;
   border-radius: 25px;
-
 }
-.card .info{
+.card .info {
   height: 100%;
-  width:85%;
-
+  width: 85%;
 }
-
-
-
-
-
-

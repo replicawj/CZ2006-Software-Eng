@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>Flights</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{{ url_for('static',filename='css/flights.css')}}">
+</head>
+
+<body class = "backgroundSet">
+    {% extends "template.html" %}
+    {% block content %}
+
+
+    <div class="ImageWrapper">
+      <img src ="{{ url_for('static',filename='assets/img/flightsHeaderImage.png')}}" width = 100%/>
+      <div class = "Title">Flights</div>
+    </div>
+    
+    <div class= "searchWrapper">
+      <div class = "searchBorder mx-auto row">
+
+        <div class = "col d-flex flex-wrap align-content-center justify-content-center">
+
+          <input
+            type="search"
+            class="form-control form-rounded"
+            id="start_location"
+            name = "start_location"
+            placeholder="From:"
+          />
+
+        </div>
+
+
+        <div class = "col d-flex flex-wrap align-content-center justify-content-center">
+
+          <input
+            type="search"
+            class="form-control form-rounded"
+            id="end_location"
+            name = "end_location"
+            placeholder="To:"
+          />
+
+        </div>
+
+
+        <div class = "col d-flex flex-wrap align-content-center justify-content-center">
+
+          <input
+            type="date"
+            class="col form-control form-rounded "
+            id="checkOutDate"
+            name = "checkoutDate"
+            placeholder="Check out Date:"
+          />
+
+        </div>
+
+
+
+
+        <div class = "col d-flex flex-wrap align-content-center justify-content-center">
+
+          <select
+            name="flight_class"
+            class="form-control form-rounded "
+            id="flight_class"
+            name = "flight_class"
+          >
+          {% for choice in flight_class %}
+              <option value="{{choice}}">{{choice}}</option>"
+          {% endfor %}
+          </select>
+
+          <select
+            name="no_travellers"
+            class="form-control form-rounded mt-3"
+            id="no_travellers"
+            name = "no_travellers"
+          >
+          {% for n_travellers in no_travellers %}
+              <option value="{{n_travellers}}">{{n_travellers}}</option>"
+          {% endfor %}
+          </select>
+
+        </div>
+
+        <div class = "col-1 d-flex flex-wrap align-content-center mr-3">
+          <a class = "btn btn-primary" id = "searchButton" type="submit" href="{{ url_for('flightsResult') }}">
+            <div class = "searchText mx-auto my-auto">
+              Search
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div action = "#" class="bg-dark">
+        Empty
+    </div>
+
+
+
+
+
+
+    {% endblock %}
+</body>

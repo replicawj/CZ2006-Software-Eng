@@ -39,6 +39,7 @@ def flightsPage():
 
 flightsData = flightsPage()
 
+print(flightsData)
 ### Hotel API -wj ###
 
 # with open('hotelInfo.json') as f:
@@ -145,7 +146,9 @@ def attractions():
     no_adults = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     no_children = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
-    if (request.method == 'POST') and "searchAttraction2" in request.form:
+    app.logger.info("debug3")
+    if (request.method == 'POST') and "searchAttraction" in request.form:
+        app.logger.info("debug4")
         print(len(request.form["searchAttraction"]))
         temp = request.form["searchAttraction"]
         temp2 = str(temp)
@@ -170,7 +173,7 @@ def attractionsResult():
     return render_template("attractionsResult.html", no_adults=no_adults, no_children=no_children, result=attractionData, plan_no=plan_no)
 
 
-@app.route("/<attractionsInput>")
+@app.route("/attractions/<attractionsInput>")
 def attractionEntry(attractionsInput):
     no_adults = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     no_children = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
@@ -180,7 +183,9 @@ def attractionEntry(attractionsInput):
     count = 1
 
     temp2 = str(attractionsInput)
+    app.logger.info("reachAttractions")
     for i in range(len(bigData)):
+        app.logger.info("attractions Searching")
         attractionIndex = bigData[i]
         attractionName = attractionIndex["name"]
         attractionName = str(attractionName)
@@ -201,11 +206,34 @@ def attractionEntry(attractionsInput):
     return render_template("attractionsResult.html", no_adults=no_adults, no_children=no_children, result=attractionData, plan_no=plan_no, finalList=finalList)
 
 
-@app.route('/flights')
+@app.route('/flights', methods=["GET", "POST"])
 def flights():
     flight_class = ["Economy", "Business", "First Class"]
     no_travellers = ["Travellers:", 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-    return render_template("flights.html", flight_class=flight_class, no_travellers=no_travellers, result=flightsData)
+    flightsList = []
+    if (request.method == 'POST'):
+        app.logger.info("debug2")
+        temp = request.form["start_location"]
+        end_temp = request.form["end_location"]
+        temp2 = str(temp)
+        temp2 = temp2.lower()
+        temp2 = temp2.strip()
+        temp3 = ''.join(filter(str.isalnum, temp2))
+
+        end_temp2 = str(end_temp)
+        end_temp2 = end_temp2.lower()
+        end_temp2 = end_temp2.strip()
+        end_temp3 = ''.join(filter(str.isalnum, end_temp2))
+
+        flightsList.append(end_temp2)
+        flightsList.append(end_temp3)
+        if len(temp3) == 0 or len(end_temp3) == 0:
+            return render_template("flightsEmpty.html", flight_class=flight_class, no_travellers=no_travellers, result=flightsData)
+
+        return redirect(url_for("flightsEntry", flightsInput=flightsList))
+
+    else:
+        return render_template("flights.html", flight_class=flight_class, no_travellers=no_travellers, result=flightsData)
 
 
 @app.route('/flightsResult')
@@ -214,6 +242,47 @@ def flightsResult():
     no_travellers = ["Travellers:", 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     return render_template("flightsResult.html", flight_class=flight_class, no_travellers=no_travellers, result=flightsData)
     # return render_template("flightsResult.html", result = flightsData)
+
+
+@app.route("/flights/<flightsInput>")
+def flightsEntry(flightsInput):
+    flight_class = ["Economy", "Business", "First Class"]
+    no_travellers = ["Travellers:", 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    finalList = []
+    bigData = flightsPage()
+    count = 1
+
+    flights_1 = flightsInput[0]
+    flights_2 = flightsInput[1]
+    app.logger.info("reachFlights")
+    for i in range(len(bigData)):
+        app.logger.info("flights Searching...")
+        flightsIndex = bigData[i]
+        flightsDestination = flightsIndex["destination"]
+        flightsDestination = str(flightsDestination)
+        flightsDestination = flightsDestination.lower()
+        flightsDestination = flightsDestination.strip()
+        flightsDestination = ''.join(filter(str.isalnum, flightsDestination))
+        app.logger.info(flightsDestination)
+
+        flightsOrigin = flightsIndex["origin"]
+        flightsOrigin = str(flightsOrigin)
+        flightsOrigin = flightsOrigin.lower()
+        flightsOrigin = flightsOrigin.strip()
+        flightsOrigin = ''.join(filter(str.isalnum, flightsOrigin))
+        app.logger.info(flightsOrigin)
+
+        if flightsOrigin == flights_1 and flightsDestination == flights_2:
+            app.logger.info("success")
+            finalList.append(bigData[i])
+        elif count == len(bigData) and len(finalList) == 0:
+            return render_template("flightsEmpty.html", flight_class=flight_class, no_travellers=no_travellers, result=flightsData)
+        else:
+            continue
+
+        count = count+1
+
+    return render_template("flightsResult.html", flight_class=flight_class, no_travellers=no_travellers, result=flightsData)
 
 
 randomList = []
@@ -225,7 +294,7 @@ def hotels():
     no_children = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
     app.logger.info("debug1")
-    if (request.method == 'POST') and "searchHotels2" in request.form:
+    if (request.method == 'POST') and ("searchHotels" in request.form):
         app.logger.info("debug2")
         temp = request.form["searchHotels"]
         temp2 = str(temp)
@@ -242,7 +311,7 @@ def hotels():
         return render_template("hotels.html", no_adults=no_adults, no_children=no_children, result=hotelReccoCard)
 
 
-@app.route("/<temp2>")
+@app.route("/hotels/<temp2>")
 def hello(temp2):
     no_adults = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     no_children = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
@@ -252,9 +321,10 @@ def hello(temp2):
     bigData2 = hotelsFunction2()
     count = 1
 
-    app.logger.info("not success")
     temp2 = str(temp2)
+    app.logger.info("reachHotels")
     for i in range(len(bigData)):
+        app.logger.info("hotels Searching...")
         hotelIndex = bigData[i]
         hotelName = hotelIndex["name"]
         tempHotelName = str(hotelName)

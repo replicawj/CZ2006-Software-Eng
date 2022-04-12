@@ -212,25 +212,119 @@
       Hotels
     </div>
 
-    <div class="newScrollerWrapper">
-      <ul class="navbar-nav"> <!-- ul tag defines an unordered (bulleted) list -->
-        <li class="nav-item" id="imageWrapper">
-          <img src= "https://www.logolynx.com/images/logolynx/2b/2bbabac56c986b5fa404ced4eef54d36.jpeg" width="150" height="60"/>
-        </li>
-        <li>
-          <p>Name</p>
-        </li>
-        <li>
-          <p>Address</p>
-        </li>
-        <li>
-          <p>Date of plan</p>
-        </li>
-        <li>
-          <p>Price</p>
-        </li>
-      </ul>
+    <div class="scrolling-wrapper" id="allHotelsDisplay">
     </div>
+
+    <script>
+      function countProperties(obj) { //count amt of elements in an object
+        var count = 0;
+    
+        for(var prop in obj) {
+            if(obj.hasOwnProperty(prop))
+                ++count;
+        }
+    
+        return count;
+      }
+      
+      var currentPlan = sessionStorage.getItem("currentPlan");
+      db.collection('accounts').doc(userEmail).get().then((doc) => {
+        var plans = doc.data().plans;
+        var object = plans; //plans
+
+        plan = object[currentPlan]; //look at 1 plan
+        var hotels = plan["hotels"];
+        var noOfHotels = countProperties(hotels)
+
+        //var planNumberTextElement = document.createTextNode(attractions[0].name);
+
+        console.log("Number of hotels in plan: " + noOfHotels);
+        console.log("Hotels object: " + hotels[1].name); 
+        //console.log("Attractions object: " + attractions[Object.keys(attractions)[0]].name); //gets 1st object in attractions
+
+        var counter = 0; //for indexing attraction in attractions
+        function cloneHotels(counter){
+          if(counter < noOfHotels){
+            var hotel = hotels[Object.keys(hotels)[counter]];
+            
+            /*
+            var attractionDates = Object.keys(attractions);
+            var attractionDate = attractionDates[counter];
+            */
+
+            
+            var hotelD = hotel.date;
+            const hotelDate = hotelD.toDate().toDateString();
+            
+            
+            if (hotelDate == null){
+              hotelDate = "No date selected";
+            }
+            var hotelName = hotel.name;
+            var hotelAddress = hotel.address;
+            var hotelPrice = hotel.price;
+            var hotelPhone = hotel.phone;
+            
+
+            //-----Create HTML elements
+            var ul = document.createElement('ul');
+            ul.setAttribute("class", "card ");
+            ul.setAttribute("style", "list-style:none");
+            
+            
+            //Name li
+            var listElement = document.createElement("LI");
+            listElement.setAttribute("class", "font1");
+            let textNode = document.createTextNode(hotelName);
+            listElement.appendChild(textNode);
+            ul.appendChild(listElement);
+
+            //Date li
+            var listElement = document.createElement("LI");
+            listElement.setAttribute("class", "font2" )
+            textNode = document.createTextNode(hotelDate);
+            listElement.appendChild(textNode);
+            ul.appendChild(listElement);
+
+            //Address li
+            var listElement = document.createElement("LI");
+            listElement.setAttribute("class", "font2" )
+            textNode = document.createTextNode(hotelAddress);
+            listElement.appendChild(textNode);
+            ul.appendChild(listElement);
+            // Phone number
+            var listElement = document.createElement("LI");
+            listElement.setAttribute("class", "font2" )
+            textNode = document.createTextNode(hotelPhone);
+            listElement.appendChild(textNode);
+            ul.appendChild(listElement);
+
+            //Address price
+            var listElement = document.createElement("LI");
+            listElement.setAttribute("class", "font2" )
+            textNode = document.createTextNode(hotelPrice);
+            listElement.appendChild(textNode);
+            ul.appendChild(listElement);
+
+            var hotelDisplay = document.getElementById('allHotelsDisplay'); //get location of display
+            hotelDisplay.appendChild(ul);
+            //---end of html displays
+
+            
+            console.log("Hotel")
+            console.log("Hotel name: " + hotelName);
+            console.log("Hotel date: " + hotelDate);
+            console.log("Hotel address: " + hotelAddress);
+            console.log("Hotel price: " + hotelPrice);
+            return cloneHotels(counter + 1);
+          } else {
+            return counter
+          }
+        }
+
+        console.log(cloneHotels(counter)); 
+      });
+    </script>
 
     <div class="title">
       Attractions
@@ -263,7 +357,7 @@
         //var planNumberTextElement = document.createTextNode(attractions[0].name);
 
         console.log("Number of attractions in plan: " + noOfAttractions);
-        console.log("Attractions object: " + attractions[1].name);  
+        console.log("Attractions object: " + attractions[1].name); 
         //console.log("Attractions object: " + attractions[Object.keys(attractions)[0]].name); //gets 1st object in attractions
 
         var counter = 0; //for indexing attraction in attractions
@@ -325,11 +419,11 @@
             //---end of html displays
 
             
-            console.log("Attraction")
-            console.log("Attraction name: " + attractionName);
-            console.log("Attraction date: " + attractionDate);
-            console.log("Attraction address: " + attractionAddress);
-            console.log("Attraction price: " + attractionPrice);
+            // console.log("Attraction")
+            // console.log("Attraction name: " + attractionName);
+            // console.log("Attraction date: " + attractionDate);
+            // console.log("Attraction address: " + attractionAddress);
+            // console.log("Attraction price: " + attractionPrice);
             return cloneAttractions(counter + 1);
           } else {
             return counter

@@ -122,11 +122,10 @@
       
         <div class = "col-6 d-flex align-items-center">
           <div>
-            <div class = "font2">Depart at {{d[11:16]}} </div>
-            
-            <div class = "font2">{{result.origin}} - {{result.destination}}</div>
-            <div class = "font2">Transfers: {{result.transfers}}</div>
-            <div class = "font2"> {{result.main_airline}} </div>
+            <div class = "font1" id = "time{{d[11:16]}}{{d[0:10]}}"> {{d[11:16]}} {{d[0:10]}} </div>
+            <div class = "font2" id = "location{{d[11:16]}}{{d[0:10]}}">{{result.origin}} - {{result.destination}}</div>
+            <div class = "font2" id = "transfersname{{d[11:16]}}{{d[0:10]}}">Transfers: {{result.transfers}}</div>
+            <div class = "font2" id = "main_airlinename{{d[11:16]}}{{d[0:10]}}"> {{result.main_airline}} </div>
             <div class = "font2">Book from: 
               <a class = "font2" href={{result.gate}}> {{result.gate}}</a>
             </div>
@@ -135,32 +134,190 @@
 
         <div class = "col my-auto">
           <div class = "d-flex flex-wrap justify-content-center">
-            <div class = "font3">
+            <div class = "font3" id = "price{{d[11:16]}}{{d[0:10]}}">
               $SGD{{result.price}}
             </div>
             
-            <a class = "addButton mt-2" id = "addButton" type="submit">
-              <div class = "searchText mx-auto my-auto">
-                Add to Plan
-              </div>
-            </a>
+            <div class = "a" id = "ai">
+              <input type="submit" name="addPlan" value="{{hotelName}}" class="random" >
+                <a class = "addButton mt-2 mx-auto" id = "addButton" type="submit" data-toggle="modal" data-target="#exampleModalCenter" onclick = "show('{{d[11:16]}}{{d[0:10]}}')">
+                  <!-- <input type ="submit" name="addPlan" value="{{hotelName}}"> -->
+                  <div class = "searchText mx-auto my-auto">
+                    Add to Plan
+                  </div>
+                </a>
+              </input>
+            </div>
+            <script>
+              //nuke the buttons if the user is not submit
+              if (sessionStorage.getItem("email") == null){ //not logged in
+                  const buttons = document.querySelectorAll('.a');
+                  buttons.forEach(button =>{button.remove()});
+                }
+              var time;
+              var price;
+              var location;
+              var airline;
+              var date;
+              function show(n){
+                time = document.getElementById('time'.concat(n)).innerHTML;
+                price = document.getElementById('price'.concat(n)).innerHTML;
+                location = document.getElementById('location'.concat(n)).innerHTML;
+                airline = document.getElementById('main_airlinename'.concat(n)).innerHTML;
+              }
+      
+            </script>
           </div>
-
-
         </div>
       </li>
       {% endfor %}
     </ul>
 
+     <!-- Modal -->
+     <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">{{hotelName}}</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="planNameWrapper">
+              Plan Name:
+
+              <div class = "col d-flex flex-wrap">
+
+                <!-- <input
+                  type="search"
+                  class="form-control form-rounded"
+                  id="searchHotels"
+                  name = "searchHotels"
+                  placeholder="Enter plan name"
+                /> -->
+
+                <select
+                  name="plan_no"
+                  class="form-control form-rounded"
+                  id="plan_no"
+                  name = "plan_no"
+                >
+                {% for plan_no in plan_no %}
+                    <option value="{{plan_no}}">{{plan_no}}</option>"
+                {% endfor %}
+                </select>
+    
+              </div>
 
 
+              
+            </div>
+            
+          </div>
+          
+          <div class="modal-footer">
+            <div class="planNameWrapper">
+              Date:
 
+              <div class = "col d-flex flex-wrap">
+                <input
+                type="date"
+                class="form-control form-rounded"
+                id="plandateSelection"
+                name = "plandateSelection"
+                placeholder="Select Date"
+              />
+              </div>
+            </div>
 
+            
+            <button type="button" class="btn btn-secondary" id = "closeButton" data-dismiss="modal">Close</button>
+            <button onclick="savePlans()" type="button" class="btn btn-primary" id="saveButton" data-dismiss="modal">Save</button>
+          
+            <script>
+              function countProperties(obj) { //count amt of elements in an object
+                var count = 0;
+            
+                for(var prop in obj) {
+                    if(obj.hasOwnProperty(prop))
+                        ++count;
+                }
+            
+                return count;
+              }
+              function savePlans(){
+                
+                date = new Date(document.getElementById("plandateSelection").value);
+                var which_planObj = document.getElementById("plan_no");
+                var which_plan = parseInt(which_planObj.options[which_planObj.selectedIndex].value);
+                console.log(name);
+                console.log(price);
+                console.log(location);
+                console.log(which_plan);
+                console.log(date);
 
+                if(date == "Invalid Date"){
+                  date = null;
+                  console.log("no date choosen");
+                }
 
+                db.collection('accounts').doc(sessionStorage.getItem("email")).get().then((doc) => {
+                  var plans = doc.data().plans;
+                  var object = plans; //three plans
+                  var plan = object[which_plan];
+                  var planSelected = which_plan;
+                  //var date = 
 
+                  var copyPlan = {};
+                  
+                  Object.assign(copyPlan,plan);
 
+                  console.log(copyPlan.flights);
+                  var numberOfFlights = countProperties(copyPlan.flights);
+                  console.log(numberOfFlights);
 
+                  var newFlight = {}
 
+                  //var date = new Date(document.getElementById("plandateSelection").value);
+                  //date = String(date);
+                  var keyValue = date;
+
+                  var flightCounter = numberOfFlights + 1;
+                  newFlight[flightCounter] = {
+                                              time:time,
+                                              location: location,
+                                              price: price,
+                                              airline: airline,
+                                              date:date
+
+                                            };
+
+                  copyPlan.flights = newFlight;
+
+                  //console.log(copyPlan.attractions);
+
+                  //plan.attractions = newAttraction; 
+
+                  var finalPlan = {};
+                  finalPlan[which_plan] = copyPlan;
+
+                  
+                  db.collection('accounts').doc(sessionStorage.getItem("email")).set({
+                    plans : finalPlan
+                  }, { merge : true});
+                  
+                  console.log("Flight object:");
+                  console.log(newFlight);
+                });
+
+              }
+            </script>
+          </div>
+          
+        
+        </div>
+      </div>
+    </div>
     {% endblock %}
 </body>

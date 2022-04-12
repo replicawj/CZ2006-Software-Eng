@@ -186,3 +186,43 @@
   height: 100%;
   width: 85%;
 }
+.modal-title {
+  padding-left: 20px;
+  border-radius: 20px, 20px, 0px, 0px;
+}
+.modal-header {
+  border: none;
+}
+
+.modal-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#closeButton {
+  border-radius: 25px;
+}
+
+#saveButton {
+  border-radius: 25px;
+  background: #43468a;
+}
+
+.planNameWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  color: black;
+  font-size: 20px;
+}
+
+.basicWrapper {
+  margin-top: 20px;
+}
+
+.random {
+  display: none;
+}

@@ -97,13 +97,24 @@
   height: 51px;
   font-size: 18px;
 }
-.searchButton {
+/* .searchButton {
   width: 192%;
   height: 50%;
   border: none;
   background: #43468a;
   color: white;
   border-radius: 25px;
+} */
+
+#searchButton {
+  width: 192%;
+  height: 50%;
+  border: none;
+  background: #43468a;
+  border-radius: 25px;
+  display: flex;
+
+  /* position: absolute; */
 }
 .Recommended-Wrapper {
   width: 100%;
@@ -159,34 +170,33 @@
   box-shadow: 0px 30px 80px rgba(88, 92, 229, 0.12);
   border: none;
 }
-.choiceFont{
+.choiceFont {
   color: #8e8e8e;
   font-size: 18px;
   font-weight: 400;
 }
 
-card .font1{
-  color:black;
+card .font1 {
+  color: black;
   font-weight: 700;
-  font-size:18px;
+  font-size: 18px;
 }
 
-.card .font2{
-  color:black;
-  font-weight:400;
+.card .font2 {
+  color: black;
+  font-weight: 400;
   font-size: 15px;
 }
 
-.card .logo{
+.card .logo {
   width: 331px;
   height: 169px;
   object-fit: fill;
   border-radius: 25px;
-
 }
-.card .info{
+.card .info {
   height: 100%;
-  width:85%;
+  width: 85%;
 }
 .modal-title {
   padding-left: 20px;

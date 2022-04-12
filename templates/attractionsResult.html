@@ -36,90 +36,95 @@
       <img src ="{{ url_for('static',filename='assets/img/attractionsHeaderImage.png')}}" width = 100%/>
       <div class = "attractionsTitle">Attractions</div>
     </div>
-    <div class= "searchWrapper">
-      <div class = "searchBorder mx-auto row">
-        <div class = "col d-flex flex-wrap align-content-center justify-content-center">
-            <input
-              type="search"
-              class="form-control form-rounded"
-              id="searchAttraction"
-              name = "searchAttraction"
-              placeholder="Search Attraction"
-            />
 
-        </div>
+    <form method="POST">
 
-        <div class = "col d-flex flex-wrap align-content-center justify-content-center">
-          <input
-            type="date"
-            class="form-control form-rounded"
-            id="dateSelection"
-            name = "dateSelection"
-            placeholder="Select Date"
-          />
-
-        </div>
-
-        <div class = " col d-flex flex-wrap align-content-center justify-content-center">
-
-            <span class = "form-rounded px-4 d-flex align-items-center">
-              <h2 class = "choiceFont my-auto ">Total:</h2>
+      <div class= "searchWrapper">
+        <div class = "searchBorder mx-auto row">
+          <div class = "col d-flex flex-wrap align-content-center justify-content-center">
               <input
                 type="search"
-                class="form-control border-0 ml-3"
-                id="total_pax"
-                name = "total_pax"
-                placeholder = "0"
+                class="form-control form-rounded"
+                id="searchAttraction"
+                name = "searchAttraction"
+                placeholder="Search Attraction"
               />
-            </span>
-              <span class = "row d-flex  align-items-center form-rounded px-4 mt-3">
-                <h1 class = "choiceFont my-auto">Adults:</h1>
-                <select
-                    name="no_adults"
-                    class="col form-control border-0 mr-1"
-                    id="adults"
-                    name = "adults"
-                    onchange = "cal_pax()"
-
-                  >
-                    {% for adults in no_adults %}
-                        <option value="{{adults}}">{{adults}}</option>"
-                    {% endfor %}
-                  </select>
-
-                  <h1 class = "choiceFont my-auto">Children:</h1>
-
-
+  
+          </div>
+  
+          <div class = "col d-flex flex-wrap align-content-center justify-content-center">
+            <input
+              type="date"
+              class="form-control form-rounded"
+              id="dateSelection"
+              name = "dateSelection"
+              placeholder="Select Date"
+            />
+  
+          </div>
+  
+          <div class = " col d-flex flex-wrap align-content-center justify-content-center">
+  
+              <span class = "form-rounded px-4 d-flex align-items-center">
+                <h2 class = "choiceFont my-auto ">Total:</h2>
+                <input
+                  type="search"
+                  class="form-control border-0 ml-3"
+                  id="total_pax"
+                  name = "total_pax"
+                  placeholder = "0"
+                />
+              </span>
+                <span class = "row d-flex  align-items-center form-rounded px-4 mt-3">
+                  <h1 class = "choiceFont my-auto">Adults:</h1>
                   <select
-                  name="no_children"
-                  class="col form-control border-0 ml-1"
-                  id="children"
-                  name = "children"
-                  onchange = "cal_pax()"
-
-                  >
-                  {% for child in no_children %}
-                      <option value="{{child}}">{{child}}</option>"
-                  {% endfor %}
-                  </select>
-
-
-                </span>
-
-        </div>
-
-        <div class = "col-1 d-flex flex-wrap align-content-center mr-3">
-          <a href="/attractionsResult" class = "searchButton" id = "searchButton" type="submit">
-            <div class = "searchText mx-auto my-auto">
-              Search
-            </div>
-          </a>
+                      name="no_adults"
+                      class="col form-control border-0 mr-1"
+                      id="adults"
+                      name = "adults"
+                      onchange = "cal_pax()"
+  
+                    >
+                      {% for adults in no_adults %}
+                          <option value="{{adults}}">{{adults}}</option>"
+                      {% endfor %}
+                    </select>
+  
+                    <h1 class = "choiceFont my-auto">Children:</h1>
+  
+  
+                    <select
+                    name="no_children"
+                    class="col form-control border-0 ml-1"
+                    id="children"
+                    name = "children"
+                    onchange = "cal_pax()"
+  
+                    >
+                    {% for child in no_children %}
+                        <option value="{{child}}">{{child}}</option>"
+                    {% endfor %}
+                    </select>
+  
+  
+                  </span>
+  
+          </div>
+  
+          <div class = "col-1 d-flex flex-wrap align-content-center mr-3">
+            <a href="/attractionsResult" class = "searchButton" id = "searchButton" type="submit">
+              <div class = "searchText mx-auto my-auto">
+                Search
+              </div>
+            </a>
+          </div>
         </div>
       </div>
-    </div>
+
+    </form>
 
     <ul class = "attractionsList">
-      {% for result in result %}
+      {% for result in finalList %}
       <li class = "flex-item mx-auto row">
 
         <div class= "col d-flex justify-content-center align-items-center"> 

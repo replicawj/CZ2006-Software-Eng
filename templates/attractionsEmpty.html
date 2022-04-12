@@ -18,7 +18,7 @@
       <div class = "attractionsTitle">Attractions</div>
     </div>
 
-    <form method="POST" name="searchAttraction2">
+    <form method="POST">
 
       <div class= "searchWrapper">
         <div class = "searchBorder mx-auto row">
@@ -93,36 +93,20 @@
           </div>
   
           <div class = "col-1 d-flex flex-wrap align-content-center mr-3">
-            <button href="/hotelsResult" class = "btn btn-primary" id = "searchButton" type="submit" name="attractionsButton">
-              <div class = "searchText my-auto mx-auto">
+            <a class = "searchButton" id = "searchButton" type="submit">
+              <div class = "searchText mx-auto my-auto">
                 Search
               </div>
-            </button>
+            </a>
           </div>
         </div>
       </div>
 
     </form>
-
-    <div class = "Recommended-Wrapper">
-      <div class = "Recommended-Title">Recommended List</div>
+    <div action = "#" class="bg-dark">
+        Empty
     </div>
 
-    <div>
-      <div class="scrolling-wrapper">
-        {% for result in result  %}
-        <div class="card">
-          <p>{{result.name}}</p>
-
-          <img src ="{{ url_for('static',filename='assets/img/pin.png')}}" width = 5%/>
-          <p>{{result.address}}</p>
-
-          <p>$SGD{{result.price}}</p>
-        </div>
-        {% endfor %}
-
-      </div>
-    </div>
 
 
 

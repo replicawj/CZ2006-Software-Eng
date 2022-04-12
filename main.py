@@ -83,17 +83,21 @@ def hotelsFunction():
     return (hotelsList)
 
 
+def hotelsFunction2():
+    data = hotelRecco()
+    result = []
+    for i in range(len(data)):
+        data1 = data[i]
+        data2 = data1["name"]
+        data2 = str(data2)
+        data2 = data2.lower()
+        data3 = data2.split()
+        result.append(data3)
+        return (result)
+
+
 hotelReccoCard = hotelRecco()
 hotelNameCard = hotelsFunction()
-
-
-# print(hotelsFunction())
-# print(hotelReccoCard)
-# print(len(hotelReccoCard))
-# print(len(hotelsFunction()))
-
-# for i in range(len(hotelNameCard)):
-#     print(hotelNameCard[i])
 
 ### Attraction API -wj ###
 
@@ -136,12 +140,26 @@ def signup():
     return render_template("signup.html")
 
 
-@app.route('/attractions')
+@app.route('/attractions', methods=["GET", "POST"])
 def attractions():
     no_adults = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     no_children = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
-    return render_template("attractions.html", no_adults=no_adults, no_children=no_children, result=attractionData)
+    if (request.method == 'POST') and "searchAttraction2" in request.form:
+        print(len(request.form["searchAttraction"]))
+        temp = request.form["searchAttraction"]
+        temp2 = str(temp)
+        temp2 = temp2.lower()
+        temp2 = temp2.strip()
+        temp3 = ''.join(filter(str.isalnum, temp2))
+        print(temp3)
+        if len(temp3) == 0:
+            return render_template("attractionsEmpty.html", no_adults=no_adults, no_children=no_children, result=attractionData)
+
+        return redirect(url_for("attractionEntry", attractionsInput=temp3))
+
+    else:
+        return render_template("attractions.html", no_adults=no_adults, no_children=no_children, result=attractionData)
 
 
 @app.route('/attractionsResult')
@@ -150,6 +168,37 @@ def attractionsResult():
     no_children = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     plan_no = ["Plan Number:", 1, 2]
     return render_template("attractionsResult.html", no_adults=no_adults, no_children=no_children, result=attractionData, plan_no=plan_no)
+
+
+@app.route("/<attractionsInput>")
+def attractionEntry(attractionsInput):
+    no_adults = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    no_children = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    plan_no = ["Plan Number:", 1, 2]
+    finalList = []
+    bigData = attractionPage()
+    count = 1
+
+    temp2 = str(attractionsInput)
+    for i in range(len(bigData)):
+        attractionIndex = bigData[i]
+        attractionName = attractionIndex["name"]
+        attractionName = str(attractionName)
+        attractionName = attractionName.lower()
+        attractionName = attractionName.strip()
+        finalAttractionName = ''.join(filter(str.isalnum, attractionName))
+        ratio = fuzz.ratio(temp2, finalAttractionName)
+
+        if ratio > 60:
+            app.logger.info("success")
+            finalList.append(bigData[i])
+        elif count == len(bigData) and len(finalList) == 0:
+            return render_template("attractionsEmpty.html", no_adults=no_adults, no_children=no_children, result=attractionData)
+        else:
+            continue
+
+        count = count+1
+    return render_template("attractionsResult.html", no_adults=no_adults, no_children=no_children, result=attractionData, plan_no=plan_no, finalList=finalList)
 
 
 @app.route('/flights')
@@ -174,11 +223,10 @@ randomList = []
 def hotels():
     no_adults = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     no_children = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-    # for j in range(len(hotelNameCard)):
-    #     app.logger.info(hotelNameCard[j])
-    count = 1
 
-    if request.method == 'POST':
+    app.logger.info("debug1")
+    if (request.method == 'POST') and "searchHotels2" in request.form:
+        app.logger.info("debug2")
         temp = request.form["searchHotels"]
         temp2 = str(temp)
         temp2 = temp2.lower()
@@ -186,20 +234,9 @@ def hotels():
         temp3 = ''.join(filter(str.isalnum, temp2))
         print(temp3)
         if len(temp3) == 0:
-            return render_template("hotels.html", no_adults=no_adults, no_children=no_children, result=hotelReccoCard)
+            return render_template("hotelsEmpty.html", no_adults=no_adults, no_children=no_children, result=hotelReccoCard)
 
         return redirect(url_for("hello", temp2=temp3))
-
-        # for i in range(len(hotelNameCard)):
-        #     hotelData = hotelNameCard[i]
-        #     if temp3 == hotelData:
-        #         app.logger.info("match")
-        #         return redirect(url_for("hello", temp2=temp3))
-        #     elif count == len(hotelNameCard):
-        #         return render_template("hotels.html", no_adults=no_adults, no_children=no_children, result=hotelReccoCard)
-        #     else:
-        #         app.logger.info("no match")
-        #     count = count+1
 
     else:
         return render_template("hotels.html", no_adults=no_adults, no_children=no_children, result=hotelReccoCard)
@@ -212,12 +249,9 @@ def hello(temp2):
     plan_no = ["Plan Number:", 1, 2]
     finalList = []
     bigData = hotelRecco()
+    bigData2 = hotelsFunction2()
     count = 1
 
-    # hotelsList2 = hotelsFunction()
-
-    # for j in range(len(hotelNameCard)):
-    #     app.logger.info(hotelNameCard[j])
     app.logger.info("not success")
     temp2 = str(temp2)
     for i in range(len(bigData)):
@@ -228,10 +262,8 @@ def hello(temp2):
         tempHotelName = tempHotelName.strip()
         finalHotelName = ''.join(filter(str.isalnum, tempHotelName))
         ratio = fuzz.ratio(temp2, finalHotelName)
-        # print(finalHotelName)
-        # print(hotelName)
-        print(ratio)
-        if ratio > 70:
+
+        if ratio > 60:
             app.logger.info("success")
             finalList.append(bigData[i])
         elif count == len(bigData) and len(finalList) == 0:
@@ -240,10 +272,6 @@ def hello(temp2):
             continue
 
         count = count+1
-
-        # for j in range(len(randomList)):
-        #     if randomList[j] == hotelName:
-        #         finalList.appendß(bigData[i])
 
     return render_template("hotelsResult.html", no_adults=no_adults, no_children=no_children, result=hotelReccoCard, plan_no=plan_no, finalList=finalList)
 

@@ -305,7 +305,7 @@ def hotels():
         temp3 = ''.join(filter(str.isalnum, temp2))
         print(temp3)
         if len(temp3) == 0:
-            return render_template("hotelsEmpty.html", no_adults=no_adults, no_children=no_children, result=hotelReccoCard)
+            return render_template("hotels.html", no_adults=no_adults, no_children=no_children, result=hotelReccoCard)
 
         return redirect(url_for("hello", temp2=temp3))
 

@@ -18,7 +18,10 @@
         "social": {
             "instagram": "https://www.instagram.com/marinabaysands/",
             "facebook": "https://www.facebook.com/marinabaysands/"
-        }
+        },
+        "picture" : "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Marina_Bay_Sands_in_the_evening_-_20101120.jpg/650px-Marina_Bay_Sands_in_the_evening_-_20101120.jpg"
+
+        
     },
     {
         "name": "Hotel Boss",
@@ -696,7 +699,7 @@
         "name": "Resorts World at Sentosa",
         "price": 420,
         "totalrooms": 464,
-        "country": "Singapore",
+        "country": "https://www.rwsentosa.com/-/media/project/non-gaming/rwsentosa/reopening/home-page/rws.jpg&h=auto&w=100%25?la=en&hash=325799F8FF4D8B7491EFBDC605AFB4CE735AAD99",
         "phone": "+65-65778888",
         "address": {
             "street": "8 Sentosa Gateway, Sentosa Island",
@@ -711,7 +714,9 @@
         "social": {
             "instagram": "https://www.instagram.com/rwsentosa/",
             "facebook": "https://www.facebook.com/ResortsWorldatSentosa/"
-        }
+        },
+        "picture": "https://www.rwsentosa.com/-/media/project/non-gaming/rwsentosa/reopening/home-page/rws.jpg&h=auto&w=100%25?la=en&hash=325799F8FF4D8B7491EFBDC605AFB4CE735AAD99"
+        
     },
     {
         "name": "Hotel Michael - Resorts World Sentosa",
@@ -1320,7 +1325,8 @@
         "social": {
             "instagram": null,
             "facebook": "https://www.facebook.com/rwshardrockhotel/"
-        }
+        },
+        "picture": "https://www.sentosa.com.sg/-/media/sentosa/product-listing/product-card/places-to-stay/hrhhero.jpg?revision=4a89087b-01ef-48f8-8afa-633c2c588616"
     },
     {
         "name": "Hotel Royal",
@@ -2118,7 +2124,9 @@
         "social": {
             "instagram": "https://www.instagram.com/wsingapore",
             "facebook": "https://www.facebook.com/wsingaporesentosacove/"
-        }
+        },
+        "picture": "https://cache.marriott.com/content/dam/marriott-renditions/SINWH/sinwh-wet-6146-hor-clsc.jpg?output-quality=70&interpolation=progressive-bilinear&downsize=1336px:*"
+        
     },
     {
         "name": "Quality Hotel Marlow",
@@ -2454,7 +2462,9 @@
         "social": {
             "instagram": "https://www.instagram.com/silosobeachresort/",
             "facebook": "https://www.facebook.com/silosobeachresortsentosa/"
-        }
+        },
+        "picture": "https://content.r9cdn.net/himg/93/c1/80/arbisoftimages-180793-Leisure_head_21-416530.jpg"
+        
     },
     {
         "name": "Capella Hotel, Singapore",
@@ -2517,7 +2527,9 @@
         "social": {
             "instagram": "https://www.instagram.com/lemeridiensgsentosa/",
             "facebook": "https://www.facebook.com/lemeridiensingaporesentosa/"
-        }
+        },
+        "picture" : "https://static.mothership.sg/1/2020/10/34595804_374864746252817_7946397750592012288_o.jpg"
+
     },
     {
         "name": "Cherryloft Resorts",
@@ -3336,7 +3348,9 @@
         "social": {
             "instagram": "https://www.instagram.com/fullertonbayhotel/",
             "facebook": "https://www.facebook.com/TheFullertonBayHotel/"
-        }
+        },
+        "picture": "https://q-xx.bstatic.com/xdata/images/hotel/max1024x768/268302042.jpg?k=7e65e45e8292ea1e4af3a30c37f8cda0d4a3114a0a44d06393accfb81315179e&o="
+
     },
     {
         "name": "J8 Hotel",
@@ -6885,7 +6899,9 @@
         "social": {
             "instagram": "https://www.instagram.com/one15marina/",
             "facebook": "https://www.facebook.com/ONE15Marina/"
-        }
+        },
+        "picture": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/277705256.jpg?k=de54ee7891453f782b8b0af07e06e72e7796c4802f14dac1d231d4893d183d82&o=&hp=1"
+        
     },
     {
         "name": "Mitraa Hostels Singapore",
@@ -7347,7 +7363,9 @@
         "social": {
             "instagram": null,
             "facebook": "https://www.facebook.com/rafflesmarina/"
-        }
+        },
+        "picture":"https://cf.bstatic.com/xdata/images/hotel/max1024x768/61742199.jpg?k=977a89fff71da075d52a9c14170b06f62d326cd70ba02674bbb3125319e0aba5&o=&hp=1"
+
     },
     {
         "name": "Hotel NuVe Heritage",

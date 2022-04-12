@@ -112,12 +112,23 @@
       <div class="scrolling-wrapper">
         {% for result in result  %}
         <div class="card">
-          <p>{{result.name}}</p>
+          <div class = "mx-auto">
+            <img src= "https://planetofhotels.com/sites/default/files/sady_u_zaliva-2_1.jpg" class="logo mt-2" />
+          </div>
+          <div class =  "info mx-auto pt-2">
 
-          <img src ="{{ url_for('static',filename='assets/img/pin.png')}}" width = 5%/>
-          <p>{{result.address}}</p>
+            <div class = "font1">
+              {{result.name}}
+            </div>
+            <span class = "font2 mt-1">
+              <img src ="{{ url_for('static',filename='assets/img/pin.png')}}" width = 5%/>
+              {{result.address}}
+            </span>
 
-          <p>$SGD{{result.price}}</p>
+            <div class = "font2">
+              $SGD{{result.price}}
+            </div>
+          </div> 
         </div>
         {% endfor %}
 

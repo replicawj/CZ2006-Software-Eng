@@ -88,6 +88,7 @@
   color: black;
   font-weight: 700;
   font-size: 30px;
+  text-align: center;
 }
 .flex-item .addButton {
   width: 150px;
@@ -175,6 +176,8 @@
   font-weight: 400;
   font-size: 20px;
 }
+
+
 
 .card .logo {
   width: 423px;

@@ -230,7 +230,7 @@ def flights():
         if len(temp3) == 0 or len(end_temp3) == 0:
             return render_template("flightsEmpty.html", flight_class=flight_class, no_travellers=no_travellers, result=flightsData)
 
-        return redirect(url_for("flightsEntry", flightsInput=flightsList))
+        return redirect(url_for("flightsEntry", flightsInput=temp3))
 
     else:
         return render_template("flights.html", flight_class=flight_class, no_travellers=no_travellers, result=flightsData)
@@ -240,7 +240,8 @@ def flights():
 def flightsResult():
     flight_class = ["Economy", "Business", "First Class"]
     no_travellers = ["Travellers:", 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-    return render_template("flightsResult.html", flight_class=flight_class, no_travellers=no_travellers, result=flightsData)
+    plan_no = ["Plan Number:", 1, 2]
+    return render_template("flightsResult.html", flight_class=flight_class, no_travellers=no_travellers, result=flightsData, plan_no=plan_no)
     # return render_template("flightsResult.html", result = flightsData)
 
 
@@ -248,12 +249,13 @@ def flightsResult():
 def flightsEntry(flightsInput):
     flight_class = ["Economy", "Business", "First Class"]
     no_travellers = ["Travellers:", 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    plan_no = ["Plan Number:", 1, 2]
     finalList = []
     bigData = flightsPage()
     count = 1
 
-    flights_1 = flightsInput[0]
-    flights_2 = flightsInput[1]
+    # flights_1 = flightsInput[0]
+    # flights_2 = flightsInput[1]
     app.logger.info("reachFlights")
     for i in range(len(bigData)):
         app.logger.info("flights Searching...")
@@ -272,7 +274,7 @@ def flightsEntry(flightsInput):
         flightsOrigin = ''.join(filter(str.isalnum, flightsOrigin))
         app.logger.info(flightsOrigin)
 
-        if flightsOrigin == flights_1 and flightsDestination == flights_2:
+        if flightsOrigin == flightsInput and flightsDestination == "sin":
             app.logger.info("success")
             finalList.append(bigData[i])
         elif count == len(bigData) and len(finalList) == 0:
@@ -282,7 +284,7 @@ def flightsEntry(flightsInput):
 
         count = count+1
 
-    return render_template("flightsResult.html", flight_class=flight_class, no_travellers=no_travellers, result=flightsData)
+    return render_template("flightsResult.html", flight_class=flight_class, no_travellers=no_travellers, result=flightsData, plan_no=plan_no, finalList=finalList)
 
 
 randomList = []

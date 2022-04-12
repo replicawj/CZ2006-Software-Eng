@@ -191,22 +191,112 @@
       Flights
     </div>
 
-    <div class="newScrollerWrapper">
-      <ul class="navbar-nav"> <!-- ul tag defines an unordered (bulleted) list -->
-        <li class="nav-item" id="imageWrapper">
-          <img src= "https://www.logolynx.com/images/logolynx/2b/2bbabac56c986b5fa404ced4eef54d36.jpeg" width="150" height="60"/>
-        </li>
-        <li>
-          <p>Date</p>
-        </li>
-        <li>
-          <p>My account</p>
-        </li>
-        <li>
-          <p>My account</p>
-        </li>
-      </ul>
+    <div class="scrolling-wrapper" id="allFlightsDisplay">
     </div>
+
+    <script>
+      function countProperties(obj) { //count amt of elements in an object
+        var count = 0;
+    
+        for(var prop in obj) {
+            if(obj.hasOwnProperty(prop))
+                ++count;
+        }
+    
+        return count;
+      }
+      
+      var currentPlan = sessionStorage.getItem("currentPlan");
+      db.collection('accounts').doc(userEmail).get().then((doc) => {
+        var plans = doc.data().plans;
+        var object = plans; //plans
+
+        plan = object[currentPlan]; //look at 1 plan
+        var flights = plan["flights"];
+        var noOfFlights = countProperties(flights)
+
+        //var planNumberTextElement = document.createTextNode(attractions[0].name);
+
+        console.log("Number of hotels in plan: " + noOfFlights);
+        console.log("Hotels object: " + flights[1].name); 
+        //console.log("Attractions object: " + attractions[Object.keys(attractions)[0]].name); //gets 1st object in attractions
+
+        var counter = 0; //for indexing attraction in attractions
+        function cloneFlights(counter){
+          if(counter < noOfFlights){
+            var flight = flights[Object.keys(flights)[counter]];
+            
+            /*
+            var attractionDates = Object.keys(attractions);
+            var attractionDate = attractionDates[counter];
+            */
+
+            
+            var flightD = flight.date;
+            const flightDate = flightD.toDate().toDateString();
+            const flightTime = flightD.toDate().toLocaleTimeString();
+            
+            if (flightDate == null){
+              flightDate = "No date selected";
+            }
+            var flightName = flight.airline;
+            var flightPrice = flight.price;
+            
+
+            //-----Create HTML elements
+            var ul = document.createElement('ul');
+            ul.setAttribute("class", "card ");
+            ul.setAttribute("style", "list-style:none");
+            
+            
+            //Name li
+            var listElement = document.createElement("LI");
+            listElement.setAttribute("class", "font1");
+            let textNode = document.createTextNode(flightName);
+            listElement.appendChild(textNode);
+            ul.appendChild(listElement);
+
+            //Date li
+            var listElement = document.createElement("LI");
+            listElement.setAttribute("class", "font2" )
+            textNode = document.createTextNode(flightDate);
+            listElement.appendChild(textNode);
+            ul.appendChild(listElement);
+
+            // time of flight li
+            var listElement = document.createElement("LI");
+            listElement.setAttribute("class", "font2" )
+            textNode = document.createTextNode(flightTime);
+            listElement.appendChild(textNode);
+            ul.appendChild(listElement);
+
+          
+            //Address price
+            var listElement = document.createElement("LI");
+            listElement.setAttribute("class", "font2" )
+            textNode = document.createTextNode(flightPrice);
+            listElement.appendChild(textNode);
+            ul.appendChild(listElement);
+
+            var hotelDisplay = document.getElementById('allFlightsDisplay'); //get location of display
+            hotelDisplay.appendChild(ul);
+            //---end of html displays
+
+            
+            console.log("Flight")
+            console.log("Flight name: " + hotelName);
+            console.log("Flight date: " + hotelDate);
+            console.log("Flight address: " + hotelAddress);
+            console.log("Flight price: " + hotelPrice);
+            return cloneFlights(counter + 1);
+          } else {
+            return counter
+          }
+        }
+
+        console.log(cloneFlights(counter)); 
+      });
+    </script>
 
     <div class="title">
       Hotels
@@ -433,22 +523,6 @@
         
       });
     </script>
-
-    <div class="title">
-      Itinerary
-    </div>
-
-    <div class="itineraryDate" id="date">
-      Tuesday, February 1st
-    </div>
-      
-    <div class="itineraryDate" id="date">
-      Wednesday, February 1st
-    </div>
-
-    <div class="itineraryDate" id="date">
-      Thursday, February 1st
-    </div>
 
 
 

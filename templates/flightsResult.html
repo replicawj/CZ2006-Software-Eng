@@ -15,6 +15,25 @@
 </head>
 
 <body>
+  <script src="/static/javascript/hotels.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase-firestore.js"></script>
+    <script>
+	    // Initialize Firebase
+	    var config = {
+		    apiKey: "AIzaSyDFOHLm7znnFt-n_HeemWcIhhh_9wlk4qo",
+			authDomain: "travello-fd292.firebaseapp.com",
+			databaseURL: "https://travello-fd292-default-rtdb.asia-southeast1.firebasedatabase.app",
+			projectId: "travello-fd292",
+			storageBucket: "travello-fd292.appspot.com",
+			messagingSenderId: "771482085344",
+			appId: "1:771482085344:web:f596fe26914b66601f6d85",
+			measurementId: "G-RN0N391VX2"
+	    };
+	    firebase.initializeApp(config);
+	    const db = firebase.firestore(); //reference to database and store to const db
+	    db.settings({ timestampsInSnapshots: true }); 
+    </script>
     {% extends "template.html" %}
     {% block content %}
 
@@ -127,10 +146,11 @@
       
         <div class = "col-6 d-flex align-items-center">
           <div>
-            <div class = "font1" id = "time{{d[11:16]}}{{d[0:10]}}"> {{d[11:16]}} {{d[0:10]}} </div>
-            <div class = "font2" id = "location{{d[11:16]}}{{d[0:10]}}">{{result.origin}} - {{result.destination}}</div>
-            <div class = "font2" id = "transfersname{{d[11:16]}}{{d[0:10]}}">Transfers: {{result.transfers}}</div>
-            <div class = "font2" id = "main_airlinename{{d[11:16]}}{{d[0:10]}}"> {{result.main_airline}} </div>
+            <div class = "font1" id = "time{{d[11:16]}}">{{d[11:16]}}</div> 
+            <div class = "font1" id = "date{{d[11:16]}}">{{d[0:10]}} </div>
+            <div class = "font2" >{{result.origin}} - {{result.destination}}</div>
+            <div class = "font2" >Transfers: {{result.transfers}}</div>
+            <div class = "font2" id = "main_airlinename{{d[11:16]}}"> {{result.main_airline}} </div>
             <div class = "font2">Book from: 
               <a class = "font2" href={{result.gate}}> {{result.gate}}</a>
             </div>
@@ -139,13 +159,13 @@
 
         <div class = "col my-auto">
           <div class = "d-flex flex-wrap justify-content-center">
-            <div class = "font3" id = "price{{d[11:16]}}{{d[0:10]}}">
+            <div class = "font3" id = "price{{d[11:16]}}">
               $SGD{{result.price}}
             </div>
             
             <div class = "a" id = "ai">
               <input type="submit" name="addPlan" value="{{hotelName}}" class="random" >
-                <a class = "addButton mt-2 mx-auto" id = "addButton" type="submit" data-toggle="modal" data-target="#exampleModalCenter" onclick = "show('{{d[11:16]}}{{d[0:10]}}')">
+                <a class = "addButton mt-2 mx-auto" id = "addButton" type="submit" data-toggle="modal" data-target="#exampleModalCenter" onclick = 'show("{{d[11:16]}}")'>
                   <!-- <input type ="submit" name="addPlan" value="{{hotelName}}"> -->
                   <div class = "searchText mx-auto my-auto">
                     Add to Plan
@@ -159,17 +179,20 @@
                   const buttons = document.querySelectorAll('.a');
                   buttons.forEach(button =>{button.remove()});
                 }
-              var time;
-              var price;
-              var location;
-              var airline;
               var date;
+              var price;
+              var airline;
+              
               function show(n){
-                time = document.getElementById('time'.concat(n)).innerHTML;
-                price = document.getElementById('price'.concat(n)).innerHTML;
-                location = document.getElementById('location'.concat(n)).innerHTML;
-                airline = document.getElementById('main_airlinename'.concat(n)).innerHTML;
+                dirty_time = document.getElementById("time".concat(n)).innerHTML;
+                dirty_date = document.getElementById('date'.concat(n)).innerHTML;
+                date = new Date(dirty_date+dirty_time);
+                airline = document.getElementById("main_airlinename".concat(n)).innerHTML;
+                price = document.getElementById("price".concat(n)).innerHTML;
+                console.log(date);
               }
+              
+              
       
             </script>
           </div>
@@ -222,21 +245,6 @@
           </div>
           
           <div class="modal-footer">
-            <div class="planNameWrapper">
-              Date:
-
-              <div class = "col d-flex flex-wrap">
-                <input
-                type="date"
-                class="form-control form-rounded"
-                id="plandateSelection"
-                name = "plandateSelection"
-                placeholder="Select Date"
-              />
-              </div>
-            </div>
-
-            
             <button type="button" class="btn btn-secondary" id = "closeButton" data-dismiss="modal">Close</button>
             <button onclick="savePlans()" type="button" class="btn btn-primary" id="saveButton" data-dismiss="modal">Save</button>
           
@@ -252,15 +260,12 @@
                 return count;
               }
               function savePlans(){
-                
-                date = new Date(document.getElementById("plandateSelection").value);
                 var which_planObj = document.getElementById("plan_no");
                 var which_plan = parseInt(which_planObj.options[which_planObj.selectedIndex].value);
-                console.log(name);
-                console.log(price);
-                console.log(location);
-                console.log(which_plan);
                 console.log(date);
+                console.log(price);
+                console.log(airline);
+                console.log(which_plan);
 
                 if(date == "Invalid Date"){
                   date = null;
@@ -290,11 +295,9 @@
 
                   var flightCounter = numberOfFlights + 1;
                   newFlight[flightCounter] = {
-                                              time:time,
-                                              location: location,
+                                              date:date,
                                               price: price,
                                               airline: airline,
-                                              date:date
 
                                             };
 

@@ -9,6 +9,9 @@ function newPlan(){
     var startDate = document.getElementById("startDateSelection").value;
     var endDate = document.getElementById("endDateSelection").value;
     var planName = document.getElementById("planName").value;
+    console.log(startDate);
+    console.log(endDate);
+    console.log(planName);
 
     //console.log(sessionStorage.getItem("numberOfPlans"));
 
@@ -24,6 +27,10 @@ function newPlan(){
             attractions : null,
             hotels : null,
             flights : null
+        }
+        if(!checkPlanField(startDate,endDate,planName)){
+            return ;
+            
         }
 
         var planNumber = parseInt(sessionStorage.getItem("numberOfPlans")) + 1;
@@ -53,9 +60,26 @@ function newPlan(){
 
     planName = ""; //clean out the inputs on the modal
 
-    console.log("Plan saved!");
+    alert("Plan saved!");
     planMade = true;
 
+}
+function checkPlanField(startDate, endDate){
+    if(!startDate){
+        alert("Start date not added. Please try again.");
+        return 0;
+    }
+    else if(!endDate){
+        alert("End date not added. Please try again.");
+        return 0;
+    }
+    else if(startDate>endDate){
+        alert("Start date cannot be later than End date. ");
+        return 0;
+    }
+    else{
+        return 1;
+    }
 }
 
 

@@ -266,10 +266,8 @@
                 console.log(price);
                 console.log(airline);
                 console.log(which_plan);
-
-                if(date == "Invalid Date"){
-                  date = null;
-                  console.log("no date choosen");
+                if(!which_plan){
+                  alert("No plan chosen");
                 }
 
                 db.collection('accounts').doc(sessionStorage.getItem("email")).get().then((doc) => {

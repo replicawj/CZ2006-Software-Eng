@@ -283,10 +283,16 @@
                 console.log(which_plan);
                 console.log(date);
 
+                if(!which_plan){
+                  alert("No plan chosen!");
+                }
+
                 if(date == "Invalid Date"){
                   date = null;
-                  console.log("no date choosen");
+                  console.log("No date chosen");
+                  alert("No date chosen!");
                 }
+              
 
                 db.collection('accounts').doc(sessionStorage.getItem("email")).get().then((doc) => {
                   var plans = doc.data().plans;

@@ -112,7 +112,9 @@
           var numberOfPlans = countProperties(object);
           console.log("Number of Plans:  " + numberOfPlans);
           sessionStorage.setItem("numberOfPlans",numberOfPlans);
-
+          if (numberOfPlans >= 3){
+            document.getElementById("addPlanWrapper").remove();
+          }
           var counter = 1;
 
           function clone(counter){
@@ -198,7 +200,7 @@
       </button> -->
 
       <button type="button" id = "addPlanWrapper" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-        <div class="addPlan">
+        <div id = "addp" class="addPlan">
           +
         </div>
       </button>

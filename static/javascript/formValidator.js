@@ -60,7 +60,7 @@ form.addEventListener('submit', (e) => {
         alert("Password does not match");
     
         } else if (form.floatingPassword.value.length <8){
-            alert("Password must me at least 8 characters long!");
+            alert("Password must be at least 8 characters long!");
 
         } else if (onlyUpper.length < 1) {
             alert("Password must include at least One Upper Case Letter!");

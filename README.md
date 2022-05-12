@@ -16,8 +16,8 @@ Latest Version under himari/plans
 - Pandas
 
 # Contributors
-Heng Wei Jie
-Alexander Ng
-Himari Ang
-Wong Xin Pei
-Luo Yangzhixin
+-Heng Wei Jie
+-Alexander Ng
+-Himari Ang
+-Wong Xin Pei
+-Luo Yangzhixin
